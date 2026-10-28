@@ -2,22 +2,25 @@
 #define GERENCIADOR_GRAFICO_HPP
 
 #include "stdafx.hpp"
-#include "Ente.hpp"
-#include "Entidade.hpp"
-#include "Obstaculo.hpp"
+#include <SFML/Graphics.hpp>
 
+class Ente;
 class Gerenciador_Grafico
 {
     private:
 
-        //BiblioGrafica obj;
+        sf::RenderWindow janela;
 
     public:
 
         Gerenciador_Grafico();
         ~Gerenciador_Grafico();
 
-        void desenhar(Ente *pE);
+        bool estaAberta();
+        void processarEventos(); 
+        void limpar();
+        void desenhar(Ente* pE);
+        void mostrar();
 };
 
 #endif

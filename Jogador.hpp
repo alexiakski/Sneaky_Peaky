@@ -1,9 +1,9 @@
 #ifndef JOGADOR_HPP
 #define JOGADOR_HPP
 
-#include "Inimigo.hpp"
 #include "Personagem.hpp"
 
+class Inimigo;
 class Jogador : public Personagem
 {
     protected:

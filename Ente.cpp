@@ -1,32 +1,38 @@
 #include "stdafx.hpp"
 #include "Ente.hpp"
+#include "Gerenciador_Grafico.hpp"
 
-Ente::Ente(int id, sf::Drawable *pFig)
+int Ente::cont = 0;
+Gerenciador_Grafico* Ente::pGG = nullptr;
+
+Ente::Ente() : id(cont++), pFig(new sf::RectangleShape())
 {
-
+    
 }
 
 Ente::~Ente()
 {
-
+    delete pFig;
+    pFig = nullptr;
 }
 
 int Ente::getId()
 {
-    
+    return id;
 }
 
-sf::Drawable* Ente::getFigura()
+sf::RectangleShape* Ente::getFigura()
 {
-
+    return pFig;
 }
 
 void Ente::desenhar()
 {
-
+    if (pGG != nullptr)
+        pGG->desenhar(this);
 }
 
-void Ente::setGG(Gerenciador_Grafico *pGG)
+void Ente::setGG(Gerenciador_Grafico *pG)
 {
-    
+    pGG = pG;
 }
