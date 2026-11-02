@@ -11,10 +11,11 @@ class Jogador : public Personagem
         int pontos;
     
     public:
-        Jogador(int x, int y, int largura, int altura);
-        ~Jogador();
+    
+        Jogador(float x, float y, int largura, int altura);
+        virtual ~Jogador();
 
-        void colidir (Inimigo *pIn);
+        //void colidir (Inimigo *pIn); implementar com GC
 
         void salvar();
         void mover();

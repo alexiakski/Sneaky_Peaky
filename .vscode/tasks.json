@@ -27,8 +27,17 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             }
-        }
+        },
+        {
+            "type": "shell",
+            "label": "Compilar e rodar",
+            "command": "./jogo",
+            "options": { "cwd": "${workspaceFolder}" },
+            "dependsOn": "Compilar jogo",
+            "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": []
+}
     ]
 }
