@@ -1,9 +1,9 @@
 #ifndef JOGADOR_HPP
 #define JOGADOR_HPP
 
-#include "Inimigo.hpp"
 #include "Personagem.hpp"
 
+class Inimigo;
 class Jogador : public Personagem
 {
     protected:
@@ -11,10 +11,11 @@ class Jogador : public Personagem
         int pontos;
     
     public:
-        Jogador(int x, int y, int largura, int altura);
-        ~Jogador();
+    
+        Jogador(float x, float y, int largura, int altura);
+        virtual ~Jogador();
 
-        void colidir (Inimigo *pIn);
+        //void colidir (Inimigo *pIn); implementar com GC
 
         void salvar();
         void mover();

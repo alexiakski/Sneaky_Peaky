@@ -11,13 +11,13 @@ class Personagem : public Entidade
 
     public:
 
-        Personagem(int x, int y, int largura, int altura, int num_vidas);
-        ~Personagem();
+        Personagem(float x, float y, int largura, int altura, int num_vidas);
+        virtual ~Personagem();
 
         int getNumVidas();
         void setNumVidas(int num_vidas);
 
-        void salvarDataBuffer();
+        virtual void salvarDataBuffer();
 
         virtual void salvar() = 0;
         virtual void mover() = 0;

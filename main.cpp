@@ -1,27 +1,7 @@
 #include "stdafx.hpp"
+#include "Jogo.hpp"
 
 #include <SFML/Graphics.hpp>
-
-namespace trabalho_tec_prog
-{
-    class Ente{};
-
-    namespace Entidades
-    {
-        class Entidade : public Ente{};
-
-        namespace Obstaculos
-        {
-            class Obstaculo : public Entidade{};
-        }
-    }
-    
-    namespace Gerenciadores
-    {
-        class Gerenciador_Grafico{};
-        class Gerenciador_Colisoes{};
-    }
-}
 
 int main()
 {
@@ -41,7 +21,13 @@ int main()
         window.clear();
         window.draw(shape);
         window.display();
-    }*/
+    }teste SFML*/
+
+    Jogo jogo;
+    jogo.executar();
 
     return 0;
 }
+
+//para compilar e rodar: ctrl + shift + b
+//para só compilar: ctrl + shift + p

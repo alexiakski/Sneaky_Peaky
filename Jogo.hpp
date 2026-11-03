@@ -8,8 +8,8 @@ class Jogo
 {
     private:
 
-        Jogador pJog1;
-        Gerenciador_Grafico GG;
+        Gerenciador_Grafico GG;    
+        Jogador jog1;
     
     public:
 
