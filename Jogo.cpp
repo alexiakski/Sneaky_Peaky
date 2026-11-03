@@ -2,9 +2,10 @@
 #include "Jogo.hpp"
 #include "Ente.hpp"
 
-Jogo::Jogo() : GG(), jog1(100, 100, 50, 50)//posicao (100,100) e tamanho (50,50)
+Jogo::Jogo() : GG(), jog1(100, 100, 48, 48, 1)//posicao (100,100) e tamanho (48,48) e jogador (1)
 {
     Ente::setGG(&GG);//entes são conectados com gerenciador
+    jog1.setTextura("assets/NinjaRedWalk.png", sf::IntRect(0, 0, 16, 16));//textura do primeiro jogador - recorte da imagem (0,0) até (16,16)
 }
 
 Jogo::~Jogo()
