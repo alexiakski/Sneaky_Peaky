@@ -25,7 +25,7 @@ class Gerenciador_Grafico
         void desenhar(Ente* pE);
         void mostrar();
 
-        sf::Texture* carregarTextura(const std::string& caminho);
+        sf::Texture* carregarTextura(const std::string& caminho, sf::IntRect area = sf::IntRect());
 };
 
 #endif
