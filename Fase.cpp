@@ -1,10 +1,11 @@
 #include "stdafx.hpp"
 #include "Fase.hpp"
 #include "Gerenciador_Grafico.hpp"
+#include "Inim_Facil.hpp"
 
 #define NUM_PLATAFORMAS 3
 
-Fase::Fase() : Ente(), lista_ents(), GC(), pJog1(nullptr), maxInimFaceis(10)
+Fase::Fase() : Ente(), lista_ents(), GC(), pJog1(nullptr)
 {
     pFig->setSize(sf::Vector2f(800, 600));//tamanho do fundo = tamanho da janela
 }
@@ -33,18 +34,17 @@ void Fase::criarJogadores()
 void Fase::criarCenario()
 {
     criarPlataformas();
-    criarObstaculos();//virtual: chama o da Fase_one ou da Fase_two
+    criarObstaculos();//virtual pq chama o da Fase_one ou da Fase_two
 }
 
-void Fase::criarInimFaceis()
+void Fase::criarInimFaceis(const sf::Vector2f posicoes[], int total)
 {
-    int quantidade = 3 + rand() % (maxInimFaceis - 3 + 1);  //entre 3 e maxInimFaceis
+    int quantidade = 3 + rand() % (total - 3 + 1);
 
     for (int i = 0; i < quantidade; i++)
     {
-        //quando o Inim_Facil existir (A5):
-        //Inim_Facil* pI = new Inim_Facil(150.0f + i * 100.0f, 300.0f);
-        //lista_ents.incluir(pI);
+        Inim_Facil* pI = new Inim_Facil(posicoes[i].x, posicoes[i].y);
+        lista_ents.incluir(pI);
         //GC.incluirInimigo(pI);
     }
 }

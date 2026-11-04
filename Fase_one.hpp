@@ -7,7 +7,7 @@ class Fase_one : public Fase
 {
    private: 
     
-        const int maxInimMedios;
+        //const int maxInimMedios;
    
     public:
 
@@ -17,7 +17,7 @@ class Fase_one : public Fase
     protected:
 
         void criarInimigos();
-        void criarInimMedios();
+        void criarInimMedios(const sf::Vector2f posicoes[], int total);
         void criarInimChefes();
 
         void criarObstaculos();

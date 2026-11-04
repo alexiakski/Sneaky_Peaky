@@ -14,8 +14,6 @@ class Fase : public Ente
         Gerenciador_Colisoes GC;
         Jogador *pJog1;
 
-        const int maxInimFaceis;
-
     public:
 
         Fase();
@@ -25,7 +23,7 @@ class Fase : public Ente
 
     protected:
 
-        void criarInimFaceis();
+        void criarInimFaceis(const sf::Vector2f posicoes[], int total);
         void criarPlataformas();
         void criarJogadores();
         void criarCenario();
