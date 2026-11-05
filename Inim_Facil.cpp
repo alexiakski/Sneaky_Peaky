@@ -1,7 +1,7 @@
 #include "stdafx.hpp"
 #include "Inim_Facil.hpp"
 
-Inim_Facil::Inim_Facil(float x, float y) : Inimigo(x, y, 48, 48, 1, 1)//inimigo geral - bambu
+Inim_Facil::Inim_Facil(float x, float y) : Inimigo(x, y, 40, 40, 1, 1)//inimigo geral - bambu
 {
     setTextura("assets/Idle.png", sf::IntRect(0, 0, 62, 62));//só a primeira posição
 }

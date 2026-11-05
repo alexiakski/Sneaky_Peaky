@@ -25,7 +25,7 @@ void Fase::executar()
 
 void Fase::criarJogadores()
 {
-    pJog1 = new Jogador(100, 400, 48, 48, 1);
+    pJog1 = new Jogador(750, 500, 24, 32, 1);
     pJog1->setTextura("assets/NinjaRedWalk.png", sf::IntRect(0, 0, 16, 16));//textura do primeiro jogador - recorte da imagem (0,0) até (16,16)
     lista_ents.incluir(pJog1);
     //GC.incluirJogador(pJog1);   //quando existir

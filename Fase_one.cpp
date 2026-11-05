@@ -1,6 +1,7 @@
 #include "stdafx.hpp"
 #include "Fase_one.hpp"
 #include "Inim_Medio.hpp"
+#include "Chefao.hpp"
 
 #define NUM_OBST_SEGUROS 5
 #define NUM_OBST_DANOSOS 4
@@ -26,22 +27,27 @@ void Fase_one::criarInimigos()
     {
         sf::Vector2f(150, 480),
         sf::Vector2f(400, 480),
-        sf::Vector2f(650, 480),
+        //sf::Vector2f(650, 480),
         sf::Vector2f(250, 300),
         sf::Vector2f(550, 300)
     };
 
-    const sf::Vector2f posMedios[] =
+    const sf::Vector2f posMedios1[] =
     {
-        sf::Vector2f(100, 150),
+        //sf::Vector2f(100, 150),
         sf::Vector2f(370, 150),
         sf::Vector2f(640, 150),
         sf::Vector2f(500, 420)
     };
+
+    const sf::Vector2f posChefes1[] =
+    {
+        sf::Vector2f(70, 90)
+    };
     
     criarInimFaceis(posFaceis, sizeof(posFaceis) / sizeof(posFaceis[0]));//comum às duas fases (implementado na Fase)
-    criarInimMedios(posMedios, sizeof(posMedios) / sizeof(posMedios[0]));//médio exclusivo da fase 1
-    criarInimChefes();//chefão exclusivo da fase 1
+    criarInimMedios(posMedios1, sizeof(posMedios1) / sizeof(posMedios1[0]));//médio exclusivo da fase 1
+    criarInimChefes(posChefes1);//chefão exclusivo da fase 1
 }
 
 void Fase_one::criarInimMedios(const sf::Vector2f posicoes[], int total)
@@ -55,9 +61,11 @@ void Fase_one::criarInimMedios(const sf::Vector2f posicoes[], int total)
     }
 }
 
-void Fase_one::criarInimChefes()
+void Fase_one::criarInimChefes(const sf::Vector2f posicoes[])
 {
-   
+    Chefao* pC = new Chefao(posicoes[0].x, posicoes[0].y);//só um chefão por fase
+    lista_ents.incluir(pC);
+    //GC.incluirInimigo(pC);
 }
 
 void Fase_one::criarObstaculos()

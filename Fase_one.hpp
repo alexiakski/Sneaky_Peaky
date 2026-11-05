@@ -18,7 +18,7 @@ class Fase_one : public Fase
 
         void criarInimigos();
         void criarInimMedios(const sf::Vector2f posicoes[], int total);
-        void criarInimChefes();
+        void criarInimChefes(const sf::Vector2f posicoes[]);
 
         void criarObstaculos();
         void criarPlataformas();

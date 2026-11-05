@@ -37,7 +37,7 @@ void Jogador::salvar()
 
 void Jogador::mover()
 {
-    float velocidade = 3;
+    float velocidade = 2;
     bool andando = false;
 
     if (sf::Keyboard::isKeyPressed(teclaCima))//verifica o movimento do jogador
