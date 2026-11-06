@@ -11,6 +11,29 @@ Jogador::~Jogador()
 
 }
 
+void Jogador::colidir(Inimigo* pIn)
+{
+    if (pIn == nullptr)
+        return;
+
+    sf::FloatRect boundsJogador = getBounds();  
+    sf::FloatRect boundsInimigo = pIn->getBounds();
+
+    float pesJogador = boundsJogador.top + boundsJogador.height;
+    float cabecaInimigo = boundsInimigo.top;
+   
+    if (pesJogador - velocidadeY <= cabecaInimigo + 5 && velocidadeY > 0)
+    {
+        pIn->setNumVidas(pIn->getNumVidas() - 1);
+
+        velocidadeY = -10; 
+    }
+    else
+    {
+        this->setNumVidas(this->getNumVidas() - 1);
+    }
+}
+
 void Jogador::salvar()
 {
     // Implementar no requisito 10
@@ -32,7 +55,9 @@ void Jogador::mover()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         x += velocidade;
 
-    pFig->setPosition(x, y);
+    if (pFig != nullptr) {
+        pFig->setPosition(x, y);
+    }
 }
 
 void Jogador::executar()

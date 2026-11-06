@@ -7,7 +7,7 @@ Gerenciador_Grafico* Ente::pGG = nullptr;
 
 Ente::Ente() : id(cont++), pFig(new sf::RectangleShape())
 {
-    
+
 }
 
 Ente::~Ente()

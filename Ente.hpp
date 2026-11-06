@@ -21,7 +21,8 @@ class Ente
 
         int getId();
         sf::RectangleShape* getFigura();
-
+        virtual sf::FloatRect getBounds() const = 0;
+    
         virtual void executar() = 0;
         void desenhar();
         void static setGG(Gerenciador_Grafico *pGG);

@@ -8,18 +8,24 @@ class Projetil : public Entidade
     protected:
 
         bool ativo;
+        int dano;
 
     public:
 
         Projetil(int x, int y, int largura, int altura, int dano);
-        ~Projetil();
+        virtual ~Projetil();
 
-        void salvarDataBuffer();
+        bool getAtivo() const;
+        void setAtivo(bool ativo);  
+
+        int getDano() const;
+
         void colidir (Entidade *pEnt);
         void mover();
 
         void executar();
         void salvar();
+        void salvarDataBuffer();
 };
 
 #endif

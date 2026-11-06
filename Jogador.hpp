@@ -15,7 +15,10 @@ class Jogador : public Personagem
         Jogador(float x, float y, int largura, int altura);
         virtual ~Jogador();
 
-        //void colidir (Inimigo *pIn); implementar com GC
+        void colidir (Inimigo *pIn); //implementar com GC
+        
+        //usar na classe objeto
+        //void reposicionar(const sf::FloatRect& rectObstaculo);
 
         void salvar();
         void mover();
