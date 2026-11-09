@@ -21,7 +21,7 @@ class Ente
 
         int getId();
         sf::RectangleShape* getFigura();
-        virtual sf::FloatRect getBounds() const = 0;
+        virtual sf::FloatRect getBounds() const;
     
         virtual void executar() = 0;
         void desenhar();
