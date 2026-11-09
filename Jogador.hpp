@@ -9,10 +9,18 @@ class Jogador : public Personagem
     protected:
 
         int pontos;
+
+        int direcao, quadro, contador;//para animação
+
+        sf::Keyboard::Key teclaCima;
+        sf::Keyboard::Key teclaBaixo;
+        sf::Keyboard::Key teclaEsquerda;
+        sf::Keyboard::Key teclaDireita;
+        //jogador 1 usa up, down, left, right e jogador 2 usa w, s, a, d
     
     public:
     
-        Jogador(float x, float y, int largura, int altura);
+        Jogador(float x, float y, int largura, int altura, int num_jog);
         virtual ~Jogador();
 
         void colidir (Inimigo *pIn); //implementar com GC

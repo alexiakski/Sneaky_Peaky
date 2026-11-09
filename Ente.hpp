@@ -26,6 +26,8 @@ class Ente
         virtual void executar() = 0;
         void desenhar();
         void static setGG(Gerenciador_Grafico *pGG);
+
+        void setTextura(const std::string& caminho, sf::IntRect recorte = sf::IntRect()); //usa a imagem inteira ou um recorte
 };
 
 #endif

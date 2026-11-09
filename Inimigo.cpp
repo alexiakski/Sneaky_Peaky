@@ -1,11 +1,12 @@
+#include "stdafx.hpp"
 #include "Inimigo.hpp"
-#include "Jogador.hpp"
 
-Inimigo::Inimigo(float x, float y, float largura, float altura, int nivel_maldade) :
-Personagem(x, y, largura, altura, 3), nivel_maldade(nivel_maldade)
+Inimigo::Inimigo(float x, float y, int largura, int altura, int num_vidas, int nivel_maldade) 
+        : Personagem(x, y, largura, altura, num_vidas), nivel_maldade(nivel_maldade)
 {
 
 }
+
 Inimigo::~Inimigo()
 {
 
@@ -25,12 +26,19 @@ void Inimigo::colidir (Jogador *pJog)
     if(pJog != nullptr)
         danificar(pJog);
 }
-void Inimigo::mover()
-{
-
-}
 
 void Inimigo::salvarDataBuffer()
 {
+    //Implementar no requisito 10 #tomaraquedetempo
+}
 
+void Inimigo::mover()
+{
+    if (pFig != nullptr)  
+      pFig->setPosition(x, y);
+}
+
+void Inimigo::executar()
+{
+    mover();
 }
