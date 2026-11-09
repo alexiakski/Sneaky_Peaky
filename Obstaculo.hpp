@@ -16,7 +16,7 @@ class Obstaculo : public Entidade
         Obstaculo(float x, float y, float largura, float altura, bool danoso = false);
         virtual ~Obstaculo();
 
-        bool getDanoso();
+        bool getDanoso() const;
         void setDanoso(bool danoso);
 
         virtual void executar() = 0;
