@@ -42,7 +42,7 @@ void Projetil::mover()
 {
     if(ativo)
     {
-        x +- 5;
+        x += 5;
 
         if(pFig != nullptr )
             pFig->setPosition(x, y);
