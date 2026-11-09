@@ -3,14 +3,15 @@
 
 #include "Gerenciador_Grafico.hpp"
 #include "Jogador.hpp"
+#include "Fase.hpp"
 
 class Jogo
 {
     private:
 
         Gerenciador_Grafico GG;    
-        Jogador jog1;
-    
+        Fase *pFase;
+            
     public:
 
         Jogo();

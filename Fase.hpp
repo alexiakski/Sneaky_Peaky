@@ -4,6 +4,7 @@
 #include "Ente.hpp"
 #include "Lista_Entidades.hpp"
 #include "Gerenciador_Colisoes.hpp"
+#include "Jogador.hpp"
 
 class Fase : public Ente
 {
@@ -11,20 +12,22 @@ class Fase : public Ente
         
         ListaEntidades lista_ents;
         Gerenciador_Colisoes GC;
+        Jogador *pJog1;
 
     public:
 
         Fase();
-        ~Fase();
+        virtual ~Fase();
 
-        virtual void executar() = 0;
+        virtual void executar();
 
     protected:
 
-        void criarInimFaceis();
-
+        void criarInimFaceis(const sf::Vector2f posicoes[], int total);
+        void criarPlataformas();
         void criarJogadores();
         void criarCenario();
+        void setFundo (const std::string& caminho, sf::IntRect ladrilho);
         
         virtual void criarInimigos() = 0;
         virtual void criarObstaculos() = 0;
