@@ -1,7 +1,7 @@
 #include "Obstaculo.hpp"
 #include "Jogador.hpp"
 
-Obstaculo::Obstaculo(float x, float y, float largura, float altura, bool danoso = false) :
+Obstaculo::Obstaculo(float x, float y, float largura, float altura, bool danoso) :
 Entidade(x, y, largura, altura), danoso(danoso)
 {
 
@@ -30,8 +30,8 @@ void Obstaculo::obstaculizar (Jogador *pJ)
     if(pJ == nullptr)
         return;
 
-    if(denoso)
-        pJ->setNumVidas(pJgetNumVidas()-1);
-    else
-        pJ->reposicionar(getBounds());
+    if(danoso)
+        pJ->setNumVidas(pJ->getNumVidas()-1);
+    //else
+        //pJ->reposicionar(getBounds());
 }
