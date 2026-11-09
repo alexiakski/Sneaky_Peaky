@@ -1,13 +1,11 @@
 #include "Gerenciador_Colisoes.hpp"
 #include "Ente.hpp"
 
-Gerenciador_Colisoes::Gerenciador_Colisoes()
+Gerenciador_Colisoes::Gerenciador_Colisoes() : LIs(), LOs(), LPs(), pJog1(nullptr)
 {
-    LIs();
-    LOs();
-    LPs();
-    pJog1(nullptr);
+
 }
+
 Gerenciador_Colisoes::~Gerenciador_Colisoes()
 {
     LIs.clear();
@@ -32,7 +30,8 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstacs ()
         {
             if (pO != nullptr && verificarColisao(pJog1, pO))
             {
-            pJog1->obstaculizar(pO);
+                //pJog1->obstaculizar(pO);
+                pO->obstaculizar(pJog1);
             }
         }
 }
