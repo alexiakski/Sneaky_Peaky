@@ -12,7 +12,7 @@ class Projetil : public Entidade
 
     public:
 
-        Projetil(int x, int y, int largura, int altura, int dano);
+        Projetil(float x, float y, int largura, int altura, int dano);
         virtual ~Projetil();
 
         bool getAtivo() const;
