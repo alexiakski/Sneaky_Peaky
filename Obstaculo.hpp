@@ -1,3 +1,6 @@
+#ifndef OBSTACULO_HPP
+#define OBSTACULO_HPP
+
 #include "stdafx.hpp"
 #include "Entidade.hpp"
 #include "Jogador.hpp"
@@ -6,18 +9,15 @@ class Obstaculo : public Entidade
 {
     protected:
 
-        int largura;
-        int altura;
         bool danoso;
 
     public:
 
-        Obstaculo(int x, int y, int largura, int altura);
-        ~Obstaculo();
+        Obstaculo(float x, float y, float largura, float altura, bool danoso = false);
+        virtual ~Obstaculo();
 
-        int getLargura();
-        int getAltura();
-        bool getDanoso();
+        bool getDanoso() const;
+        void setDanoso(bool danoso);
 
         virtual void executar() = 0;
 
@@ -25,3 +25,5 @@ class Obstaculo : public Entidade
         virtual void salvar() = 0;
         virtual void obstaculizar (Jogador *pJ);
 };
+
+#endif

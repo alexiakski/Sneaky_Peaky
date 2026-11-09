@@ -9,6 +9,7 @@ class Jogador : public Personagem
     protected:
 
         int pontos;
+        float velocidadeY;
 
         int direcao, quadro, contador;//para animação
 
@@ -23,7 +24,10 @@ class Jogador : public Personagem
         Jogador(float x, float y, int largura, int altura, int num_jog);
         virtual ~Jogador();
 
-        //void colidir (Inimigo *pIn); implementar com GC
+        void colidir (Inimigo *pIn); //implementar com GC
+        
+        //usar na classe objeto
+        //void reposicionar(const sf::FloatRect& rectObstaculo);
 
         void salvar();
         void mover();

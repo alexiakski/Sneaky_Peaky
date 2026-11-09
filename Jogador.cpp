@@ -1,9 +1,11 @@
 #include "stdafx.hpp"
 #include "Jogador.hpp"
+#include "Inimigo.hpp"
 
 Jogador::Jogador(float x, float y, int largura, int altura, int num_jog) : Personagem(x, y, largura, altura, 3)//3?
 {
     pontos = 0;
+    velocidadeY = 0;
     direcao = 0;    //começa olhando para baixo
     quadro = 0;     //começa parado
     contador = 0;
@@ -28,6 +30,29 @@ Jogador::Jogador(float x, float y, int largura, int altura, int num_jog) : Perso
 Jogador::~Jogador()
 {
 
+}
+
+void Jogador::colidir(Inimigo* pIn)
+{
+    if (pIn == nullptr)
+        return;
+
+    sf::FloatRect boundsJogador = getBounds();  
+    sf::FloatRect boundsInimigo = pIn->getBounds();
+
+    float pesJogador = boundsJogador.top + boundsJogador.height;
+    float cabecaInimigo = boundsInimigo.top;
+   
+    if (pesJogador - velocidadeY <= cabecaInimigo + 5 && velocidadeY > 0)
+    {
+        pIn->setNumVidas(pIn->getNumVidas() - 1);
+
+        velocidadeY = -10; 
+    }
+    else
+    {
+        this->setNumVidas(this->getNumVidas() - 1);
+    }
 }
 
 void Jogador::salvar()
@@ -80,8 +105,10 @@ void Jogador::mover()
         contador = 0;
     }
 
-    pFig->setTextureRect(sf::IntRect(direcao * 16, quadro * 16, 16, 16));//coloca o recorte correto da sprite
-    pFig->setPosition(x, y);
+    if (pFig != nullptr) {
+      pFig->setTextureRect(sf::IntRect(direcao * 16, quadro * 16, 16, 16));//coloca o recorte correto da sprite
+      pFig->setPosition(x, y);
+    }
 }
 
 void Jogador::executar()

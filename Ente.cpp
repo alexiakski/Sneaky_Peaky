@@ -7,7 +7,7 @@ Gerenciador_Grafico* Ente::pGG = nullptr;
 
 Ente::Ente() : id(cont++), pFig(new sf::RectangleShape())
 {
-    
+
 }
 
 Ente::~Ente()
@@ -51,4 +51,11 @@ void Ente::setTextura(const std::string& caminho, sf::IntRect recorte)
 
     if (recorte.width > 0)
         pFig->setTextureRect(recorte);
+}
+
+sf::FloatRect Ente::getBounds() const
+{
+    if (pFig != nullptr)
+        return pFig->getGlobalBounds();
+    return sf::FloatRect();
 }

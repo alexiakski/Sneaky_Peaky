@@ -15,16 +15,18 @@ class Inimigo : public Personagem
         Inimigo(float x, float y, int largura, int altura, int num_vidas, int nivel_maldade);
         ~Inimigo();
 
-        int getNivelMaldade();
+        int getNivelMaldade() const;
         void setNivelMaldade(int nivel_maldade);
 
+        void colidir (Jogador *pJog);
+        
         void salvarDataBuffer();
-        //void colidir (Jogador *pJog);
         void mover();
         void executar();
 
         virtual void danificar (Jogador* pJog) = 0;
         virtual void salvar() = 0;
+        
 };
 
 #endif

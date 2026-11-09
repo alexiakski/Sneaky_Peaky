@@ -12,14 +12,19 @@ Inimigo::~Inimigo()
 
 }
 
-int Inimigo::getNivelMaldade()
+int Inimigo::getNivelMaldade() const
 {
     return nivel_maldade;
 }
-
 void Inimigo::setNivelMaldade(int nivel_maldade)
 {
     this->nivel_maldade = nivel_maldade;
+}
+
+void Inimigo::colidir (Jogador *pJog)
+{
+    if(pJog != nullptr)
+        danificar(pJog);
 }
 
 void Inimigo::salvarDataBuffer()
@@ -29,7 +34,8 @@ void Inimigo::salvarDataBuffer()
 
 void Inimigo::mover()
 {
-    pFig->setPosition(x, y);
+    if (pFig != nullptr)  
+      pFig->setPosition(x, y);
 }
 
 void Inimigo::executar()

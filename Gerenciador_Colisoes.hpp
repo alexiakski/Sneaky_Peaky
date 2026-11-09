@@ -1,3 +1,6 @@
+#ifndef GERENCIADOR_COLISOES_HPP
+#define GERENCIADOR_COLISOES_HPP
+
 #include "stdafx.hpp"
 #include "Ente.hpp"
 #include "Entidade.hpp"
@@ -17,7 +20,9 @@ class Gerenciador_Colisoes
 
     public:
 
-       const bool verificarColisao (Ente *pE1, Ente *pE2);
+       Gerenciador_Colisoes();
+       ~Gerenciador_Colisoes();
+        const bool verificarColisao (Ente *pE1, Ente *pE2);
        void tratarColisoesJogsObstacs ();
        void tratarColisoesJogsInimgs ();
        void tratarColisoesJogsProjeteis ();
@@ -27,3 +32,5 @@ class Gerenciador_Colisoes
 
        void executar();
 };
+
+#endif
