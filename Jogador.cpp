@@ -1,9 +1,11 @@
 #include "stdafx.hpp"
 #include "Jogador.hpp"
+#include "Inimigo.hpp"
 
 Jogador::Jogador(float x, float y, int largura, int altura, int num_jog) : Personagem(x, y, largura, altura, 3)//3?
 {
     pontos = 0;
+    velocidadeY = 0;
     direcao = 0;    //começa olhando para baixo
     quadro = 0;     //começa parado
     contador = 0;
