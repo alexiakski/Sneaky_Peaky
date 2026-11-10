@@ -54,6 +54,10 @@ void Jogador::colidir(Inimigo* pIn)
         this->setNumVidas(this->getNumVidas() - 1);
     }
 }
+void Jogador::sofrerAtaque(int dano)
+{
+    num_vidas-=dano;
+}
 
 void Jogador::salvar()
 {

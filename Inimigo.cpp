@@ -27,6 +27,11 @@ void Inimigo::colidir (Jogador *pJog)
         danificar(pJog);
 }
 
+virtual void Inimigo::danificar (Jogador* pJog)
+[
+    pJog->sofrerAtaque(nivel_maldade/2);
+]
+
 void Inimigo::salvarDataBuffer()
 {
     //Implementar no requisito 10 #tomaraquedetempo
