@@ -3,16 +3,17 @@
 
 #include "Obstaculo.hpp"
 
-class Obst_Medio : public Obstaculo
+class Obst_Dificil : public Obstaculo
 {
     private:
 
+        int largura, altura;    
         short int danosidade;
 
     public:
 
-        Obst_Medio(float x, float y,float largura, float altura, short int danosidade);
-        ~Obst_Medio();
+        Obst_Dificil(int x, int y, short int danosidade);
+        ~Obst_Dificil();
 
         short int getDanosidade();
         void setDanosidade(short int danosidade);
