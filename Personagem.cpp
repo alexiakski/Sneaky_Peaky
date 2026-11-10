@@ -1,9 +1,9 @@
 #include "stdafx.hpp"
 #include "Personagem.hpp"
 
-Personagem::Personagem(float x, float y, int largura, int altura, int num_vidas) : Entidade(x, y), num_vidas(num_vidas)
+Personagem::Personagem(float x, float y, int largura, int altura, int num_vidas) : Entidade(x, y, largura, altura), num_vidas(num_vidas)
 {
-    pFig->setSize(sf::Vector2f(largura, altura));
+
 }
 
 Personagem::~Personagem()

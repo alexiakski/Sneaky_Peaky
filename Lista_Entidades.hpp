@@ -5,13 +5,12 @@
 #include "Entidade.hpp"
 #include "Ente.hpp"
 
-template <typename TE>
 class ListaEntidades
 {
     private:
 
-        Lista::Elemento *pInicio;
-        Lista::Elemento *pFim;
+        //Lista::Elemento *pInicio;
+        //Lista::Elemento *pFim;
 
         Lista <Entidade> LEs;
 
@@ -20,10 +19,11 @@ class ListaEntidades
         ListaEntidades();
         ~ListaEntidades();
 
-        void incluir (Ente *pEnt);
+        void incluir (Entidade *pEnt);
         void limpar();
-        void imprimir();
         void percorrer();
+        void desenhar();
+        int getTamanho();
 };
 
 #endif

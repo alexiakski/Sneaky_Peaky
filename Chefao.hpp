@@ -12,14 +12,12 @@ class Chefao : public Inimigo
     public:
 
         Chefao(float x, float y, float largura, float altura, short int nivel_maldade);
+    public:
+
+        Chefao(float x, float y);
         ~Chefao();
 
-        short int getNivelMaldade();
-        void setNivelMaldade(short int nivel_maldade);
-
-        virtual void executar() = 0;
-        void salvarDataBuffer();
-        virtual void salvar() = 0;
+        void salvar();
         void danificar (Jogador* pJog);
 };
 

@@ -7,21 +7,16 @@ class Inim_Facil : public Inimigo
 {
     private:
 
-        int largura, altura;    
+        /*int largura, altura;    
         short int nivel_maldade;
-        //float força;
+        float força;*/
 
     public:
 
-        Inim_Facil(int x, int y, short int nivel_maldade);
+        Inim_Facil(float x, float y);
         ~Inim_Facil();
 
-        short int getNivelMaldade();
-        void setNivelMaldade(short int nivel_maldade);
-
-        virtual void executar() = 0;
-        void salvarDataBuffer();
-        virtual void salvar() = 0;
+        void salvar();
         void danificar (Jogador* pJog);
 };
 
