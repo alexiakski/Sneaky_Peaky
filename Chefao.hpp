@@ -6,14 +6,12 @@
 class Chefao : public Inimigo
 {
     private:
-
-        int largura, altura;    
+  
         short int nivel_maldade;
-        //float força;
 
     public:
 
-        Chefao(int x, int y, short int nivel_maldade);
+        Chefao(float x, float y, float largura, float altura, short int nivel_maldade);
         ~Chefao();
 
         short int getNivelMaldade();

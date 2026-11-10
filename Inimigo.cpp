@@ -30,6 +30,11 @@ void Inimigo::mover()
 
 }
 
+virtual void Inimigo::danificar (Jogador* pJog)
+[
+    pJog->sofrerAtaque(nivel_maldade/2);
+]
+
 void Inimigo::salvarDataBuffer()
 {
 
