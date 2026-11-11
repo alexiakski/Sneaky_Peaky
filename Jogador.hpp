@@ -25,7 +25,7 @@ class Jogador : public Personagem
         virtual ~Jogador();
 
         void colidir (Inimigo *pIn); //implementar com GC
-        void sofreAtaque(int dano);
+        void sofrerAtaque(int dano);
         
         //usar na classe objeto
         //void reposicionar(const sf::FloatRect& rectObstaculo);

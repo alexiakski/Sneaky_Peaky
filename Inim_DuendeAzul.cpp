@@ -1,5 +1,5 @@
 #include "stdafx.hpp"
-#include "Inim_Medio.hpp"
+#include "Inim_DuendeAzul.hpp"
 
 Inim_Medio::Inim_Medio(float x, float y) : Inimigo(x, y, 60, 60, 2, 2)
 {

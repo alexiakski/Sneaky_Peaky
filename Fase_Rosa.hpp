@@ -4,11 +4,7 @@
 #include "Fase.hpp"
 
 class Fase_one : public Fase
-{
-   private: 
-    
-        //const int maxInimMedios;
-   
+{   
     public:
 
         Fase_one();
@@ -16,14 +12,13 @@ class Fase_one : public Fase
 
     protected:
 
+        //Fase 1 só terá inimigos fáceis e médios
         void criarInimigos();
         void criarInimMedios(const sf::Vector2f posicoes[], int total);
-        void criarInimChefes(const sf::Vector2f posicoes[]);
 
         void criarObstaculos();
         void criarPlataformas();
-        void criarObstaculosSeguros();
-        void criarObstaculosDanosos();
+        void criarObstaculosMedios();
 };
 
 #endif

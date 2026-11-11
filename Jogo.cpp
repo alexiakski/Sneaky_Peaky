@@ -1,7 +1,8 @@
 #include "stdafx.hpp"
 #include "Jogo.hpp"
 #include "Ente.hpp"
-#include "Fase_one.hpp"
+#include "Fase_Rosa.hpp"
+#include "Fase_Gelo.hpp"
 
 Jogo::Jogo() : GG(), menu(), pFase(nullptr)
 {
@@ -26,8 +27,11 @@ void Jogo::executar()
         {
             menu.executar();
 
-            if (menu.getFase() != 0)//escolheu uma fase
-                pFase = new Fase_one();//fase 2: new Fase_two() quando existir
+            if (menu.getFase() == 1)//fase 1
+                pFase = new Fase_one();
+
+            if (menu.getFase() == 2)//fase 2
+                pFase = new Fase_two();
         }
 
         else

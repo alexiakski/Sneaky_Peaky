@@ -1,12 +1,5 @@
-#include "Chefao.hpp"
-
-Chefao::Chefao(float x, float y, float largura, float altura, short int nivel_maldade):
-Entidade(x, y, largura, altura), nivel_maldade(nivel_maldade)
-{
-
-}
 #include "stdafx.hpp"
-#include "Chefao.hpp"
+#include "Samurai.hpp"
 
 Chefao::Chefao(float x, float y) : Inimigo(x, y, 100, 100, 1, 5)
 {
@@ -18,27 +11,31 @@ Chefao::~Chefao()
 
 }
 
-short int Chefao::getNivelMaldade()
+/*short int Chefao::getNivelMaldade()
 {
     return nivel_maldade;
 }
+
 void Chefao::setNivelMaldade(short int nivel_maldade)
 {
     this->nivel_maldade = nivel_maldade;
 }
 
-virtual void Chefao::executar()
+void Chefao::executar()
 {
 
 }
+
 void Chefao::salvarDataBuffer()
 {
 
-}
-virtual void Chefao::salvar()
+}*/
+
+void Chefao::salvar()
 {
 
 }
+
 void Chefao::danificar (Jogador* pJog)
 {
     if (pJog == nullptr)
@@ -48,5 +45,5 @@ void Chefao::danificar (Jogador* pJog)
     int vidasAtuais = pJog->getNumVidas();
     pJog->setNumVidas(vidasAtuais - dano);
     
-    pJog->reposicionar(this->getBounds());
+    //pJog->reposicionar(this->getBounds());
 }

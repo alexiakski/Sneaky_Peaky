@@ -1,7 +1,7 @@
 #include "stdafx.hpp"
 #include "Fase.hpp"
 #include "Gerenciador_Grafico.hpp"
-#include "Inim_Facil.hpp"
+#include "Inim_Bambu.hpp"
 
 #define NUM_PLATAFORMAS 3
 

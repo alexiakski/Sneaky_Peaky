@@ -9,7 +9,7 @@ Inimigo::Inimigo(float x, float y, int largura, int altura, int num_vidas, int n
 
 Inimigo::~Inimigo()
 {
-
+    
 }
 
 int Inimigo::getNivelMaldade() const
@@ -27,10 +27,10 @@ void Inimigo::colidir (Jogador *pJog)
         danificar(pJog);
 }
 
-virtual void Inimigo::danificar (Jogador* pJog)
-[
+void Inimigo::danificar (Jogador* pJog)
+{
     pJog->sofrerAtaque(nivel_maldade/2);
-]
+}
 
 void Inimigo::salvarDataBuffer()
 {

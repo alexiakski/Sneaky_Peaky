@@ -5,11 +5,6 @@
 
 class Inim_Facil : public Inimigo
 {
-    private:
-
-        /*int largura, altura;    
-        short int nivel_maldade;
-        float força;*/
 
     public:
 

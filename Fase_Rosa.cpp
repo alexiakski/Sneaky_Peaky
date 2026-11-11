@@ -1,7 +1,6 @@
 #include "stdafx.hpp"
-#include "Fase_one.hpp"
-#include "Inim_Medio.hpp"
-#include "Chefao.hpp"
+#include "Fase_Rosa.hpp"
+#include "Inim_DuendeAzul.hpp"
 
 #define NUM_OBST_SEGUROS 5
 #define NUM_OBST_DANOSOS 4
@@ -39,15 +38,9 @@ void Fase_one::criarInimigos()
         sf::Vector2f(640, 150),
         sf::Vector2f(500, 420)
     };
-
-    const sf::Vector2f posChefes1[] =
-    {
-        sf::Vector2f(70, 90)
-    };
     
     criarInimFaceis(posFaceis, sizeof(posFaceis) / sizeof(posFaceis[0]));//comum às duas fases (implementado na Fase)
     criarInimMedios(posMedios1, sizeof(posMedios1) / sizeof(posMedios1[0]));//médio exclusivo da fase 1
-    criarInimChefes(posChefes1);//chefão exclusivo da fase 1
 }
 
 void Fase_one::criarInimMedios(const sf::Vector2f posicoes[], int total)
@@ -61,30 +54,15 @@ void Fase_one::criarInimMedios(const sf::Vector2f posicoes[], int total)
     }
 }
 
-void Fase_one::criarInimChefes(const sf::Vector2f posicoes[])
-{
-    Chefao* pC = new Chefao(posicoes[0].x, posicoes[0].y);//só um chefão por fase
-    lista_ents.incluir(pC);
-    //GC.incluirInimigo(pC);
-}
-
 void Fase_one::criarObstaculos()
 {
-    criarObstaculosSeguros();
+    criarObstaculosMedios();
 }
 
-void Fase_one::criarObstaculosSeguros()
+void Fase_one::criarObstaculosMedios()
 {
     for (int i = 0; i < NUM_OBST_SEGUROS; i++)
     {
         //Obst_Medio* pO = new Obst_Medio(...);  lista_ents.incluir(pO);  GC.incluirObstaculo(pO);
-    }
-}
-
-void Fase_one::criarObstaculosDanosos()
-{
-    for (int i = 0; i < NUM_OBST_DANOSOS; i++)
-    {
-        //Obst_Danoso* pO = new Obst_Danoso(...);  lista_ents.incluir(pO);  GC.incluirObstaculo(pO);
     }
 }
