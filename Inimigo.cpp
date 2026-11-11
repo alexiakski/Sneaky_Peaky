@@ -39,6 +39,8 @@ void Inimigo::salvarDataBuffer()
 
 void Inimigo::mover()
 {
+    aplicarGravidade();
+    
     if (pFig != nullptr)  
       pFig->setPosition(x, y);
 }

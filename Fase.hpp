@@ -28,6 +28,7 @@ class Fase : public Ente
         void criarJogadores();
         void criarCenario();
         void setFundo (const std::string& caminho, sf::IntRect ladrilho);
+        void criarChao();
         
         virtual void criarInimigos() = 0;
         virtual void criarObstaculos() = 0;

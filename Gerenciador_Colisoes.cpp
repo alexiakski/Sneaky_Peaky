@@ -1,7 +1,7 @@
 #include "Gerenciador_Colisoes.hpp"
 #include "Ente.hpp"
 
-Gerenciador_Colisoes::Gerenciador_Colisoes() : LIs(), LOs(), LPs(), pJog1(nullptr)
+Gerenciador_Colisoes::Gerenciador_Colisoes() : LIs(), LOs(), LPs(), LCs(), pJog1(nullptr)
 {
 
 }
@@ -11,6 +11,7 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
     LIs.clear();
     LOs.clear();
     LPs.clear();
+    LCs.clear();
     pJog1 = nullptr;
 }
 
@@ -61,6 +62,23 @@ void Gerenciador_Colisoes::tratarColisoesJogsProjeteis ()
     }
 }
 
+void Gerenciador_Colisoes::tratarColisoesChao()
+{
+    for (Chao *pC : LCs)
+    {
+        if (pC == nullptr)
+            continue;
+
+        if (pJog1 != nullptr && verificarColisao(pJog1, pC))
+            pC->sustentar(pJog1);
+
+        for (Inimigo *pI : LIs)
+        {
+            if (pI != nullptr && verificarColisao(pI, pC))
+                pC->sustentar(pI);
+        }
+    }
+}
 
 void Gerenciador_Colisoes::incluirInimigo (Inimigo *pI)
 {
@@ -83,10 +101,25 @@ void Gerenciador_Colisoes::incluirProjetil (Projetil *pP)
     else
         LPs.insert(pP);
 }
+void Gerenciador_Colisoes::incluirJogador (Jogador *pJ)
+{
+    if (pJ == NULL)
+        cerr << "Erro ao tentar incluir jogador." << endl;
+    else
+        pJog1 = pJ;
+}
+void Gerenciador_Colisoes::incluirChao (Chao *pC)
+{
+    if (pC == NULL)
+        cerr << "Erro ao tentar incluir chao." << endl;
+    else
+        LCs.push_back(pC);
+}
 
 
 void Gerenciador_Colisoes::executar()
 {
+    tratarColisoesChao();
     tratarColisoesJogsObstacs();
     tratarColisoesJogsInimgs();
     tratarColisoesJogsProjeteis();

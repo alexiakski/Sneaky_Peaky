@@ -8,6 +8,8 @@ class Personagem : public Entidade
     protected:
 
         int num_vidas;
+        float velocidadeY;
+        bool chao;
 
     public:
 
@@ -16,6 +18,9 @@ class Personagem : public Entidade
 
         int getNumVidas();
         void setNumVidas(int num_vidas);
+
+        void aplicarGravidade();
+        void reposicionar(const sf::FloatRect &rect);
 
         virtual void salvarDataBuffer();
 

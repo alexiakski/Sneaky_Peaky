@@ -50,7 +50,7 @@ void Fase_one::criarInimMedios(const sf::Vector2f posicoes[], int total)
     {
         Inim_Medio* pI = new Inim_Medio(posicoes[i].x, posicoes[i].y);
         lista_ents.incluir(pI);
-        //GC.incluirInimigo(pI);
+        GC.incluirInimigo(pI);
     }
 }
 

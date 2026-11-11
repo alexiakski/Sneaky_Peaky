@@ -9,8 +9,6 @@ class Jogador : public Personagem
     protected:
 
         int pontos;
-        float velocidadeY;
-
         int direcao, quadro, contador;//para animação
 
         sf::Keyboard::Key teclaCima;

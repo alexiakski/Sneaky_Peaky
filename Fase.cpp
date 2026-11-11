@@ -2,6 +2,7 @@
 #include "Fase.hpp"
 #include "Gerenciador_Grafico.hpp"
 #include "Inim_Bambu.hpp"
+#include "Chao.hpp"
 
 #define NUM_PLATAFORMAS 3
 
@@ -19,7 +20,7 @@ void Fase::executar()
 {
     desenhar();//fundo
     lista_ents.percorrer();//cmovimento de cada entidade
-    //GC.executar();            //descomentar quando a Talita implementar
+    GC.executar();
     lista_ents.desenhar();//desenho de cada entidade
 }
 
@@ -28,11 +29,12 @@ void Fase::criarJogadores()
     pJog1 = new Jogador(750, 500, 24, 32, 1);
     pJog1->setTextura("assets/NinjaRedWalk.png", sf::IntRect(0, 0, 16, 16));//textura do primeiro jogador - recorte da imagem (0,0) até (16,16)
     lista_ents.incluir(pJog1);
-    //GC.incluirJogador(pJog1);   //quando existir
+    GC.incluirJogador(pJog1);   //quando existir
 }
 
 void Fase::criarCenario()
 {
+    criarChao();
     criarPlataformas();
     criarObstaculos();//virtual pq chama o da Fase_one ou da Fase_two
 }
@@ -45,7 +47,7 @@ void Fase::criarInimFaceis(const sf::Vector2f posicoes[], int total)
     {
         Inim_Facil* pI = new Inim_Facil(posicoes[i].x, posicoes[i].y);
         lista_ents.incluir(pI);
-        //GC.incluirInimigo(pI);
+        GC.incluirInimigo(pI);
     }
 }
 
@@ -70,4 +72,11 @@ void Fase::setFundo(const std::string& caminho, sf::IntRect ladrilho)
     pTex->setRepeated(true); //repete como azulejo
     pFig->setTexture(pTex);
     pFig->setTextureRect(sf::IntRect(0, 0, 267, 200)); //área maior que a textura = repete
+}
+
+void Fase::criarChao()
+{
+    Chao* pChao = new Chao(0, 550, 800, 50);//faixa de 50px no pé da tela
+    lista_ents.incluir(pChao);
+    GC.incluirChao(pChao);
 }
