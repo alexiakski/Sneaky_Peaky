@@ -63,3 +63,7 @@ sf::Texture* Gerenciador_Grafico::carregarTextura(const std::string& caminho, sf
     }
     return &tex;
 }
+void Gerenciador_Grafico::fechar()
+{
+    janela.close();
+}
