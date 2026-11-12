@@ -13,6 +13,7 @@ class Fase : public Ente
         ListaEntidades lista_ents;
         Gerenciador_Colisoes GC;
         Jogador *pJog1;
+        Jogador *pJog2;
 
     public:
 
@@ -25,10 +26,10 @@ class Fase : public Ente
 
         void criarInimFaceis(const sf::Vector2f posicoes[], int total);
         void criarPlataformas();
-        void criarJogadores();
+        void criarJogadores(int numJog);
         void criarCenario();
         void setFundo (const std::string& caminho, sf::IntRect ladrilho);
-        void criarChao();
+        void criarChao(sf::IntRect recorte);
         
         virtual void criarInimigos() = 0;
         virtual void criarObstaculos() = 0;

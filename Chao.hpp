@@ -9,7 +9,7 @@ class Chao : public Entidade
 {
     public:
 
-        Chao(float x, float y, float largura, float altura);
+        Chao(float x, float y, float largura, float altura, sf::IntRect recorte);
         ~Chao();
 
         void sustentar(Personagem* pP);

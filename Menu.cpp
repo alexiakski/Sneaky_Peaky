@@ -17,6 +17,11 @@ int Menu::getFase() const
     return numFase;
 }
 
+int Menu::getNumJog() const
+{
+    return numJog;
+}
+
 void Menu::executar()
 {
     escolher();

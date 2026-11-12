@@ -18,6 +18,7 @@ class Gerenciador_Colisoes
         set <Projetil*> LPs;
         vector <Chao*> LCs;
         Jogador *pJog1;
+        Jogador *pJog2;
 
     public:
 

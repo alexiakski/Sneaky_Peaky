@@ -1,11 +1,17 @@
 #include "stdafx.hpp"
 #include "Chao.hpp"
 #include "Personagem.hpp"
+#include "Gerenciador_Grafico.hpp"
 
-Chao::Chao(float x, float y, float largura, float altura) : Entidade(x, y, largura, altura)
+Chao::Chao(float x, float y, float largura, float altura, sf::IntRect recorte) : Entidade(x, y, largura, altura)
 {
-    if (pFig != nullptr)
-        pFig->setFillColor(sf::Color(110, 70, 40));//qual textura eu coloco mds
+    sf::Texture* pTex = pGG->carregarTextura("assets/TilesetField.png", recorte);//textura do chão
+    if (pTex != nullptr)
+    {
+        pTex->setRepeated(true);//azulejo
+        pFig->setTexture(pTex);
+        pFig->setTextureRect(sf::IntRect(0,0,largura,altura));
+    }
 }
 
 Chao::~Chao()

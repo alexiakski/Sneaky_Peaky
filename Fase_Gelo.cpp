@@ -5,11 +5,12 @@
 #define NUM_OBST_SEGUROS 5
 #define NUM_OBST_DANOSOS 4
 
-Fase_two::Fase_two() : Fase()
+Fase_two::Fase_two(int numJog) : Fase()
 {
     setTextura ("assets/TilesetFloor.png", sf::IntRect(176, 0, 160, 64));//mudar fundo
 
-    criarJogadores();
+    criarJogadores(numJog);
+    criarChao(sf::IntRect(16, 192, 16, 48));//chão neve
     criarCenario();
     criarInimigos();
 }

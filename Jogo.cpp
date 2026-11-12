@@ -28,10 +28,10 @@ void Jogo::executar()
             menu.executar();
 
             if (menu.getFase() == 1)//fase 1
-                pFase = new Fase_one();
+                pFase = new Fase_one(menu.getNumJog());
 
             if (menu.getFase() == 2)//fase 2
-                pFase = new Fase_two();
+                pFase = new Fase_two(menu.getNumJog());
         }
 
         else

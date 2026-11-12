@@ -1,7 +1,7 @@
 #include "Gerenciador_Colisoes.hpp"
 #include "Ente.hpp"
 
-Gerenciador_Colisoes::Gerenciador_Colisoes() : LIs(), LOs(), LPs(), LCs(), pJog1(nullptr)
+Gerenciador_Colisoes::Gerenciador_Colisoes() : LIs(), LOs(), LPs(), LCs(), pJog1(nullptr), pJog2(nullptr)
 {
 
 }
@@ -13,6 +13,7 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
     LPs.clear();
     LCs.clear();
     pJog1 = nullptr;
+    pJog2 = nullptr;
 }
 
 const bool Gerenciador_Colisoes::verificarColisao (Ente *pE1, Ente *pE2)
@@ -23,41 +24,51 @@ const bool Gerenciador_Colisoes::verificarColisao (Ente *pE1, Ente *pE2)
     return (pE1->getBounds()).intersects(pE2->getBounds());
 }
 
-void Gerenciador_Colisoes::tratarColisoesJogsObstacs ()
+void Gerenciador_Colisoes::tratarColisoesJogsObstacs ()//alterei para incluir Jog2
 {
-    if (pJog1 == nullptr) return;
+    Jogador* jogs[2] = {pJog1, pJog2};
+
+    for (Jogador* pJ : jogs){
+
+        if (pJ == nullptr) continue;
 
         for (Obstaculo *pO : LOs)
         {
-            if (pO != nullptr && verificarColisao(pJog1, pO))
+            if (pO != nullptr && verificarColisao(pJ, pO))
             {
-                //pJog1->obstaculizar(pO);
-                pO->obstaculizar(pJog1);
+                pO->obstaculizar(pJ);
             }
-        }
-}
-void Gerenciador_Colisoes::tratarColisoesJogsInimgs ()
-{
-    if (pJog1 == nullptr) return;
-
-    for (size_t i = 0; i < LIs.size(); i++)
-    {
-        Inimigo *pI = LIs[i];
-        if (pI != nullptr && verificarColisao(pJog1, pI))
-        {
-            pJog1->colidir(pI);
         }
     }
 }
-void Gerenciador_Colisoes::tratarColisoesJogsProjeteis ()
+void Gerenciador_Colisoes::tratarColisoesJogsInimgs ()//alterei para incluir Jog2
 {
-    if (pJog1 == nullptr) return;
+    Jogador* jogs[2] = {pJog1, pJog2};
 
-    for (Projetil *pP : LPs)
+    for (Jogador* pJ : jogs)
     {
-        if (pP != nullptr && pP->getAtivo() && verificarColisao(pJog1, pP))
+        if (pJ == nullptr) continue;
+
+        for (size_t i = 0; i < LIs.size(); i++)
         {
-            pP->colidir(pJog1);
+            Inimigo *pI = LIs[i];
+            if (pI != nullptr && verificarColisao(pJ, pI))
+                pJ->colidir(pI);
+        }
+    }
+}
+void Gerenciador_Colisoes::tratarColisoesJogsProjeteis ()//alterei para incluir Jog2
+{
+    Jogador* jogs[2] = {pJog1, pJog2};
+
+    for (Jogador* pJ : jogs)
+    {
+        if (pJ == nullptr) continue;
+
+        for (Projetil *pP : LPs)
+        {
+            if (pP != nullptr && pP->getAtivo() && verificarColisao(pJ, pP))
+                pP->colidir(pJ);
         }
     }
 }
@@ -71,11 +82,18 @@ void Gerenciador_Colisoes::tratarColisoesChao()
 
         if (pJog1 != nullptr && verificarColisao(pJog1, pC))
             pC->sustentar(pJog1);
+        if (pJog2 != nullptr && verificarColisao(pJog2, pC))//add Jog2
+            pC->sustentar(pJog2);
+
 
         for (Inimigo *pI : LIs)
         {
             if (pI != nullptr && verificarColisao(pI, pC))
                 pC->sustentar(pI);
+                
+            if (pJog2 != nullptr && verificarColisao(pJog2, pC))
+            pC->sustentar(pJog2);
+
         }
     }
 }
@@ -105,8 +123,11 @@ void Gerenciador_Colisoes::incluirJogador (Jogador *pJ)
 {
     if (pJ == NULL)
         cerr << "Erro ao tentar incluir jogador." << endl;
-    else
+
+    else if (pJog1 == nullptr)
         pJog1 = pJ;
+    else
+        pJog2 = pJ;
 }
 void Gerenciador_Colisoes::incluirChao (Chao *pC)
 {

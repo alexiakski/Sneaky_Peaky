@@ -6,7 +6,7 @@
 
 #define NUM_PLATAFORMAS 3
 
-Fase::Fase() : Ente(), lista_ents(), GC(), pJog1(nullptr)
+Fase::Fase() : Ente(), lista_ents(), GC(), pJog1(nullptr), pJog2(nullptr)
 {
     pFig->setSize(sf::Vector2f(800, 600));//tamanho do fundo = tamanho da janela
 }
@@ -14,6 +14,7 @@ Fase::Fase() : Ente(), lista_ents(), GC(), pJog1(nullptr)
 Fase::~Fase()
 {
     pJog1 = nullptr;
+    pJog2 = nullptr;
 }
 
 void Fase::executar()
@@ -24,17 +25,24 @@ void Fase::executar()
     lista_ents.desenhar();//desenho de cada entidade
 }
 
-void Fase::criarJogadores()
+void Fase::criarJogadores(int numJog)
 {
     pJog1 = new Jogador(750, 500, 24, 32, 1);
     pJog1->setTextura("assets/NinjaRedWalk.png", sf::IntRect(0, 0, 16, 16));//textura do primeiro jogador - recorte da imagem (0,0) até (16,16)
     lista_ents.incluir(pJog1);
-    GC.incluirJogador(pJog1);   //quando existir
+    GC.incluirJogador(pJog1);
+
+    if (numJog == 2)
+    {
+        pJog2 = new Jogador(20, 500, 24, 32, 2);
+        pJog2->setTextura("assets/NinjaEskimoWalk.png", sf::IntRect(0, 0, 16, 16));//textura do primeiro jogador - recorte da imagem (0,0) até (16,16)
+        lista_ents.incluir(pJog2);
+        GC.incluirJogador(pJog2);
+    }
 }
 
 void Fase::criarCenario()
 {
-    criarChao();
     criarPlataformas();
     criarObstaculos();//virtual pq chama o da Fase_one ou da Fase_two
 }
@@ -74,9 +82,9 @@ void Fase::setFundo(const std::string& caminho, sf::IntRect ladrilho)
     pFig->setTextureRect(sf::IntRect(0, 0, 267, 200)); //área maior que a textura = repete
 }
 
-void Fase::criarChao()
+void Fase::criarChao(sf::IntRect recorte)
 {
-    Chao* pChao = new Chao(0, 550, 800, 50);//faixa de 50px no pé da tela
+    Chao* pChao = new Chao(0, 552, 800, 48, recorte);//faixa de 48px
     lista_ents.incluir(pChao);
     GC.incluirChao(pChao);
 }

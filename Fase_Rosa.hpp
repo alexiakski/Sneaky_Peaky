@@ -7,7 +7,7 @@ class Fase_one : public Fase
 {   
     public:
 
-        Fase_one();
+        Fase_one(int numJog);
         ~Fase_one();
 
     protected:
