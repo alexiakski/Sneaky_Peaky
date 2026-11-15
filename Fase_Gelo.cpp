@@ -7,7 +7,7 @@
 
 Fase_two::Fase_two(int numJog) : Fase()
 {
-    setTextura ("assets/TilesetFloor.png", sf::IntRect(0, 336, 160, 48));//mudar fundo
+    setTextura ("assets/TilesetFloor.png", sf::IntRect(0, 336, 160, 48));//fundo neve
 
     criarJogadores(numJog);
     criarChao(sf::IntRect(16, 192, 16, 48));//chão neve

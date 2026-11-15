@@ -23,15 +23,27 @@ void Jogo::executar()
         GG.processarEventos();
         GG.limpar();
 
-        if (pFase == nullptr)//ainda no menu
+        if (pFase != nullptr && sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))//ESC pausa
+            menu.pausar();
+            
+        if (pFase == nullptr || menu.getPausado())// no menu ou na pausa
         {
             menu.executar();
 
-            if (menu.getFase() == 1)//fase 1
-                pFase = new Fase_one(menu.getNumJog());
+            if (pFase == nullptr)//no menu: espera escolher a fase
+            {
+                if (menu.getFase() == 1)//fase 1
+                    pFase = new Fase_one(menu.getNumJog());
 
-            if (menu.getFase() == 2)//fase 2
-                pFase = new Fase_two(menu.getNumJog());
+                if (menu.getFase() == 2)//fase 2
+                    pFase = new Fase_two(menu.getNumJog());
+            }
+
+            else if (menu.getFase() == 0)//escolheu voltar para o menu
+            {
+                delete pFase;
+                pFase = nullptr;
+            }
         }
 
         else

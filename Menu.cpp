@@ -22,13 +22,23 @@ int Menu::getNumJog() const
     return numJog;
 }
 
+bool Menu::getPausado() const
+{
+    return tela == 4;
+}
+
+void Menu::pausar()
+{
+    tela = 4;
+}
+
 void Menu::executar()
 {
     escolher();
 
     pFig->setSize(sf::Vector2f(576, 576));//4x(114x144)
     pFig->setPosition(112, 12);//(800-576)/2 e (600-576)/2: centralizado na janela
-    setTextura ("assets/Menu.png", sf::IntRect(496, 176, 144, 144));//rectLeft, rectTop, rectWidth, rectHeight
+    setTextura ("assets/Menu.png", sf::IntRect(176, 176, 144, 144));//rectLeft, rectTop, rectWidth, rectHeight
 
     desenhar();//fundo
 
@@ -57,6 +67,11 @@ void Menu::executar()
         escrever("RANKING", 140);
         escrever("EM BREVE", 280);//leitura do arquivo
         escrever("4-VOLTAR", 400);
+        break;
+    case 4:
+        escrever("PAUSADO", 140);
+        escrever("1-CONTINUAR", 220);
+        escrever("4-MENU", 400);
         break;
 
     default:
@@ -91,6 +106,18 @@ void Menu::escolher()
         else
             tela = tecla;//1 jogadores, 2 fases, 3 ranking
     }
+    
+    else if (tela == 4)//pausa
+    {
+        if (tecla == 1)//continuar 
+            tela = 0;
+        else if (tecla == 4)//voltar para o menu
+        {
+            numFase = 0;                               
+            tela = 0;
+        }
+    }  
+
     else if (tecla == 4)//voltar
         tela = 0;
 
