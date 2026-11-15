@@ -27,14 +27,14 @@ void Fase::executar()
 
 void Fase::criarJogadores(int numJog)
 {
-    pJog1 = new Jogador(750, 500, 24, 32, 1);
+    pJog1 = new Jogador(750, 520, 24, 32, 1);
     pJog1->setTextura("assets/NinjaRedWalk.png", sf::IntRect(0, 0, 16, 16));//textura do primeiro jogador - recorte da imagem (0,0) até (16,16)
     lista_ents.incluir(pJog1);
     GC.incluirJogador(pJog1);
 
     if (numJog == 2)
     {
-        pJog2 = new Jogador(20, 500, 24, 32, 2);
+        pJog2 = new Jogador(710, 520, 24, 32, 2);
         pJog2->setTextura("assets/NinjaEskimoWalk.png", sf::IntRect(0, 0, 16, 16));//textura do primeiro jogador - recorte da imagem (0,0) até (16,16)
         lista_ents.incluir(pJog2);
         GC.incluirJogador(pJog2);

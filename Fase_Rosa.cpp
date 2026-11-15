@@ -25,19 +25,17 @@ void Fase_one::criarInimigos()
     //inimigos vão ter opções de posicionamento no mapa
     const sf::Vector2f posFaceis[] =
     {
-        sf::Vector2f(150, 480),
-        sf::Vector2f(400, 480),
-        //sf::Vector2f(650, 480),
-        sf::Vector2f(250, 300),
-        sf::Vector2f(550, 300)
+        sf::Vector2f(40, 515),
+        sf::Vector2f(240, 515),
+        sf::Vector2f(440, 515),
+        sf::Vector2f(630, 515)
     };
 
     const sf::Vector2f posMedios1[] =
     {
-        //sf::Vector2f(100, 150),
-        sf::Vector2f(370, 150),
-        sf::Vector2f(640, 150),
-        sf::Vector2f(500, 420)
+        sf::Vector2f(130, 507),
+        sf::Vector2f(330, 507),
+        sf::Vector2f(530, 507)
     };
     
     criarInimFaceis(posFaceis, sizeof(posFaceis) / sizeof(posFaceis[0]));//comum às duas fases (implementado na Fase)

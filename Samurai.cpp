@@ -1,9 +1,9 @@
 #include "stdafx.hpp"
 #include "Samurai.hpp"
 
-Chefao::Chefao(float x, float y) : Inimigo(x, y, 100, 100, 1, 5)
+Chefao::Chefao(float x, float y) : Inimigo(x, y, 100, 50, 1, 5)
 {
-    setTextura("assets/SamuraiAzul.png", sf::IntRect(0, 0, 88, 88));//só a primeira pose
+    setTextura("assets/SamuraiAzul.png", sf::IntRect(0, 0, 96, 48));//só a primeira pose
 }
 
 Chefao::~Chefao()

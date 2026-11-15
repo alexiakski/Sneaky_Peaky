@@ -7,7 +7,7 @@
 
 Fase_two::Fase_two(int numJog) : Fase()
 {
-    setTextura ("assets/TilesetFloor.png", sf::IntRect(176, 0, 160, 64));//mudar fundo
+    setTextura ("assets/TilesetFloor.png", sf::IntRect(0, 336, 160, 48));//mudar fundo
 
     criarJogadores(numJog);
     criarChao(sf::IntRect(16, 192, 16, 48));//chão neve
@@ -25,16 +25,15 @@ void Fase_two::criarInimigos()
     //inimigos vão ter opções de posicionamento no mapa
     const sf::Vector2f posFaceis[] =
     {
-        sf::Vector2f(150, 480),
-        sf::Vector2f(400, 480),
-        //sf::Vector2f(650, 480),
-        sf::Vector2f(250, 300),
-        sf::Vector2f(550, 300)
+        sf::Vector2f(200, 515),
+        sf::Vector2f(330, 515),
+        sf::Vector2f(460, 515),
+        sf::Vector2f(590, 515)
     };
 
     const sf::Vector2f posChefes1[] =
     {
-        sf::Vector2f(70, 90)
+        sf::Vector2f(20, 510)
     };
     
     criarInimFaceis(posFaceis, sizeof(posFaceis) / sizeof(posFaceis[0]));//comum às duas fases (implementado na Fase)
