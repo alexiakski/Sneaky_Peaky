@@ -5,7 +5,6 @@
 Jogador::Jogador(float x, float y, int largura, int altura, int num_jog) : Personagem(x, y, largura, altura, 3)//3?
 {
     pontos = 0;
-    velocidadeY = 0;
     direcao = 0;    //começa olhando para baixo
     quadro = 0;     //começa parado
     contador = 0;
@@ -68,18 +67,22 @@ void Jogador::mover()
 {
     float velocidade = 2;
     bool andando = false;
-
-    if (sf::Keyboard::isKeyPressed(teclaCima))//verifica o movimento do jogador
+    
+    //verifica o movimento do jogador
+    if (sf::Keyboard::isKeyPressed(teclaCima) && chao)// não pula se já estiver no ar
     {
-        y -= velocidade;
+        /*y -= velocidade;
         direcao = 1;
-        andando = true;
+        andando = true;*/
+
+        velocidadeY = -10;
+        chao = false;
     }
-    if (sf::Keyboard::isKeyPressed(teclaBaixo))
+    if (sf::Keyboard::isKeyPressed(teclaBaixo))//não funciona mais
     {
-        y += velocidade;
+        /*y += velocidade;
         direcao = 0;
-        andando = true;
+        andando = true;*/
     }
     if (sf::Keyboard::isKeyPressed(teclaEsquerda))
     {
@@ -93,6 +96,13 @@ void Jogador::mover()
         direcao = 3;
         andando = true;
     }
+
+    if (x < 0)//chão
+        x = 0;
+    if (x > 800 - largura)//fica dentro da tela
+        x = 800 - largura;
+
+    aplicarGravidade();
 
     if (andando)//escolhe o frame da animação
     {

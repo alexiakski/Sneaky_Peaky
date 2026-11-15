@@ -1,5 +1,5 @@
 #include "stdafx.hpp"
-#include "Inim_Facil.hpp"
+#include "Inim_Bambu.hpp"
 
 Inim_Facil::Inim_Facil(float x, float y) : Inimigo(x, y, 40, 40, 1, 1)//inimigo geral - bambu
 {

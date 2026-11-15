@@ -9,8 +9,6 @@ class Jogador : public Personagem
     protected:
 
         int pontos;
-        float velocidadeY;
-
         int direcao, quadro, contador;//para animação
 
         sf::Keyboard::Key teclaCima;
@@ -25,7 +23,7 @@ class Jogador : public Personagem
         virtual ~Jogador();
 
         void colidir (Inimigo *pIn); //implementar com GC
-        void sofreAtaque(int dano);
+        void sofrerAtaque(int dano);
         
         //usar na classe objeto
         //void reposicionar(const sf::FloatRect& rectObstaculo);

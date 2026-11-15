@@ -1,11 +1,12 @@
 #include "stdafx.hpp"
 #include "Fase.hpp"
 #include "Gerenciador_Grafico.hpp"
-#include "Inim_Facil.hpp"
+#include "Inim_Bambu.hpp"
+#include "Chao.hpp"
 
 #define NUM_PLATAFORMAS 3
 
-Fase::Fase() : Ente(), lista_ents(), GC(), pJog1(nullptr)
+Fase::Fase() : Ente(), lista_ents(), GC(), pJog1(nullptr), pJog2(nullptr)
 {
     pFig->setSize(sf::Vector2f(800, 600));//tamanho do fundo = tamanho da janela
 }
@@ -13,22 +14,31 @@ Fase::Fase() : Ente(), lista_ents(), GC(), pJog1(nullptr)
 Fase::~Fase()
 {
     pJog1 = nullptr;
+    pJog2 = nullptr;
 }
 
 void Fase::executar()
 {
     desenhar();//fundo
     lista_ents.percorrer();//cmovimento de cada entidade
-    //GC.executar();            //descomentar quando a Talita implementar
+    GC.executar();
     lista_ents.desenhar();//desenho de cada entidade
 }
 
-void Fase::criarJogadores()
+void Fase::criarJogadores(int numJog)
 {
-    pJog1 = new Jogador(750, 500, 24, 32, 1);
+    pJog1 = new Jogador(750, 520, 24, 32, 1);
     pJog1->setTextura("assets/NinjaRedWalk.png", sf::IntRect(0, 0, 16, 16));//textura do primeiro jogador - recorte da imagem (0,0) até (16,16)
     lista_ents.incluir(pJog1);
-    //GC.incluirJogador(pJog1);   //quando existir
+    GC.incluirJogador(pJog1);
+
+    if (numJog == 2)
+    {
+        pJog2 = new Jogador(710, 520, 24, 32, 2);
+        pJog2->setTextura("assets/NinjaEskimoWalk.png", sf::IntRect(0, 0, 16, 16));//textura do primeiro jogador - recorte da imagem (0,0) até (16,16)
+        lista_ents.incluir(pJog2);
+        GC.incluirJogador(pJog2);
+    }
 }
 
 void Fase::criarCenario()
@@ -45,7 +55,7 @@ void Fase::criarInimFaceis(const sf::Vector2f posicoes[], int total)
     {
         Inim_Facil* pI = new Inim_Facil(posicoes[i].x, posicoes[i].y);
         lista_ents.incluir(pI);
-        //GC.incluirInimigo(pI);
+        GC.incluirInimigo(pI);
     }
 }
 
@@ -70,4 +80,11 @@ void Fase::setFundo(const std::string& caminho, sf::IntRect ladrilho)
     pTex->setRepeated(true); //repete como azulejo
     pFig->setTexture(pTex);
     pFig->setTextureRect(sf::IntRect(0, 0, 267, 200)); //área maior que a textura = repete
+}
+
+void Fase::criarChao(sf::IntRect recorte)
+{
+    Chao* pChao = new Chao(0, 552, 800, 48, recorte);//faixa de 48px
+    lista_ents.incluir(pChao);
+    GC.incluirChao(pChao);
 }

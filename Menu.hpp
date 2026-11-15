@@ -15,6 +15,9 @@ class Menu : public Ente
         ~Menu();
 
         int getFase() const;
+        int getNumJog() const;
+        bool getPausado() const;
+        void pausar();
         void executar();
 
     private:
