@@ -31,7 +31,7 @@ void Obstaculo::obstaculizar (Jogador *pJ)
         return;
 
     if(danoso)
-        pJ->setNumVidas(pJ->getNumVidas()-1);
+        *pJ -= 1;
     //else
         //pJ->reposicionar(getBounds());
 }

@@ -2,21 +2,28 @@
 #define MENU_HPP
 
 #include "Ente.hpp"
-#include "Jogo.hpp"
-
 class Menu : public Ente
 {
     private:
 
-        Jogo *pJog;
+        int tela, numJog, numFase;
+        bool teclaPressionada;
 
     public:
 
         Menu();
         ~Menu();
 
+        int getFase() const;
+        int getNumJog() const;
+        bool getPausado() const;
+        void pausar();
         void executar();
 
+    private:
+
+        void escolher();
+        void escrever(string texto, float y);
 };
 
 #endif

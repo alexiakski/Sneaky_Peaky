@@ -33,8 +33,8 @@ void Projetil::colidir(Entidade *pEnt)
 
     if (pPers != nullptr)
     {
-        pPers->setNumVidas(pPers->getNumVidas() - dano);
-
+        *pPers -= dano;
+        
         ativo = false;
     }
 }

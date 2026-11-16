@@ -4,12 +4,14 @@
 #include "Gerenciador_Grafico.hpp"
 #include "Jogador.hpp"
 #include "Fase.hpp"
+#include "Menu.hpp"
 
 class Jogo
 {
     private:
 
-        Gerenciador_Grafico GG;    
+        Gerenciador_Grafico GG;
+        Menu menu;
         Fase *pFase;
             
     public:
