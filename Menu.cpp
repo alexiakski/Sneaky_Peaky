@@ -2,7 +2,7 @@
 #include "Menu.hpp"
 #include "Gerenciador_Grafico.hpp"
 
-Menu::Menu() : Ente (), tela(0), numJog(1), numFase(0), teclaPressionada(false)//1 jogador como padrão
+Menu::Menu() : Ente (), tela(0), numJog(1), numFase(0), pontos(0), teclaPressionada(false)//1 jogador como padrão
 {
     
 }
@@ -71,7 +71,12 @@ void Menu::executar()
     case 4:
         escrever("PAUSADO", 140);
         escrever("1-CONTINUAR", 220);
-        escrever("4-MENU", 400);
+        escrever("4-VOLTAR PARA O MENU", 400);
+        break;
+    case 5:
+        escrever("GAME OVER", 140);
+        escrever("PONTOS: " + to_string(pontos), 220);
+        escrever("4-VOLTAR PARA O MENU", 280);
         break;
 
     default:
@@ -143,4 +148,11 @@ void Menu::escrever(const string texto, float y)
         pFig->setPosition(x + i * 24, y);//cada letra 24 px à direita da anterior
         desenhar();
     }
+}
+
+void Menu::fimDeJogo(int pontos)
+{
+    this->pontos = pontos;
+    numFase = 0;
+    tela = 5;
 }

@@ -20,6 +20,8 @@ class Fase : public Ente
         Fase();
         virtual ~Fase();
         virtual void executar();
+        bool getFimDeJogo() const;
+        int getPontos() const;
 
     protected:
 

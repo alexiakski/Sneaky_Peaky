@@ -16,9 +16,12 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
     pJog2 = nullptr;
 }
 
-bool Gerenciador_Colisoes::verificarColisao (Ente *pE1, Ente *pE2)
+bool Gerenciador_Colisoes::verificarColisao (Entidade *pE1, Entidade *pE2)
 {
     if(pE1 == NULL || pE2 == NULL)
+        return false;
+    
+    if(!pE1->getAtivo() || !pE2->getAtivo())//verifica se estão vivos
         return false;
 
     return (pE1->getBounds()).intersects(pE2->getBounds());

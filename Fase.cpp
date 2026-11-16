@@ -88,3 +88,23 @@ void Fase::criarChao(sf::IntRect recorte)
     lista_ents.incluir(pChao);
     GC.incluirChao(pChao);
 }
+
+bool Fase::getFimDeJogo() const
+{
+    bool vivo1 = (pJog1 != nullptr && pJog1->getAtivo());
+    bool vivo2 = (pJog2 != nullptr && pJog2->getAtivo());
+
+    return !vivo1 && !vivo2;//jogo termina quando todos os jogadores morrem
+}
+
+int Fase::getPontos() const
+{
+    int pontos = 0;
+
+    if(pJog1 != nullptr)
+        pontos += pJog1->getPontos();
+    if(pJog2 != nullptr)
+        pontos += pJog2->getPontos();
+    
+    return pontos;
+}

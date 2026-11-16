@@ -6,7 +6,7 @@ class Menu : public Ente
 {
     private:
 
-        int tela, numJog, numFase;
+        int tela, numJog, numFase, pontos;
         bool teclaPressionada;
 
     public:
@@ -19,6 +19,7 @@ class Menu : public Ente
         bool getPausado() const;
         void pausar();
         void executar();
+        void fimDeJogo(int pontos);
 
     private:
 

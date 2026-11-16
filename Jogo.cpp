@@ -47,7 +47,16 @@ void Jogo::executar()
         }
 
         else
+        {
             pFase->executar();
+
+            if (pFase->getFimDeJogo())
+            {
+                menu.fimDeJogo(pFase->getPontos());
+                delete pFase;
+                pFase = nullptr;
+            }
+        }
         
         GG.mostrar();
     }

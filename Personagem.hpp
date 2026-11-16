@@ -10,6 +10,7 @@ class Personagem : public Entidade
         int num_vidas;
         float velocidadeY;
         bool chao;
+        int invencivel;//para não levar danos seguidos
 
     public:
 
@@ -23,6 +24,8 @@ class Personagem : public Entidade
         void reposicionar(const sf::FloatRect &rect);
 
         Personagem& operator-=(int dano);//sobrecarga de operadores
+
+        void atualizarInvincibilidade();
 
         virtual void salvarDataBuffer();
 

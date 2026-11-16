@@ -25,7 +25,7 @@ class Gerenciador_Colisoes
        Gerenciador_Colisoes();
        ~Gerenciador_Colisoes();
        
-       bool verificarColisao (Ente *pE1, Ente *pE2);
+       bool verificarColisao (Entidade *pE1, Entidade *pE2);
        void tratarColisoesJogsObstacs ();
        void tratarColisoesJogsInimgs ();
        void tratarColisoesJogsProjeteis ();
