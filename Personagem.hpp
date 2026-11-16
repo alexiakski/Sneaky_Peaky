@@ -22,6 +22,8 @@ class Personagem : public Entidade
         void aplicarGravidade();
         void reposicionar(const sf::FloatRect &rect);
 
+        Personagem& operator-=(int dano);//sobrecarga de operadores
+
         virtual void salvarDataBuffer();
 
         virtual void salvar() = 0;

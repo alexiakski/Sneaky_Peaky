@@ -33,7 +33,7 @@ void Fase_two::criarInimigos()
 
     const sf::Vector2f posChefes1[] =
     {
-        sf::Vector2f(20, 510)
+        sf::Vector2f(20, 520)
     };
     
     criarInimFaceis(posFaceis, sizeof(posFaceis) / sizeof(posFaceis[0]));//comum às duas fases (implementado na Fase)

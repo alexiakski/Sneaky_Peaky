@@ -34,17 +34,27 @@ void Personagem::aplicarGravidade()
         velocidadeY = 12;//velocidade máxima
 
     y += velocidadeY;
-    chao = false;             //o chão volta a pôr true se estiver encostado
+    chao = false;//o chão volta a pôr true se estiver encostado
 }
 
 void Personagem::reposicionar(const sf::FloatRect& r)
 {
     sf::FloatRect eu = getBounds();
 
-    y = r.top - eu.height;      //pés no topo
+    y = r.top - eu.height;//pés no topo
     velocidadeY = 0;
     chao = true;
 
     if (pFig != nullptr)
         pFig->setPosition(x, y);
+}
+
+Personagem& Personagem::operator-=(int dano)
+{
+    num_vidas -= dano;
+
+    if (num_vidas < 0)
+        num_vidas = 0;
+
+    return *this;//devolve o próprio objeto
 }

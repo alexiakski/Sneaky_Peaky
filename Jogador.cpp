@@ -44,18 +44,18 @@ void Jogador::colidir(Inimigo* pIn)
    
     if (pesJogador - velocidadeY <= cabecaInimigo + 5 && velocidadeY > 0)
     {
-        pIn->setNumVidas(pIn->getNumVidas() - 1);
-
+        *pIn -= 1;
+        ++(*this);
         velocidadeY = -10; 
     }
     else
     {
-        this->setNumVidas(this->getNumVidas() - 1);
+        *this -= 1;
     }
 }
 void Jogador::sofrerAtaque(int dano)
 {
-    num_vidas-=dano;
+    *this -= dano;
 }
 
 void Jogador::salvar()
@@ -128,4 +128,15 @@ void Jogador::mover()
 void Jogador::executar()
 {
    mover();
+}
+
+Jogador& Jogador::operator++()
+{
+    pontos++;
+    return *this;
+}
+
+int Jogador::getPontos() const
+{
+    return pontos;
 }

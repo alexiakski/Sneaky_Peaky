@@ -22,10 +22,12 @@ class Jogador : public Personagem
         Jogador(float x, float y, int largura, int altura, int num_jog);
         virtual ~Jogador();
 
-        void colidir (Inimigo *pIn); //implementar com GC
+        void colidir (Inimigo *pIn);
         void sofrerAtaque(int dano);
         
-        //usar na classe objeto
+        Jogador& operator++();
+        int getPontos() const;
+        
         //void reposicionar(const sf::FloatRect& rectObstaculo);
 
         void salvar();
