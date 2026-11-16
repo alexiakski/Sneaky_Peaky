@@ -19,7 +19,6 @@ class Fase : public Ente
 
         Fase();
         virtual ~Fase();
-
         virtual void executar();
 
     protected:
