@@ -19,7 +19,7 @@ class Gerenciador_Grafico
         Gerenciador_Grafico();
         ~Gerenciador_Grafico();
 
-        bool estaAberta();
+        bool estaAberta() const;
         void processarEventos(); 
         void limpar();
         void desenhar(Ente* pE);

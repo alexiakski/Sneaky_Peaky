@@ -14,7 +14,7 @@ class Obst_Dificil : public Obstaculo
         Obst_Dificil(float x, float y, float largura, float altura, short int danosidade);
         ~Obst_Dificil();
 
-        short int getDanosidade();
+        short int getDanosidade() const;
         void setDanosidade(short int danosidade);
 
         virtual void executar() = 0;

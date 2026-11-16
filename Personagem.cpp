@@ -11,7 +11,7 @@ Personagem::~Personagem()
 
 }
 
-int Personagem::getNumVidas()
+int Personagem::getNumVidas() const
 {
     return num_vidas;
 }

@@ -16,7 +16,7 @@ class Personagem : public Entidade
         Personagem(float x, float y, int largura, int altura, int num_vidas);
         virtual ~Personagem();
 
-        int getNumVidas();
+        int getNumVidas() const;
         void setNumVidas(int num_vidas);
 
         void aplicarGravidade();

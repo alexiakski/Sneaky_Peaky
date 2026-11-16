@@ -131,7 +131,7 @@ void Menu::escolher()
         numFase = tecla;//o Jogo cria a fase quando getFase() != 0
 }
 
-void Menu::escrever(string texto, float y)
+void Menu::escrever(const string texto, float y)
 {
     float x = 400 - (int)texto.size() * 12;//centraliza: 400 é o meio da janela, 12 é meia letra
     pFig->setSize(sf::Vector2f(24, 30));//tamanho de cada letra

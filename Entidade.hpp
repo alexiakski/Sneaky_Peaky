@@ -10,6 +10,7 @@ class Entidade : public Ente
 
         float x, y;
         float largura, altura;
+        bool ativo;//se está vivo
         //ostream buffer; salvamento-requisito 10
 
     public:
@@ -22,7 +23,10 @@ class Entidade : public Ente
         float getLargura() const;
         float getAltura() const;
         //ostream getBuffer();
-        sf::FloatRect getBounds() const override;   
+        sf::FloatRect getBounds() const override;
+
+        bool getAtivo() const;
+        void setAtivo(bool ativo);
 
         virtual void executar() = 0;
 

@@ -18,10 +18,9 @@ class Lista
             Elemento(TL *pInfo);
             ~Elemento();
 
-            TL* getInfo();
+            TL* getInfo() const;
             void setProx(Elemento *pProx);
-            //void incluir (TL *pInfo);
-            Elemento* getProx();
+            Elemento* getProx()const;
 
     };
 
@@ -39,11 +38,9 @@ class Lista
         void incluir (TL *pInfo);
         void limpar();
 
-        Elemento* getPrimeiro();
-        int getTamanho();
+        Elemento* getPrimeiro() const;
+        int getTamanho() const;
 
-        //void imprimir();
-        //void percorrer();
 };
 
 //Implamentação de template é no .hpp
@@ -62,13 +59,13 @@ Lista<TL>::Elemento::~Elemento()
 }
 
 template <typename TL>
-TL* Lista<TL>::Elemento::getInfo()
+TL* Lista<TL>::Elemento::getInfo() const
 {
     return pInfo;
 }
 
 template <typename TL>
-typename Lista<TL>::Elemento* Lista<TL>::Elemento::getProx()
+typename Lista<TL>::Elemento* Lista<TL>::Elemento::getProx() const
 {
     return pProx;
 }
@@ -132,13 +129,13 @@ void Lista<TL>::limpar()
 }
 
 template <typename TL>
-typename Lista<TL>::Elemento* Lista<TL>::getPrimeiro()
+typename Lista<TL>::Elemento* Lista<TL>::getPrimeiro() const
 {
     return pPrimeiro;
 }
 
 template <typename TL>
-int Lista<TL>::getTamanho()
+int Lista<TL>::getTamanho() const
 {
     return tamanho;
 }

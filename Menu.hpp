@@ -23,7 +23,7 @@ class Menu : public Ente
     private:
 
         void escolher();
-        void escrever(string texto, float y);
+        void escrever(const string texto, float y);
 };
 
 #endif

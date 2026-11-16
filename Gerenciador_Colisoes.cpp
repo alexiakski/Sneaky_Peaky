@@ -16,7 +16,7 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
     pJog2 = nullptr;
 }
 
-const bool Gerenciador_Colisoes::verificarColisao (Ente *pE1, Ente *pE2)
+bool Gerenciador_Colisoes::verificarColisao (Ente *pE1, Ente *pE2)
 {
     if(pE1 == NULL || pE2 == NULL)
         return false;

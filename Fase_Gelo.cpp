@@ -42,7 +42,7 @@ void Fase_two::criarInimigos()
 
 void Fase_two::criarInimChefes(const sf::Vector2f posicoes[])
 {
-    Chefao* pC = new Chefao(posicoes[0].x, posicoes[0].y);//só um chefão por fase
+    Chefao* pC = new Chefao(posicoes[0].x, posicoes[0].y, &lista_ents, &GC);//só um chefão por fase
     lista_ents.incluir(pC);
     GC.incluirInimigo(pC);
 }

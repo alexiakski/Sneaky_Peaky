@@ -14,8 +14,8 @@ class Plataforma : public Obstaculo
         Plataforma(int x, int y, int largura, int altura);
         ~Plataforma();
 
-        int getLargura();
-        int getAltura();
+        int getLargura() const;
+        int getAltura() const;
 
         virtual void executar() = 0;
         void salvarDataBuffer();

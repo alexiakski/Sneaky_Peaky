@@ -16,12 +16,12 @@ Ente::~Ente()
     pFig = nullptr;
 }
 
-int Ente::getId()
+int Ente::getId() const
 {
     return id;
 }
 
-sf::RectangleShape* Ente::getFigura()
+sf::RectangleShape* Ente::getFigura() const
 {
     return pFig;
 }
