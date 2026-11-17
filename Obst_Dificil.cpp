@@ -1,7 +1,7 @@
-#include "Obst_Dificl"
+#include "Obst_Dificil.hpp"
 
 Obst_Dificil::Obst_Dificil(float x, float y, float largura, float altura, short int danosidade):
-Entidade(x, y, largura, altura), danosidade(danosidade)
+Obstaculo(x, y, largura, altura), danosidade(danosidade)
 {
 if (pFig != nullptr)
     {
@@ -22,7 +22,7 @@ void Obst_Dificil::setDanosidade(short int danosidade)
     this->danosidade = danosidade;
 }
 
-virtual void Obst_Dificil::executar() 
+void Obst_Dificil::executar() 
 {
     if (pFig != nullptr)
     {
@@ -33,7 +33,7 @@ void Obst_Dificil::salvarDataBuffer()
 {
 
 }
-virtual void Obst_Dificil::salvar()
+void Obst_Dificil::salvar()
 {
 
 }

@@ -25,9 +25,6 @@ class Entidade : public Ente
         //ostream getBuffer();
         sf::FloatRect getBounds() const override; 
 
-        //void gravitar(float gravidade) override; 
-        //void aplicarFisica() override;
-
         virtual void executar() = 0;
 
         void salvarDataBuffer();

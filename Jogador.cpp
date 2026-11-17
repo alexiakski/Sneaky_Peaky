@@ -148,31 +148,35 @@ void Jogador::reposicionarJogObst(const sf::FloatRect& rectObstaculo)
     if (!jog.intersects(rectObstaculo))
         return;
 
-    float centroJogX = x + largura / 2.0f;
-    float centroJogY = y + altura / 2.0f;
+    else{
+        float centroJogX = x + largura / 2.0f;
+        float centroJogY = y + altura / 2.0f;
 
-    float centroObsX = rectObstaculo.left + rectObstaculo.width / 2.0f;
-    float centroObsY = rectObstaculo.top + rectObstaculo.height / 2.0f;
+        float centroObsX = rectObstaculo.left + rectObstaculo.width / 2.0f;
+        float centroObsY = rectObstaculo.top + rectObstaculo.height / 2.0f;
 
-    if (abs(centroJogX - centroObsX) >
-        abs(centroJogY - centroObsY))
-    {
-        // lados
-        if (centroJogX < centroObsX)
-            x = rectObstaculo.left - largura;
+        if (abs(centroJogX - centroObsX) >
+            abs(centroJogY - centroObsY))
+        {
+            // lados
+            if (centroJogX < centroObsX)
+                x = rectObstaculo.left - largura;
+            else
+                x = rectObstaculo.left + rectObstaculo.width;
+        }
         else
-            x = rectObstaculo.left + rectObstaculo.width;
-    }
-    else
-    {
-        // cima baixo
-        if (centroJogY < centroObsY)
-            y = rectObstaculo.top - altura;
+        {
+            // cima baixo
+            if (centroJogY < centroObsY)
+            {
+                y = rectObstaculo.top - altura;
 
-            velocidadeY = 0;
-            chao = true;
-        else
-            y = rectObstaculo.top + rectObstaculo.height;
+                velocidadeY = 0;
+                chao = true;
+            }
+            else
+                y = rectObstaculo.top + rectObstaculo.height;
+        }
     }
 }
 

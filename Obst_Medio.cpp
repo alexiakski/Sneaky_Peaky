@@ -1,7 +1,7 @@
 #include "Obst_Medio.hpp"
 
 Obst_Medio::Obst_Medio(float x, float y, float largura, float altura, short int danosidade):
-Entidade(x, y, largura, altura), danosidade(danosidade)
+Obstaculo(x, y, largura, altura), danosidade(danosidade)
 {
 if (pFig != nullptr)
     {
@@ -22,7 +22,7 @@ void Obst_Medio::setDanosidade(short int danosidade)
     this->danosidade = danosidade;
 }
 
-virtual void Obst_Medio::executar() 
+void Obst_Medio::executar() 
 {
     if (pFig != nullptr)
     {
@@ -33,7 +33,7 @@ void Obst_Medio::salvarDataBuffer()
 {
 
 }
-virtual void Obst_Medio::salvar()
+void Obst_Medio::salvar()
 {
 
 }

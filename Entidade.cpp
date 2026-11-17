@@ -40,20 +40,6 @@ sf::FloatRect Entidade::getBounds() const
     return sf::FloatRect(x, y, largura, altura);
 }
 
-/*void Entidade::gravitar(float gravidade) override
-{
-    y += gravidade;
-
-    if (pFig != nullptr) {
-        pFig->setPosition(x,y);
-    }
-}
-
-void Entidade::aplicarFisica() override
-{
-    gravitar(gravidade);
-}*/
-
 void Entidade::salvarDataBuffer()
 {
     // implementar no requisito 10 (salvar jogada)  
