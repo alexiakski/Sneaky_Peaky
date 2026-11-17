@@ -25,6 +25,8 @@ void Inimigo::colidir (Jogador *pJog)
 {
     if(pJog != nullptr)
         danificar(pJog);
+
+    pJog->reposicionarJogInim(this->getBounds());
 }
 
 void Inimigo::danificar (Jogador* pJog)
@@ -40,7 +42,7 @@ void Inimigo::salvarDataBuffer()
 void Inimigo::mover()
 {
     aplicarGravidade();
-    
+
     if (pFig != nullptr)  
       pFig->setPosition(x, y);
 }
