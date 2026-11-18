@@ -13,7 +13,7 @@ class Plataforma : public Obstaculo
 
     public:
 
-        Plataforma(float x, float y, int largura, int altura, float velocidadeY = 0);
+        Plataforma(float x, float y, float largura, float altura, float velocidadeY = 0);
         ~Plataforma();
 
         int getLargura() const;

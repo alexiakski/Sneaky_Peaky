@@ -62,9 +62,19 @@ void Fase::criarInimFaceis(const sf::Vector2f posicoes[], int total)
 
 void Fase::criarPlataformas()
 {
-    Plataforma* pChao = new Plataforma(0, 550, 800, 50);
-    lista_ents.incluir(pChao);
-    GC.incluirObstaculo(pChao);
+    const sf::FloatRect plataformas[NUM_PLATAFORMAS] =
+    {
+        sf::FloatRect(120, 470, 92, 46),
+        sf::FloatRect(354, 400, 92, 46),
+        sf::FloatRect(588, 470, 92, 46)
+    };
+
+    for (int i = 0; i < NUM_PLATAFORMAS; i++)
+    {
+        Plataforma* pP = new Plataforma(plataformas[i].left, plataformas[i].top, plataformas[i].width, plataformas[i].height);
+        lista_ents.incluir(pP);
+        GC.incluirObstaculo(pP);
+    }
 }
 
 void Fase::setFundo(const std::string& caminho, sf::IntRect ladrilho)

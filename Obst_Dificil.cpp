@@ -1,12 +1,13 @@
 #include "Obst_Dificil.hpp"
 
 Obst_Dificil::Obst_Dificil(float x, float y, float largura, float altura, short int danosidade):
-Obstaculo(x, y, largura, altura), danosidade(danosidade)
+            Obstaculo(x, y, largura, altura), danosidade(danosidade)
 {
-if (pFig != nullptr)
-    {
-        pFig->setPosition(x, y);
-    }
+    if (pFig != nullptr)
+        {
+            pFig->setPosition(x, y);
+            //setTextura("assets/TilesetNature.png", sf::IntRect(0, 0, 96, 48));//qual recorte?
+        }
 }
 Obst_Dificil::~Obst_Dificil()
 {

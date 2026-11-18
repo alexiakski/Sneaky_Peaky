@@ -1,11 +1,12 @@
 #include "Plataforma.hpp"
 
-Plataforma::Plataforma(float x, float y, int largura, int altura, float velocidadeY):
+Plataforma::Plataforma(float x, float y, float largura, float altura, float velocidadeY):
 Obstaculo(x, y, largura, altura), velocidadeY(velocidadeY)
 {
     if (pFig != nullptr)
         {
             pFig->setPosition(x, y);
+            setTextura("assets/TilesetField.png", sf::IntRect(1, 48, 46, 46));//grama verde pra combinar com as duas fases
         }
 }
 Plataforma::~Plataforma()
