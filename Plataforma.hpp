@@ -3,15 +3,18 @@
 
 #include "Obstaculo.hpp"
 
+//class Personagem;
+
 class Plataforma : public Obstaculo
 {
     private:
 
-        int largura, altura;    
+        int largura, altura;   
+        float velocidadeY;
 
     public:
 
-        Plataforma(int x, int y, int largura, int altura);
+        Plataforma(int x, int y, int largura, int altura, float velocidadeY = 0);
         ~Plataforma();
 
         int getLargura() const;

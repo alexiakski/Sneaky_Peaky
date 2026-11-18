@@ -28,7 +28,8 @@ class Jogador : public Personagem
         Jogador& operator++();
         int getPontos() const;
         
-        //void reposicionar(const sf::FloatRect& rectObstaculo);
+        void reposicionarJogObst(const sf::FloatRect& rectObstaculo);
+        void reposicionarJogInim(const sf::FloatRect& rectInimigo);
 
         void salvar();
         void mover();

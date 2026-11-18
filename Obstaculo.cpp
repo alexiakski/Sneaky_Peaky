@@ -31,7 +31,12 @@ void Obstaculo::obstaculizar (Jogador *pJ)
         return;
 
     if(danoso)
+    {
+        pJ->reposicionarJogObst(getBounds());
         *pJ -= 1;
-    //else
-        //pJ->reposicionar(getBounds());
+    }
+    else
+    {
+        pJ->reposicionarJogObst(getBounds());
+    }
 }

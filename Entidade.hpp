@@ -10,6 +10,7 @@ class Entidade : public Ente
 
         float x, y;
         float largura, altura;
+        float gravidade = 0.5f;
         bool ativo;//se está vivo
         //ostream buffer; salvamento-requisito 10
 

@@ -141,3 +141,74 @@ int Jogador::getPontos() const
 {
     return pontos;
 }
+
+void Jogador::reposicionarJogObst(const sf::FloatRect& rectObstaculo)
+{
+    sf::FloatRect jog(x, y, largura, altura);
+
+    if (!jog.intersects(rectObstaculo))
+        return;
+
+    else{
+        float centroJogX = x + largura / 2.0f;
+        float centroJogY = y + altura / 2.0f;
+
+        float centroObsX = rectObstaculo.left + rectObstaculo.width / 2.0f;
+        float centroObsY = rectObstaculo.top + rectObstaculo.height / 2.0f;
+
+        if (abs(centroJogX - centroObsX) >
+            abs(centroJogY - centroObsY))
+        {
+            // lados
+            if (centroJogX < centroObsX)
+                x = rectObstaculo.left - largura;
+            else
+                x = rectObstaculo.left + rectObstaculo.width;
+        }
+        else
+        {
+            // cima baixo
+            if (centroJogY < centroObsY)
+            {
+                y = rectObstaculo.top - altura;
+
+                velocidadeY = 0;
+                chao = true;
+            }
+            else
+                y = rectObstaculo.top + rectObstaculo.height;
+        }
+    }
+}
+
+void Jogador::reposicionarJogInim(const sf::FloatRect& rectInimigo)
+{
+    sf::FloatRect jog(x, y, largura, altura);
+
+    if (!jog.intersects(rectInimigo))
+        return;
+
+    float centroJogX = x + largura / 2.0f;
+    float centroJogY = y + altura / 2.0f;
+
+    float centroInimX = rectInimigo.left + rectInimigo.width / 2.0f;
+    float centroInimY = rectInimigo.top + rectInimigo.height / 2.0f;
+
+    if (abs(centroJogX - centroInimX) >
+        abs(centroJogY - centroInimY))
+    {
+        //lados
+        if (centroJogX < centroInimX)
+            x = rectInimigo.left - largura;
+        else
+            x = rectInimigo.left + rectInimigo.width;
+    }
+    else
+    {
+        //cima baixo
+        if (centroJogY < centroInimY)
+            y = rectInimigo.top - altura;
+        else
+            y = rectInimigo.top + rectInimigo.height;
+    }
+}
