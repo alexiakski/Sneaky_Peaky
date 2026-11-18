@@ -13,11 +13,11 @@ Plataforma::~Plataforma()
 
 }
 
-int Plataforma::getLargura()
+int Plataforma::getLargura() const
 {
     return largura;
 }
-int Plataforma::getAltura()
+int Plataforma::getAltura() const
 {
     return altura;
 }
