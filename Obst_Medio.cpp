@@ -13,7 +13,7 @@ Obst_Medio::~Obst_Medio()
 
 }
 
-short int Obst_Medio::getDanosidade()
+short int Obst_Medio::getDanosidade() const
 {
     return danosidade;
 }
