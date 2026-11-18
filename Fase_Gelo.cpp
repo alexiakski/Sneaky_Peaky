@@ -1,6 +1,8 @@
 #include "stdafx.hpp"
 #include "Fase_Gelo.hpp"
 #include "Samurai.hpp"
+#include "Obst_Dificil.hpp"
+#include "Plataforma.hpp"
 
 #define NUM_OBST_SEGUROS 5
 #define NUM_OBST_DANOSOS 4
@@ -54,8 +56,18 @@ void Fase_two::criarObstaculos()
 
 void Fase_two::criarObstaculosDificeis()
 {
+    const sf::Vector2f posicoes[NUM_OBST_DANOSOS] =
+    {
+        sf::Vector2f(150, 522),
+        sf::Vector2f(350, 522),
+        sf::Vector2f(550, 522),
+        sf::Vector2f(700, 522)
+    };
+    
     for (int i = 0; i < NUM_OBST_DANOSOS; i++)
     {
-        //Obst_Danoso* pO = new Obst_Danoso(...);  lista_ents.incluir(pO);  GC.incluirObstaculo(pO);
+        Obst_Dificil* pO = new Obst_Dificil(posicoes[i].x, posicoes[i].y, 30, 30, 2);
+        lista_ents.incluir(pO);
+        GC.incluirObstaculo(pO);
     }
 }

@@ -1,12 +1,12 @@
 #include "Plataforma.hpp"
 
-Plataforma::Plataforma(int x, int y, int largura, int altura, float velocidadeY):
+Plataforma::Plataforma(float x, float y, int largura, int altura, float velocidadeY):
 Obstaculo(x, y, largura, altura), velocidadeY(velocidadeY)
 {
-if (pFig != nullptr)
-    {
-        pFig->setPosition(x, y);
-    }
+    if (pFig != nullptr)
+        {
+            pFig->setPosition(x, y);
+        }
 }
 Plataforma::~Plataforma()
 {

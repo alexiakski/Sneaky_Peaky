@@ -17,9 +17,9 @@ class Obst_Dificil : public Obstaculo
         short int getDanosidade() const;
         void setDanosidade(short int danosidade);
 
-        virtual void executar() = 0;
+        virtual void executar();
         void salvarDataBuffer();
-        virtual void salvar() = 0;
+        virtual void salvar();
         void obstaculizar (Jogador *pJ);
 };
 

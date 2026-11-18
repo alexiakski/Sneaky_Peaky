@@ -3,6 +3,7 @@
 #include "Gerenciador_Grafico.hpp"
 #include "Inim_Bambu.hpp"
 #include "Chao.hpp"
+#include "Plataforma.hpp"
 
 #define NUM_PLATAFORMAS 3
 
@@ -61,10 +62,9 @@ void Fase::criarInimFaceis(const sf::Vector2f posicoes[], int total)
 
 void Fase::criarPlataformas()
 {
-    //quando a Plataforma existir (Talita, T3):
-    //Plataforma* pChao = new Plataforma(0, 550, 800, 50);
-    //lista_ents.incluir(pChao);
-    //GC.incluirObstaculo(pChao);
+    Plataforma* pChao = new Plataforma(0, 550, 800, 50);
+    lista_ents.incluir(pChao);
+    GC.incluirObstaculo(pChao);
 }
 
 void Fase::setFundo(const std::string& caminho, sf::IntRect ladrilho)

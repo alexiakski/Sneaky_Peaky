@@ -9,20 +9,19 @@ class Plataforma : public Obstaculo
 {
     private:
 
-        int largura, altura;   
         float velocidadeY;
 
     public:
 
-        Plataforma(int x, int y, int largura, int altura, float velocidadeY = 0);
+        Plataforma(float x, float y, int largura, int altura, float velocidadeY = 0);
         ~Plataforma();
 
         int getLargura() const;
         int getAltura() const;
 
-        virtual void executar() = 0;
+        virtual void executar();
         void salvarDataBuffer();
-        virtual void salvar() = 0;
+        virtual void salvar();
         void obstaculizar (Jogador *pJ);
 };
 
