@@ -13,7 +13,7 @@ Obst_Dificil::~Obst_Dificil()
 
 }
 
-short int Obst_Dificil::getDanosidade()
+short int Obst_Dificil::getDanosidade() const
 {
     return danosidade;
 }
