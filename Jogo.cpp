@@ -50,9 +50,9 @@ void Jogo::executar()
         {
             pFase->executar();
 
-            if (pFase->getFimDeJogo())
+            if (pFase->getFimDeJogo() || pFase->getVitoria())
             {
-                menu.fimDeJogo(pFase->getPontos());
+                menu.fimDeJogo(pFase->getPontos(), pFase->getVitoria());
                 delete pFase;
                 pFase = nullptr;
             }

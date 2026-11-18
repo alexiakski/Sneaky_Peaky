@@ -28,6 +28,7 @@ class Gerenciador_Colisoes
        bool verificarColisao (Entidade *pE1, Entidade *pE2);
        void tratarColisoesJogsObstacs ();
        void tratarColisoesJogsInimgs ();
+       bool todosInimigosMortos() const;
        void tratarColisoesJogsProjeteis ();
        void incluirInimigo (Inimigo *pI);
        void incluirObstaculo (Obstaculo *pO);

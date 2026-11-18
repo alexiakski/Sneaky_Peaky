@@ -60,6 +60,15 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimgs ()//alterei para incluir Jog
         }
     }
 }
+
+bool Gerenciador_Colisoes::todosInimigosMortos() const
+{
+    for (size_t i = 0; i < LIs.size(); i++)
+        if(LIs[i] != nullptr && LIs[i]->getAtivo())//percorre todos os inimigos e verifica se eles estão vivos
+            return false;
+    return true;// se todos estiverem mortos
+}
+
 void Gerenciador_Colisoes::tratarColisoesJogsProjeteis ()//alterei para incluir Jog2
 {
     Jogador* jogs[2] = {pJog1, pJog2};

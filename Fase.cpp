@@ -97,6 +97,11 @@ bool Fase::getFimDeJogo() const
     return !vivo1 && !vivo2;//jogo termina quando todos os jogadores morrem
 }
 
+bool Fase::getVitoria() const
+{
+    return GC.todosInimigosMortos();// fase é vencida quando todos os inimigos são mortos
+}
+
 int Fase::getPontos() const
 {
     int pontos = 0;

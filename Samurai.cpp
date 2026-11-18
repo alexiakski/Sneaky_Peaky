@@ -5,7 +5,7 @@
 #include "Gerenciador_Colisoes.hpp"
 
 Chefao::Chefao(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC)
-        : Inimigo(x, y, 100, 50, 1, 5), pLista(pLista), pGC(pGC), recarga(0)
+        : Inimigo(x, y, 100, 50, 3, 5), pLista(pLista), pGC(pGC), recarga(0)
 {
     setTextura("assets/SamuraiAzul.png", sf::IntRect(0, 0, 96, 48));//só a primeira pose
 }
