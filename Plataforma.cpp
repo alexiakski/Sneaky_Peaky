@@ -43,7 +43,7 @@ void Plataforma::obstaculizar (Jogador *pJ)
     else
         if ( pJ->getX() + pJ->getLargura() >= x && 
         pJ->getX() <= x + largura  && pJ->getY() + pJ->getAltura() >= y - 5 
-        && pJ->getY() + pJ->getAltura() <= y + 5)
+        && pJ->getY() + pJ->getAltura() <= y + 12)
             //jogar o jogador para cima
             //pJ->setVelocidadeY(this-> velocidadeY - 20.0f);
             pJ->reposicionar(this->getBounds());

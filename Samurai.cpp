@@ -26,12 +26,6 @@ void Chefao::danificar (Jogador* pJog)
         return;
 
     *pJog -= 2 * nivel_maldade;
-
-    /*int dano = 2 * nivel_maldade;
-    int vidasAtuais = pJog->getNumVidas();
-    pJog->setNumVidas(vidasAtuais - dano);*/
-    
-    //pJog->reposicionar(this->getBounds());
 }
 
 void Chefao::executar()
@@ -39,7 +33,7 @@ void Chefao::executar()
     Inimigo::executar();
 
     recarga++;
-    if (recarga >= 120)// a cada 2s
+    if (recarga >= 240)// a cada 4s
     {
         Projetil* pP = new Projetil (x+largura, y +10, 20, 20 ,1);
         pLista->incluir(pP);

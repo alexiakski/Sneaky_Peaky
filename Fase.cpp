@@ -5,7 +5,7 @@
 #include "Chao.hpp"
 #include "Plataforma.hpp"
 
-#define NUM_PLATAFORMAS 3
+#define NUM_PLATAFORMAS 15
 
 Fase::Fase() : Ente(), lista_ents(), GC(), pJog1(nullptr), pJog2(nullptr)
 {
@@ -64,9 +64,32 @@ void Fase::criarPlataformas()
 {
     const sf::FloatRect plataformas[NUM_PLATAFORMAS] =
     {
-        sf::FloatRect(120, 470, 92, 46),
-        sf::FloatRect(354, 400, 92, 46),
-        sf::FloatRect(588, 470, 92, 46)
+        //linha y=470 (colunas 0, 2, 4)
+        sf::FloatRect( 72, 470, 92, 46),
+        sf::FloatRect(354, 470, 92, 46),
+        sf::FloatRect(636, 470, 92, 46),
+
+        //linha y=410 (colunas 1, 3)
+        sf::FloatRect(210, 410, 92, 46),
+        sf::FloatRect(498, 410, 92, 46),
+
+        //linha y=350 (colunas 0, 2, 4)
+        sf::FloatRect( 72, 350, 92, 46),
+        sf::FloatRect(354, 350, 92, 46),
+        sf::FloatRect(636, 350, 92, 46),
+
+        //linha y=290 (colunas 1, 3)
+        sf::FloatRect(210, 290, 92, 46),
+        sf::FloatRect(498, 290, 92, 46),
+
+        //linha y=230 (colunas 0, 2, 4)
+        //sf::FloatRect( 72, 230, 92, 46),
+        sf::FloatRect(354, 230, 92, 46),
+        //sf::FloatRect(636, 230, 92, 46),
+
+        /*//linha y=170 (colunas 1, 3)
+        sf::FloatRect(210, 170, 92, 46),
+        sf::FloatRect(498, 170, 92, 46)*/
     };
 
     for (int i = 0; i < NUM_PLATAFORMAS; i++)
