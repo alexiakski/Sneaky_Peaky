@@ -23,7 +23,7 @@
                 "cwd": "${workspaceFolder}"
             },
             "problemMatcher": [
-               // "$gcc"
+                "$gcc"
             ],
             "group": {
                 "kind": "build",
