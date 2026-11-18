@@ -19,8 +19,8 @@ class Ente
         Ente();
         virtual ~Ente();
 
-        int getId();
-        sf::RectangleShape* getFigura();
+        int getId() const;
+        sf::RectangleShape* getFigura() const;
         virtual sf::FloatRect getBounds() const;
     
         virtual void executar() = 0;

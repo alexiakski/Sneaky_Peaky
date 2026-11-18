@@ -1,7 +1,8 @@
 #include "stdafx.hpp"
 #include "Personagem.hpp"
 
-Personagem::Personagem(float x, float y, int largura, int altura, int num_vidas) : Entidade(x, y, largura, altura), num_vidas(num_vidas), velocidadeY(0), chao(false)
+Personagem::Personagem(float x, float y, int largura, int altura, int num_vidas)
+            : Entidade(x, y, largura, altura), num_vidas(num_vidas), velocidadeY(0), chao(false), invencivel(0)
 {
 
 }
@@ -51,10 +52,23 @@ void Personagem::reposicionar(const sf::FloatRect& r)
 
 Personagem& Personagem::operator-=(int dano)
 {
-    num_vidas -= dano;
+    if (invencivel <= 0)
+    {
+        num_vidas -= dano;
+        invencivel = 60;
 
-    if (num_vidas < 0)
-        num_vidas = 0;
+        if (num_vidas <= 0)
+        {
+            num_vidas = 0;
+            ativo = false;//morreu
+        }
+    }
 
     return *this;//devolve o próprio objeto
+}
+
+void Personagem::atualizarInvincibilidade()
+{
+    if (invencivel > 0)
+        invencivel--;
 }

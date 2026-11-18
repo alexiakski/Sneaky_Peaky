@@ -7,16 +7,12 @@ class Projetil : public Entidade
 {
     protected:
 
-        bool ativo;
         int dano;
 
     public:
 
         Projetil(float x, float y, float largura, float altura, int dano);
         virtual ~Projetil();
-
-        bool getAtivo() const;
-        void setAtivo(bool ativo);  
 
         int getDano() const;
 

@@ -11,7 +11,7 @@ Gerenciador_Grafico::~Gerenciador_Grafico()
 
 }
 
-bool Gerenciador_Grafico::estaAberta()
+bool Gerenciador_Grafico::estaAberta() const
 {
     return janela.isOpen();
 }

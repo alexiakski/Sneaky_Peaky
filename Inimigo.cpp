@@ -49,5 +49,6 @@ void Inimigo::mover()
 
 void Inimigo::executar()
 {
+    atualizarInvincibilidade();
     mover();
 }

@@ -23,7 +23,7 @@ class ListaEntidades
         void limpar();
         void percorrer();
         void desenhar();
-        int getTamanho();
+        int getTamanho() const;
 };
 
 #endif

@@ -127,7 +127,8 @@ void Jogador::mover()
 
 void Jogador::executar()
 {
-   mover();
+   atualizarInvincibilidade();
+    mover();
 }
 
 Jogador& Jogador::operator++()

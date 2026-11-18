@@ -47,7 +47,16 @@ void Jogo::executar()
         }
 
         else
+        {
             pFase->executar();
+
+            if (pFase->getFimDeJogo() || pFase->getVitoria())
+            {
+                menu.fimDeJogo(pFase->getPontos(), pFase->getVitoria());
+                delete pFase;
+                pFase = nullptr;
+            }
+        }
         
         GG.mostrar();
     }

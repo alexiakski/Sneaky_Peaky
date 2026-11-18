@@ -2,7 +2,7 @@
 #include "Menu.hpp"
 #include "Gerenciador_Grafico.hpp"
 
-Menu::Menu() : Ente (), tela(0), numJog(1), numFase(0), teclaPressionada(false)//1 jogador como padrão
+Menu::Menu() : Ente (), tela(0), numJog(1), numFase(0), pontos(0), faseVencida(0), teclaPressionada(false)//1 jogador como padrão
 {
     
 }
@@ -42,7 +42,7 @@ void Menu::executar()
 
     desenhar();//fundo
 
-    switch (tela)//todos os texto ficam dentro da parte branca (108-492)
+    switch (tela)//todos os texto ficam dentro da parte mais escura (108-492)
     {
     case 0:
         escrever("SNEAKY PEAKY", 140);
@@ -71,7 +71,20 @@ void Menu::executar()
     case 4:
         escrever("PAUSADO", 140);
         escrever("1-CONTINUAR", 220);
-        escrever("4-MENU", 400);
+        escrever("4-VOLTAR PARA O MENU", 400);
+        break;
+    case 5:
+        escrever("GAME OVER", 140);
+        escrever("PONTOS: " + to_string(pontos), 220);
+        escrever("4-VOLTAR PARA O MENU", 280);
+        break;
+    case 6:
+        escrever("PARABENS!", 140);
+        escrever("VOCE VENCEU!", 180);
+        escrever("PONTOS: " + to_string(pontos), 240);
+        if (faseVencida == 1)
+            escrever("1-PROXIMA FASE", 300);
+        escrever("4-VOLTAR PARA O MENU", 340);
         break;
 
     default:
@@ -116,7 +129,13 @@ void Menu::escolher()
             numFase = 0;                               
             tela = 0;
         }
-    }  
+    }
+
+    else if(tela == 6 && tecla == 1 && faseVencida == 1)
+    {
+        numFase = 2;
+        tela = 0;
+    }
 
     else if (tecla == 4)//voltar
         tela = 0;
@@ -131,7 +150,7 @@ void Menu::escolher()
         numFase = tecla;//o Jogo cria a fase quando getFase() != 0
 }
 
-void Menu::escrever(string texto, float y)
+void Menu::escrever(const string texto, float y)
 {
     float x = 400 - (int)texto.size() * 12;//centraliza: 400 é o meio da janela, 12 é meia letra
     pFig->setSize(sf::Vector2f(24, 30));//tamanho de cada letra
@@ -143,4 +162,19 @@ void Menu::escrever(string texto, float y)
         pFig->setPosition(x + i * 24, y);//cada letra 24 px à direita da anterior
         desenhar();
     }
+}
+
+void Menu::fimDeJogo(int pontos, bool venceu)
+{
+    this->pontos = pontos;
+
+    if (venceu)
+    {
+        faseVencida = numFase;
+        tela = 6;
+    }
+    else
+        tela = 5;
+        
+    numFase = 0;
 }

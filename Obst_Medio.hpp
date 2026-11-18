@@ -14,7 +14,7 @@ class Obst_Medio : public Obstaculo
         Obst_Medio(float x, float y,float largura, float altura, short int danosidade);
         ~Obst_Medio();
 
-        short int getDanosidade();
+        short int getDanosidade() const;
         void setDanosidade(short int danosidade);
 
         virtual void executar() = 0;
