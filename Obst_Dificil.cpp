@@ -47,7 +47,7 @@ void Obst_Dificil::obstaculizar (Jogador *pJ)
     if (pJ == nullptr) 
         return;
 
-    pJ->setNumVidas(pJ->getNumVidas() - danosidade);
+    *pJ -= danosidade;
     pJ->reposicionar(this->getBounds());
     
    // pJ->setVelocidade(1.0f);

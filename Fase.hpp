@@ -8,8 +8,11 @@
 
 #define MIN_INIMIGOS 3
 #define MAX_INIMIGOS 4
-#define NUM_PLATAFORMAS 11
-
+#define MAX_PLATAFORMAS 15
+#define MIN_PLATAFORMAS 8
+#define MIN_OBSTACULOS 3
+#define MAX_OBSTACULOS 5
+#define VAGAS_CHAO 7
 namespace Fases
 {
 class Fase : public Ente
@@ -32,15 +35,20 @@ class Fase : public Ente
 
     protected:
 
-        void criarInimFaceis();
-        int sortearQuantInimigos() const;
+        void criarInimFaceis();        
         void criarPlataformas();
         void criarJogadores(int numJog);
         void criarCenario();
-        void setFundo (const std::string& caminho, sf::IntRect ladrilho);
         void criarChao(sf::IntRect recorte);
-        bool plataformaOcupada[NUM_PLATAFORMAS];
+
+        int sortearQuant(int min, int max) const;
+        void setFundo (const std::string& caminho, sf::IntRect ladrilho);
+
+        bool plataformaOcupada[MAX_PLATAFORMAS];
         void posicionarEmPlataforma(Entidades::Entidade* pE);
+
+        bool chaoOcupado[VAGAS_CHAO];
+        void posicionarNoChao(Entidades::Entidade* pE);
         
         virtual void criarInimigos() = 0;
         virtual void criarObstaculos() = 0;

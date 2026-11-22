@@ -45,7 +45,7 @@ void Obst_Medio::obstaculizar (Jogador *pJ)
     if (pJ == nullptr)
         return;
 
-    pJ->setNumVidas(pJ->getNumVidas() - danosidade);
+    *pJ -= danosidade;
     pJ->reposicionar(this->getBounds());
 }
 }

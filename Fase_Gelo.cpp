@@ -4,9 +4,6 @@
 #include "Obst_Dificil.hpp"
 #include "Plataforma.hpp"
 
-#define NUM_OBST_SEGUROS 5
-#define NUM_OBST_DANOSOS 4
-
 using namespace Entidades::Personagens;
 using namespace Entidades::Obstaculos;
 namespace Fases 
@@ -18,7 +15,6 @@ Fase_Gelo::Fase_Gelo(int numJog) : Fase()
     criarJogadores(numJog);
     criarChao(sf::IntRect(16, 192, 16, 48));//chão neve
     criarCenario();
-    criarInimigos();
 }
 
 Fase_Gelo::~Fase_Gelo()
@@ -27,28 +23,14 @@ Fase_Gelo::~Fase_Gelo()
 }
 
 void Fase_Gelo::criarInimigos()
-{
-    //inimigos vão ter opções de posicionamento no mapa
-    /*const sf::Vector2f posFaceis[] =
-    {
-        sf::Vector2f(200, 515),
-        sf::Vector2f(330, 515),
-        sf::Vector2f(460, 515),
-        sf::Vector2f(590, 515)
-    };
-
-    const sf::Vector2f posChefes1[] =
-    {
-        sf::Vector2f(20, 520)
-    };*/
-    
+{    
     criarInimFaceis();//comum às duas fases (implementado na Fase)
     criarInimChefes();//chefão exclusivo da fase 2
 }
 
 void Fase_Gelo::criarInimChefes()
 {
-    int quantidade = sortearQuantInimigos();
+    int quantidade = sortearQuant(MIN_INIMIGOS, MAX_INIMIGOS);
 
     for (int i = 0; i < quantidade; i++)
     {
@@ -66,17 +48,17 @@ void Fase_Gelo::criarObstaculos()
 
 void Fase_Gelo::criarObstaculosDificeis()
 {
-    const sf::Vector2f posicoes[NUM_OBST_DANOSOS] =
-    {
-        sf::Vector2f(150, 522),
-        sf::Vector2f(350, 522),
-        sf::Vector2f(550, 522),
-        sf::Vector2f(700, 522)
-    };
+    int quantidade = sortearQuant(MIN_OBSTACULOS, MAX_OBSTACULOS);
     
-    for (int i = 0; i < NUM_OBST_DANOSOS; i++)
+    for (int i = 0; i < quantidade; i++)
     {
-        Obst_Dificil* pO = new Obst_Dificil(posicoes[i].x, posicoes[i].y, 30, 30, 2);
+        Obst_Dificil* pO = new Obst_Dificil(0, 0, 30, 30, 2);
+
+        if (i % 2 == 0)
+            posicionarEmPlataforma(pO);
+        else
+            posicionarNoChao(pO);
+
         lista_ents.incluir(pO);
         GC.incluirObstaculo(pO);
     }

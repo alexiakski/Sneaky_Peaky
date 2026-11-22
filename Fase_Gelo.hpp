@@ -14,12 +14,11 @@ class Fase_Gelo : public Fase
 
     protected:
 
-        //Fase 2 só terá inimigos fáceis e chefe   
+        //Fase 2 só terá inimigos fáceis e chefes 
         void criarInimigos();
         void criarInimChefes();
 
         void criarObstaculos();
-        void criarPlataformas();
         void criarObstaculosDificeis();
 
 };

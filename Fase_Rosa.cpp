@@ -4,12 +4,8 @@
 #include "Obst_Medio.hpp"
 #include "Plataforma.hpp"
 
-#define NUM_OBST_SEGUROS 5
-#define NUM_OBST_DANOSOS 4
-
 using namespace Entidades::Personagens;
 using namespace Entidades::Obstaculos;
-
 namespace Fases 
 {
 Fase_Rosa::Fase_Rosa(int numJog) : Fase()
@@ -19,7 +15,6 @@ Fase_Rosa::Fase_Rosa(int numJog) : Fase()
     criarJogadores(numJog);
     criarChao(sf::IntRect(16, 144, 16, 48));//chão rosa
     criarCenario();
-    criarInimigos();
 }
 
 Fase_Rosa::~Fase_Rosa()
@@ -28,30 +23,14 @@ Fase_Rosa::~Fase_Rosa()
 }
 
 void Fase_Rosa::criarInimigos()
-{
-    //inimigos vão ter opções de posicionamento no mapa
-    /*const sf::Vector2f posFaceis[] =
-    {
-        sf::Vector2f(40, 515),
-        sf::Vector2f(240, 515),
-        sf::Vector2f(440, 515),
-        sf::Vector2f(630, 515)
-    };
-
-    const sf::Vector2f posMedios1[] =
-    {
-        sf::Vector2f(130, 507),
-        sf::Vector2f(330, 507),
-        sf::Vector2f(530, 507)
-    };*/
-    
+{    
     criarInimFaceis();//comum às duas fases (implementado na Fase)
     criarInimMedios();//médio exclusivo da fase 1
 }
 
 void Fase_Rosa::criarInimMedios()
 {
-    int quantidade = sortearQuantInimigos();  
+    int quantidade = sortearQuant(MIN_INIMIGOS, MAX_INIMIGOS);  
     for (int i = 0; i < quantidade; i++)
     {
         Inim_DuendeAzul* pI = new Inim_DuendeAzul(0,0);
@@ -68,18 +47,17 @@ void Fase_Rosa::criarObstaculos()
 
 void Fase_Rosa::criarObstaculosMedios()
 {
-    const sf::Vector2f posicoes[NUM_OBST_SEGUROS] =
-    {
-        sf::Vector2f(90, 522),
-        sf::Vector2f(190, 522),
-        sf::Vector2f(390, 522),
-        sf::Vector2f(580, 522),
-        sf::Vector2f(720, 522)
-    };
+    int quantidade = sortearQuant(MIN_OBSTACULOS, MAX_OBSTACULOS);
     
-    for (int i = 0; i < NUM_OBST_SEGUROS; i++)
+    for (int i = 0; i < quantidade; i++)
     {
-        Obst_Medio* pO = new Obst_Medio(posicoes[i].x, posicoes[i].y, 30, 30, 1);
+        Obst_Medio* pO = new Obst_Medio(0, 0, 30, 30, 1);
+
+        if (i % 2 == 0)//alterna
+            posicionarEmPlataforma(pO);
+        else
+            posicionarNoChao(pO);
+
         lista_ents.incluir(pO);
         GC.incluirObstaculo(pO);
     }
