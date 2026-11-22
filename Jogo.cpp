@@ -4,6 +4,8 @@
 #include "Fase_Rosa.hpp"
 #include "Fase_Gelo.hpp"
 
+using namespace Fases;
+
 Jogo::Jogo() : GG(), menu(), pFase(nullptr)
 {
     Ente::setGG(&GG);//entes são conectados com gerenciador

@@ -3,6 +3,8 @@
 
 #include "Entidade.hpp"
 
+namespace Entidades 
+{
 class Projetil : public Entidade
 {
     protected:
@@ -23,5 +25,6 @@ class Projetil : public Entidade
         void salvar();
         void salvarDataBuffer();
 };
+}
 
 #endif

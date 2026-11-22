@@ -8,16 +8,18 @@
 
 #define MIN_INIMIGOS 3
 #define MAX_INIMIGOS 4
-
 #define NUM_PLATAFORMAS 11
+
+namespace Fases
+{
 class Fase : public Ente
 {
     protected:
         
-        ListaEntidades lista_ents;
-        Gerenciador_Colisoes GC;
-        Jogador *pJog1;
-        Jogador *pJog2;
+        Listas::ListaEntidades lista_ents;
+        Gerenciadores::Gerenciador_Colisoes GC;
+        Entidades::Personagens::Jogador *pJog1;
+        Entidades::Personagens::Jogador *pJog2;
 
     public:
 
@@ -38,11 +40,12 @@ class Fase : public Ente
         void setFundo (const std::string& caminho, sf::IntRect ladrilho);
         void criarChao(sf::IntRect recorte);
         bool plataformaOcupada[NUM_PLATAFORMAS];
-        void posicionarEmPlataforma(Entidade* pE);
+        void posicionarEmPlataforma(Entidades::Entidade* pE);
         
         virtual void criarInimigos() = 0;
         virtual void criarObstaculos() = 0;
 
 };
+}
 
 #endif

@@ -1,5 +1,9 @@
 #include "Obst_Dificil.hpp"
 
+using namespace Entidades::Personagens;
+
+namespace Entidades::Obstaculos 
+{
 Obst_Dificil::Obst_Dificil(float x, float y, float largura, float altura, short int danosidade):
             Obstaculo(x, y, largura, altura), danosidade(danosidade)
 {
@@ -47,4 +51,5 @@ void Obst_Dificil::obstaculizar (Jogador *pJ)
     pJ->reposicionar(this->getBounds());
     
    // pJ->setVelocidade(1.0f);
+}
 }

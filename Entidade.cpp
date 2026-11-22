@@ -1,5 +1,7 @@
 #include "Entidade.hpp"
 
+namespace Entidades 
+{
 Entidade::Entidade(float x, float y, float largura, float altura) :
 Ente(), x(x), y(y), largura(largura),altura(altura), ativo(true)
 {
@@ -62,4 +64,5 @@ void Entidade::setPosicao(float x, float y)
 
     if (pFig != nullptr)
         pFig->setPosition(x, y);
+}
 }

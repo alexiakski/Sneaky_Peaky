@@ -4,6 +4,8 @@
 #include "stdafx.hpp"
 #include "Ente.hpp"
 
+namespace Entidades 
+{
 class Entidade : public Ente
 {
     protected:
@@ -36,5 +38,6 @@ class Entidade : public Ente
         void salvarDataBuffer();
         virtual void salvar() = 0;
 };
+}
 
 #endif

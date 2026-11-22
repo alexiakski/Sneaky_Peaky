@@ -1,5 +1,8 @@
 #include "Obst_Medio.hpp"
 
+using namespace Entidades::Personagens;
+namespace Entidades::Obstaculos 
+{
 Obst_Medio::Obst_Medio(float x, float y, float largura, float altura, short int danosidade):
 Obstaculo(x, y, largura, altura), danosidade(danosidade)
 {
@@ -44,4 +47,5 @@ void Obst_Medio::obstaculizar (Jogador *pJ)
 
     pJ->setNumVidas(pJ->getNumVidas() - danosidade);
     pJ->reposicionar(this->getBounds());
+}
 }

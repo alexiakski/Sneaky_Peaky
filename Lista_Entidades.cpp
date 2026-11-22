@@ -1,6 +1,11 @@
 #include "Lista_Entidades.hpp"
 #include "stdafx.hpp"
 
+using namespace Entidades;
+
+namespace Listas
+{
+
 ListaEntidades::ListaEntidades() : LEs()
 {
 
@@ -58,4 +63,6 @@ void ListaEntidades::limpar()
 int ListaEntidades::getTamanho() const
 {
     return LEs.getTamanho();
+}
+
 }

@@ -1,6 +1,9 @@
 #include "stdafx.hpp"
 #include "Inimigo.hpp"
 
+namespace Entidades::Personagens 
+{
+
 Inimigo::Inimigo(float x, float y, int largura, int altura, int num_vidas, int nivel_maldade) 
         : Personagem(x, y, largura, altura, num_vidas), nivel_maldade(nivel_maldade)
 {
@@ -51,4 +54,5 @@ void Inimigo::executar()
 {
     atualizarInvincibilidade();
     mover();
+}
 }

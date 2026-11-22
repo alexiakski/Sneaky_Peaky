@@ -4,6 +4,8 @@
 #include "Jogador.hpp"
 #include "Personagem.hpp"
 
+namespace Entidades::Personagens 
+{
 class Inimigo : public Personagem
 {
     protected:
@@ -28,5 +30,6 @@ class Inimigo : public Personagem
         virtual void salvar() = 0;
         
 };
+}
 
 #endif

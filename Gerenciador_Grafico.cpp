@@ -1,6 +1,8 @@
 #include "Gerenciador_Grafico.hpp"
 #include "Ente.hpp"
 
+namespace Gerenciadores 
+{
 Gerenciador_Grafico::Gerenciador_Grafico() : janela(sf::VideoMode(800,600), "Sneaky Peaky")
 {
     janela.setFramerateLimit(60);
@@ -66,4 +68,5 @@ sf::Texture* Gerenciador_Grafico::carregarTextura(const std::string& caminho, sf
 void Gerenciador_Grafico::fechar()
 {
     janela.close();
+}
 }

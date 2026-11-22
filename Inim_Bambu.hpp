@@ -3,6 +3,8 @@
 
 #include "Inimigo.hpp"
 
+namespace Entidades::Personagens 
+{
 class Inim_Bambu : public Inimigo
 {
 
@@ -14,5 +16,6 @@ class Inim_Bambu : public Inimigo
         void salvar();
         void danificar (Jogador* pJog);
 };
+}
 
 #endif

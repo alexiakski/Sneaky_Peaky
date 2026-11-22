@@ -4,6 +4,12 @@
 #include "Lista_Entidades.hpp"
 #include "Gerenciador_Colisoes.hpp"
 
+using namespace Listas;
+using namespace Gerenciadores;
+
+namespace Entidades::Personagens 
+{
+
 Samurai::Samurai(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC)
         : Inimigo(x, y, 100, 50, 3, 5), pLista(pLista), pGC(pGC), recarga(0)
 {
@@ -40,4 +46,5 @@ void Samurai::executar()
         pGC->incluirProjetil(pP);
         recarga = 0;
     }
+}
 }

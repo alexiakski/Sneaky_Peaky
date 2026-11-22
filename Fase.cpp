@@ -5,6 +5,12 @@
 #include "Chao.hpp"
 #include "Plataforma.hpp"
 
+using namespace Entidades;
+using namespace Entidades::Personagens;
+using namespace Entidades::Obstaculos;
+
+namespace Fases
+{
 static const sf::FloatRect plataformas[NUM_PLATAFORMAS] =
 {
     //linha y=470 (colunas 0, 2, 4)
@@ -179,4 +185,5 @@ int Fase::getPontos() const
         pontos += pJog2->getPontos();
     
     return pontos;
+}
 }

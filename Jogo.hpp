@@ -10,9 +10,9 @@ class Jogo
 {
     private:
 
-        Gerenciador_Grafico GG;
+        Gerenciadores::Gerenciador_Grafico GG;
         Menu menu;
-        Fase *pFase;
+        Fases::Fase *pFase;
             
     public:
 

@@ -3,6 +3,8 @@
 
 #include "Obstaculo.hpp"
 
+namespace Entidades::Obstaculos 
+{
 class Obst_Dificil : public Obstaculo
 {
     private:
@@ -20,7 +22,8 @@ class Obst_Dificil : public Obstaculo
         virtual void executar();
         void salvarDataBuffer();
         virtual void salvar();
-        void obstaculizar (Jogador *pJ);
+        void obstaculizar (Personagens::Jogador *pJ);
 };
+}
 
 #endif

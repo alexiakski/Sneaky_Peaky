@@ -3,7 +3,9 @@
 
 #include "Personagem.hpp"
 
-class Inimigo;
+namespace Entidades::Personagens
+{
+    class Inimigo;
 class Jogador : public Personagem
 {
     protected:
@@ -35,5 +37,6 @@ class Jogador : public Personagem
         void mover();
         void executar();
 };
+}
 
 #endif

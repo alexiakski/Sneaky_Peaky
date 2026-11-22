@@ -1,6 +1,11 @@
 #include "Projetil.hpp"
 #include "Personagem.hpp"
 
+using namespace Entidades::Personagens;
+
+namespace Entidades 
+{
+
 Projetil::Projetil(float x, float y, float largura, float altura, int dano) :
 Entidade(x, y, largura, altura), dano(dano)
 {
@@ -56,4 +61,5 @@ void Projetil::salvar()
 void Projetil::salvarDataBuffer()
 {
     
+}
 }

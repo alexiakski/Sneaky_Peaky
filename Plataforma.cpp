@@ -1,5 +1,9 @@
 #include "Plataforma.hpp"
 
+using namespace Entidades::Personagens;
+namespace Entidades::Obstaculos
+{
+
 Plataforma::Plataforma(float x, float y, float largura, float altura, float velocidadeY):
 Obstaculo(x, y, largura, altura), velocidadeY(velocidadeY)
 {
@@ -22,11 +26,6 @@ int Plataforma::getLargura() const
 int Plataforma::getAltura() const
 {
     return altura;
-}
-
-float Personagem::getVelocidadeY() const
-{
-    return velocidadeY;
 }
 
 void Plataforma::executar()
@@ -52,4 +51,5 @@ void Plataforma::obstaculizar (Jogador *pJ)
          pJ->getY() + pJ->getAltura() >= y - 5 && pJ->getY() + pJ->getAltura() <= y + 12 )
 
         pJ->reposicionar(this->getBounds());
+}
 }

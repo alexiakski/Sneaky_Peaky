@@ -3,24 +3,27 @@
 
 #include "Inimigo.hpp"
 
-class ListaEntidades;
-class Gerenciador_Colisoes;
+namespace Listas { class ListaEntidades; }
+namespace Gerenciadores { class Gerenciador_Colisoes; }
+namespace Entidades::Personagens
+{
 class Samurai : public Inimigo
 {
     private:
 
-        ListaEntidades* pLista;
-        Gerenciador_Colisoes* pGC;
+        Listas::ListaEntidades* pLista;
+        Gerenciadores::Gerenciador_Colisoes* pGC;
         int recarga;
 
     public:
 
-        Samurai(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC);
+        Samurai(float x, float y, Listas::ListaEntidades* pLista, Gerenciadores::Gerenciador_Colisoes* pGC);
         ~Samurai();
 
         void executar();
         void salvar();
         void danificar (Jogador* pJog);
 };
+}
 
 #endif

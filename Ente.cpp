@@ -2,6 +2,8 @@
 #include "Ente.hpp"
 #include "Gerenciador_Grafico.hpp"
 
+using namespace Gerenciadores;
+
 int Ente::cont = 0;
 Gerenciador_Grafico* Ente::pGG = nullptr;
 

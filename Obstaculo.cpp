@@ -1,6 +1,10 @@
 #include "Obstaculo.hpp"
 #include "Jogador.hpp"
 
+using namespace Entidades::Personagens;
+
+namespace Entidades::Obstaculos 
+{
 Obstaculo::Obstaculo(float x, float y, float largura, float altura, bool danoso) :
 Entidade(x, y, largura, altura), danoso(danoso)
 {
@@ -39,4 +43,5 @@ void Obstaculo::obstaculizar (Jogador *pJ)
     {
         pJ->reposicionarJogObst(getBounds());
     }
+}
 }

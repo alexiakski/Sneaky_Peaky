@@ -1,6 +1,9 @@
 #include "stdafx.hpp"
 #include "Personagem.hpp"
 
+namespace Entidades::Personagens
+{
+
 Personagem::Personagem(float x, float y, int largura, int altura, int num_vidas)
             : Entidade(x, y, largura, altura), num_vidas(num_vidas), velocidadeY(0), chao(false), invencivel(0)
 {
@@ -20,6 +23,11 @@ int Personagem::getNumVidas() const
 void Personagem::setNumVidas(int num_vidas)
 {
     this->num_vidas = num_vidas;
+}
+
+float Personagem::getVelocidadeY() const
+{
+    return velocidadeY;
 }
 
 void Personagem::salvarDataBuffer()
@@ -71,4 +79,6 @@ void Personagem::atualizarInvincibilidade()
 {
     if (invencivel > 0)
         invencivel--;
+}
+
 }

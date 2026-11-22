@@ -3,6 +3,8 @@
 
 #include "Fase.hpp"
 
+namespace Fases 
+{
 class Fase_Rosa : public Fase
 {   
     public:
@@ -20,5 +22,6 @@ class Fase_Rosa : public Fase
         void criarPlataformas();
         void criarObstaculosMedios();
 };
+}
 
 #endif

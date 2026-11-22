@@ -7,6 +7,10 @@
 #define NUM_OBST_SEGUROS 5
 #define NUM_OBST_DANOSOS 4
 
+using namespace Entidades::Personagens;
+using namespace Entidades::Obstaculos;
+namespace Fases 
+{
 Fase_Gelo::Fase_Gelo(int numJog) : Fase()
 {
     setTextura ("assets/TilesetFloor.png", sf::IntRect(0, 336, 160, 48));//fundo neve
@@ -76,4 +80,5 @@ void Fase_Gelo::criarObstaculosDificeis()
         lista_ents.incluir(pO);
         GC.incluirObstaculo(pO);
     }
+}
 }

@@ -2,6 +2,9 @@
 #define LISTA_HPP
 
 #include "stdafx.hpp"
+
+namespace Listas
+{
 template <typename TL>
 class Lista
 {
@@ -138,6 +141,7 @@ template <typename TL>
 int Lista<TL>::getTamanho() const
 {
     return tamanho;
+}
 }
 
 #endif

@@ -2,6 +2,9 @@
 #include "Jogador.hpp"
 #include "Inimigo.hpp"
 
+namespace Entidades::Personagens 
+{
+
 Jogador::Jogador(float x, float y, int largura, int altura, int num_jog) : Personagem(x, y, largura, altura, 3)//3?
 {
     pontos = 0;
@@ -211,4 +214,5 @@ void Jogador::reposicionarJogInim(const sf::FloatRect& rectInimigo)
         else
             y = rectInimigo.top + rectInimigo.height;
     }
+}
 }

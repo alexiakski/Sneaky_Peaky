@@ -3,15 +3,15 @@
 
 #include "stdafx.hpp"
 #include <SFML/Graphics.hpp>
-//using namespace trabalho_tec_prog; 
-class Gerenciador_Grafico;
+
+namespace Gerenciadores {class Gerenciador_Grafico;}
 class Ente
 {
     protected:
 
         int id;
         static int cont;
-        static Gerenciador_Grafico* pGG;
+        static Gerenciadores::Gerenciador_Grafico* pGG;
         sf::RectangleShape* pFig;//trocar quando escolher sprite
 
     public:
@@ -25,7 +25,7 @@ class Ente
     
         virtual void executar() = 0;
         void desenhar();
-        void static setGG(Gerenciador_Grafico *pGG);
+        void static setGG(Gerenciadores::Gerenciador_Grafico *pGG);
 
         void setTextura(const std::string& caminho, sf::IntRect recorte = sf::IntRect()); //usa a imagem inteira ou um recorte
 };

@@ -1,6 +1,12 @@
 #include "Gerenciador_Colisoes.hpp"
 #include "Ente.hpp"
 
+using namespace Entidades;
+using namespace Entidades::Personagens;
+using namespace Entidades::Obstaculos;
+
+namespace Gerenciadores
+{
 Gerenciador_Colisoes::Gerenciador_Colisoes() : LIs(), LOs(), LPs(), LCs(), pJog1(nullptr), pJog2(nullptr)
 {
 
@@ -172,3 +178,4 @@ void Gerenciador_Colisoes::executar()
     tratarColisoesJogsInimgs();
     tratarColisoesJogsProjeteis();
 }   
+}

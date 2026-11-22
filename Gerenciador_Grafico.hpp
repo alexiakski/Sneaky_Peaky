@@ -7,6 +7,9 @@
 
 
 class Ente;
+
+namespace Gerenciadores
+{
 class Gerenciador_Grafico
 {
     private:
@@ -28,5 +31,5 @@ class Gerenciador_Grafico
 
         sf::Texture* carregarTextura(const std::string& caminho, sf::IntRect area = sf::IntRect());
 };
-
+}
 #endif
