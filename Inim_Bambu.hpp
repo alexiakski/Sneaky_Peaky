@@ -7,6 +7,8 @@ namespace Entidades::Personagens
 {
 class Inim_Bambu : public Inimigo
 {
+    private:
+        int contador, direcao;
 
     public:
 
@@ -15,6 +17,7 @@ class Inim_Bambu : public Inimigo
 
         void salvar();
         void danificar (Jogador* pJog);
+        void executar();
 };
 }
 

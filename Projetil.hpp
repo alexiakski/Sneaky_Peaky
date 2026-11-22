@@ -10,10 +10,11 @@ class Projetil : public Entidade
     protected:
 
         int dano;
+        float velocidade;
 
     public:
 
-        Projetil(float x, float y, float largura, float altura, int dano);
+        Projetil(float x, float y, float largura, float altura, int dano, float velocidade);
         virtual ~Projetil();
 
         int getDano() const;

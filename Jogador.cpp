@@ -49,19 +49,25 @@ void Jogador::colidir(Inimigo* pIn)
 
     sf::FloatRect boundsJogador = getBounds();  
     sf::FloatRect boundsInimigo = pIn->getBounds();
+    sf::FloatRect sobreposicao;
 
-    float pesJogador = boundsJogador.top + boundsJogador.height;
-    float cabecaInimigo = boundsInimigo.top;
-   
-    if (pesJogador - velocidadeY <= cabecaInimigo + 5 && velocidadeY > 0)
+    boundsJogador.intersects(boundsInimigo, sobreposicao);
+
+    if (sobreposicao.width < sobreposicao.height)//encostou pelos lados: leva dano
+    {
+        *this -= 1;
+        reposicionarJogInim(boundsInimigo);
+    }
+    else if (boundsJogador.top < boundsInimigo.top)//veio de cima: pisou no inimigo
     {
         *pIn -= 1;
         ++(*this);
-        velocidadeY = -6; 
+        velocidadeY = -6;
     }
-    else
+    else//veio de baixo: bate a cabeça e cai, sem dano
     {
-        *this -= 1;
+        y = boundsInimigo.top + boundsInimigo.height;
+        velocidadeY = 0;
     }
 }
 void Jogador::sofrerAtaque(int dano)

@@ -11,9 +11,9 @@ namespace Entidades::Personagens
 {
 
 Samurai::Samurai(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC)
-        : Inimigo(x, y, 100, 50, 3, 5), pLista(pLista), pGC(pGC), recarga(0)
+        : Inimigo(x, y, 100, 46, 3, 5), pLista(pLista), pGC(pGC), recarga(0)
 {
-    setTextura("assets/SamuraiAzul.png", sf::IntRect(0, 0, 96, 48));//só a primeira pose
+    setTextura("assets/SamuraiAzul.png", sf::IntRect(0, 0, 96, 44));//só a primeira pose
 }
 
 Samurai::~Samurai()
@@ -39,9 +39,14 @@ void Samurai::executar()
     Inimigo::executar();
 
     recarga++;
-    if (recarga >= 240)// a cada 4s
+    if (recarga >= 300)//a cada 5s
     {
-        Projetil* pP = new Projetil (x+largura, y +10, 20, 20 ,1);
+        bool ladoD = (x + largura/2 > 400);//se está no lado direito da janela
+
+        float vel = ladoD ? -2.0f : 2.0f; 
+        float xTiro = ladoD ? x - 20 : x + largura;
+        
+        Projetil* pP = new Projetil (xTiro, y +10, 20, 20 ,1, vel);
         pLista->incluir(pP);
         pGC->incluirProjetil(pP);
         recarga = 0;

@@ -6,8 +6,8 @@ using namespace Entidades::Personagens;
 namespace Entidades 
 {
 
-Projetil::Projetil(float x, float y, float largura, float altura, int dano) :
-Entidade(x, y, largura, altura), dano(dano)
+Projetil::Projetil(float x, float y, float largura, float altura, int dano, float velocidade)
+        :Entidade(x, y, largura, altura), dano(dano), velocidade(velocidade)
 {
     setTextura ("assets/Shuriken.png");
 }
@@ -39,7 +39,7 @@ void Projetil::mover()
 {
     if(ativo)
     {
-        x += 4;//velocidade
+        x += velocidade;
 
         if (x < -largura || x > 800 || y > 600)//saiu da janela
             ativo = false;

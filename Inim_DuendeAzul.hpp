@@ -9,7 +9,7 @@ class Inim_DuendeAzul : public Inimigo
 {
     private:
 
-        int largura, altura;    
+        int largura, altura, contador;    
         short int nivel_maldade;
 
     public:
@@ -19,6 +19,7 @@ class Inim_DuendeAzul : public Inimigo
 
         void salvar();
         void danificar (Jogador* pJog);
+        void executar();
 };
 }
 
