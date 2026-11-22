@@ -29,7 +29,7 @@ void Obstaculo::salvarDataBuffer()
 
 }
 
-void Obstaculo::obstaculizar (Jogador *pJ)
+/*void Obstaculo::obstaculizar (Jogador *pJ)
 {
     if(pJ == nullptr)
         return;
@@ -43,5 +43,5 @@ void Obstaculo::obstaculizar (Jogador *pJ)
     {
         pJ->reposicionarJogObst(getBounds());
     }
-}
+}*/
 }

@@ -30,6 +30,11 @@ float Personagem::getVelocidadeY() const
     return velocidadeY;
 }
 
+void Personagem::setVelocidadeY(float velocidadeY)
+{
+    this->velocidadeY = velocidadeY;
+}
+
 void Personagem::salvarDataBuffer()
 {
     //Implentar no requisito 10

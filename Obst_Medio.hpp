@@ -9,15 +9,12 @@ class Obst_Medio : public Obstaculo
 {
     private:
 
-        short int danosidade;
+        float forca;
 
     public:
 
-        Obst_Medio(float x, float y,float largura, float altura, short int danosidade);
+        Obst_Medio(float x, float y,float largura, float altura, float forca);
         ~Obst_Medio();
-
-        short int getDanosidade() const;
-        void setDanosidade(short int danosidade);
 
         virtual void executar();
         void salvarDataBuffer();

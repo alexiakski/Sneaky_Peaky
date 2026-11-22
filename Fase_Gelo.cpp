@@ -52,7 +52,7 @@ void Fase_Gelo::criarObstaculosDificeis()
     
     for (int i = 0; i < quantidade; i++)
     {
-        Obst_Dificil* pO = new Obst_Dificil(0, 0, 30, 30, 2);
+        Obst_Dificil* pO = new Obst_Dificil(0, 0, 30, 30, 1);
 
         if (i % 2 == 0)
             posicionarEmPlataforma(pO);

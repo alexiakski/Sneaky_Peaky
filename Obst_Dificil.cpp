@@ -4,8 +4,8 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Obstaculos 
 {
-Obst_Dificil::Obst_Dificil(float x, float y, float largura, float altura, short int danosidade):
-            Obstaculo(x, y, largura, altura), danosidade(danosidade)
+Obst_Dificil::Obst_Dificil(float x, float y, float largura, float altura, short int danosidade)
+            :Obstaculo(x, y, largura, altura), danosidade(danosidade)
 {
     if (pFig != nullptr)
         {
@@ -13,6 +13,7 @@ Obst_Dificil::Obst_Dificil(float x, float y, float largura, float altura, short 
             //setTextura("assets/TilesetNature.png", sf::IntRect(0, 0, 96, 48));//qual recorte?
         }
 }
+
 Obst_Dificil::~Obst_Dificil()
 {
 
@@ -47,9 +48,7 @@ void Obst_Dificil::obstaculizar (Jogador *pJ)
     if (pJ == nullptr) 
         return;
 
+    pJ->reposicionarJogObst(getBounds());
     *pJ -= danosidade;
-    pJ->reposicionar(this->getBounds());
-    
-   // pJ->setVelocidade(1.0f);
 }
 }

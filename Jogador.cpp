@@ -9,9 +9,10 @@ Jogador::Jogador(float x, float y, int largura, int altura, int num_jog)
         : Personagem(x, y, largura, altura, MAX_VIDAS), coracao(sf::Vector2f(32, 32)), cX(num_jog == 1 ? 10 : 800 - 10 - 32)
 {
     pontos = 0;
-    direcao = 0;    //começa olhando para baixo
-    quadro = 0;     //começa parado
+    direcao = 0;
+    quadro = 0;
     contador = 0;
+    empurraoX = 0;
 
     if (num_jog == 1)
     {
@@ -129,6 +130,9 @@ void Jogador::mover()
         andando = true;
     }
 
+    x += empurraoX;//obstaculo medio
+    empurraoX *= 0.9f;
+
     if (x < 0)//chão
         x = 0;
     if (x > 800 - largura)//fica dentro da tela
@@ -244,4 +248,10 @@ void Jogador::reposicionarJogInim(const sf::FloatRect& rectInimigo)
             y = rectInimigo.top + rectInimigo.height;
     }
 }
+
+void Jogador::setEmpurraoX(float empurraoX)
+{
+    this->empurraoX = empurraoX;
+}
+
 }

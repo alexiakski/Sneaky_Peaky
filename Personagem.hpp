@@ -23,6 +23,7 @@ class Personagem : public Entidade
         void setNumVidas(int num_vidas);
 
         float getVelocidadeY() const;
+        void setVelocidadeY(float velocidadeY);
 
         void aplicarGravidade();
         void reposicionar(const sf::FloatRect &rect);

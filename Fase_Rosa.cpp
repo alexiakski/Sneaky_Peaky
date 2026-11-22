@@ -51,7 +51,7 @@ void Fase_Rosa::criarObstaculosMedios()
     
     for (int i = 0; i < quantidade; i++)
     {
-        Obst_Medio* pO = new Obst_Medio(0, 0, 30, 30, 1);
+        Obst_Medio* pO = new Obst_Medio(0, 0, 30, 30, 9);
 
         if (i % 2 == 0)//alterna
             posicionarEmPlataforma(pO);

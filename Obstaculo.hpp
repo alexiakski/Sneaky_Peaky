@@ -25,7 +25,7 @@ class Obstaculo : public Entidade
         void salvarDataBuffer();
         virtual void salvar() = 0;
 
-        virtual void obstaculizar (Personagens::Jogador *pJ);
+        virtual void obstaculizar (Personagens::Jogador *pJ) = 0;
 };
 }
 
