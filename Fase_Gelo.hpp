@@ -14,7 +14,7 @@ class Fase_Gelo : public Fase
 
         //Fase 2 só terá inimigos fáceis e chefe   
         void criarInimigos();
-        void criarInimChefes(const sf::Vector2f posicoes[]);
+        void criarInimChefes();
 
         void criarObstaculos();
         void criarPlataformas();

@@ -25,7 +25,7 @@ Fase_Gelo::~Fase_Gelo()
 void Fase_Gelo::criarInimigos()
 {
     //inimigos vão ter opções de posicionamento no mapa
-    const sf::Vector2f posFaceis[] =
+    /*const sf::Vector2f posFaceis[] =
     {
         sf::Vector2f(200, 515),
         sf::Vector2f(330, 515),
@@ -36,17 +36,23 @@ void Fase_Gelo::criarInimigos()
     const sf::Vector2f posChefes1[] =
     {
         sf::Vector2f(20, 520)
-    };
+    };*/
     
-    criarInimFaceis(posFaceis, sizeof(posFaceis) / sizeof(posFaceis[0]));//comum às duas fases (implementado na Fase)
-    criarInimChefes(posChefes1);//chefão exclusivo da fase 2
+    criarInimFaceis();//comum às duas fases (implementado na Fase)
+    criarInimChefes();//chefão exclusivo da fase 2
 }
 
-void Fase_Gelo::criarInimChefes(const sf::Vector2f posicoes[])
+void Fase_Gelo::criarInimChefes()
 {
-    Samurai* pC = new Samurai(posicoes[0].x, posicoes[0].y, &lista_ents, &GC);//só um chefão por fase
-    lista_ents.incluir(pC);
-    GC.incluirInimigo(pC);
+    int quantidade = sortearQuantInimigos();
+
+    for (int i = 0; i < quantidade; i++)
+    {
+        Samurai* pC = new Samurai(0, 0, &lista_ents, &GC);
+        posicionarEmPlataforma(pC);
+        lista_ents.incluir(pC);
+        GC.incluirInimigo(pC);
+    }
 }
 
 void Fase_Gelo::criarObstaculos()

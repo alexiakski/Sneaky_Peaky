@@ -61,6 +61,20 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimgs ()//alterei para incluir Jog
     }
 }
 
+void Gerenciador_Colisoes::tratarColisoesInimgsObstacs ()
+{
+    for (Inimigo *pI : LIs)
+    {
+        if (pI == nullptr) continue;
+
+        for (Obstaculo *pO : LOs)
+        {
+            if (pO != nullptr && verificarColisao(pI, pO))
+                pI->reposicionar(pO->getBounds());
+        }
+    }
+}
+
 bool Gerenciador_Colisoes::todosInimigosMortos() const
 {
     for (size_t i = 0; i < LIs.size(); i++)
@@ -153,6 +167,7 @@ void Gerenciador_Colisoes::incluirChao (Chao *pC)
 void Gerenciador_Colisoes::executar()
 {
     tratarColisoesChao();
+    tratarColisoesInimgsObstacs();
     tratarColisoesJogsObstacs();
     tratarColisoesJogsInimgs();
     tratarColisoesJogsProjeteis();

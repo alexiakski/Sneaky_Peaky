@@ -29,6 +29,8 @@ class Entidade : public Ente
         bool getAtivo() const;
         void setAtivo(bool ativo);
 
+        void setPosicao(float x, float y);
+
         virtual void executar() = 0;
 
         void salvarDataBuffer();

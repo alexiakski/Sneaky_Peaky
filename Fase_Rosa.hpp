@@ -14,7 +14,7 @@ class Fase_Rosa : public Fase
 
         //Fase 1 só terá inimigos fáceis e médios
         void criarInimigos();
-        void criarInimMedios(const sf::Vector2f posicoes[], int total);
+        void criarInimMedios();
 
         void criarObstaculos();
         void criarPlataformas();

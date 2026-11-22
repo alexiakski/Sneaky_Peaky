@@ -6,6 +6,10 @@
 #include "Gerenciador_Colisoes.hpp"
 #include "Jogador.hpp"
 
+#define MIN_INIMIGOS 3
+#define MAX_INIMIGOS 4
+
+#define NUM_PLATAFORMAS 11
 class Fase : public Ente
 {
     protected:
@@ -26,12 +30,15 @@ class Fase : public Ente
 
     protected:
 
-        void criarInimFaceis(const sf::Vector2f posicoes[], int total);
+        void criarInimFaceis();
+        int sortearQuantInimigos() const;
         void criarPlataformas();
         void criarJogadores(int numJog);
         void criarCenario();
         void setFundo (const std::string& caminho, sf::IntRect ladrilho);
         void criarChao(sf::IntRect recorte);
+        bool plataformaOcupada[NUM_PLATAFORMAS];
+        void posicionarEmPlataforma(Entidade* pE);
         
         virtual void criarInimigos() = 0;
         virtual void criarObstaculos() = 0;

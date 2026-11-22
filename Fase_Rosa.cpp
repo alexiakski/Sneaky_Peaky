@@ -25,7 +25,7 @@ Fase_Rosa::~Fase_Rosa()
 void Fase_Rosa::criarInimigos()
 {
     //inimigos vão ter opções de posicionamento no mapa
-    const sf::Vector2f posFaceis[] =
+    /*const sf::Vector2f posFaceis[] =
     {
         sf::Vector2f(40, 515),
         sf::Vector2f(240, 515),
@@ -38,18 +38,19 @@ void Fase_Rosa::criarInimigos()
         sf::Vector2f(130, 507),
         sf::Vector2f(330, 507),
         sf::Vector2f(530, 507)
-    };
+    };*/
     
-    criarInimFaceis(posFaceis, sizeof(posFaceis) / sizeof(posFaceis[0]));//comum às duas fases (implementado na Fase)
-    criarInimMedios(posMedios1, sizeof(posMedios1) / sizeof(posMedios1[0]));//médio exclusivo da fase 1
+    criarInimFaceis();//comum às duas fases (implementado na Fase)
+    criarInimMedios();//médio exclusivo da fase 1
 }
 
-void Fase_Rosa::criarInimMedios(const sf::Vector2f posicoes[], int total)
+void Fase_Rosa::criarInimMedios()
 {
-    int quantidade = 3 + rand() % (total - 3 + 1);  
+    int quantidade = sortearQuantInimigos();  
     for (int i = 0; i < quantidade; i++)
     {
-        Inim_DuendeAzul* pI = new Inim_DuendeAzul(posicoes[i].x, posicoes[i].y);
+        Inim_DuendeAzul* pI = new Inim_DuendeAzul(0,0);
+        posicionarEmPlataforma(pI);
         lista_ents.incluir(pI);
         GC.incluirInimigo(pI);
     }

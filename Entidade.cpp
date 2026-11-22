@@ -54,3 +54,12 @@ void Entidade::setAtivo(bool ativo)
 {
     this->ativo = ativo;
 }
+
+void Entidade::setPosicao(float x, float y)
+{
+    this->x = x;
+    this->y = y;
+
+    if (pFig != nullptr)
+        pFig->setPosition(x, y);
+}
