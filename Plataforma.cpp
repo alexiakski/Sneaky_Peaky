@@ -4,8 +4,8 @@ using namespace Entidades::Personagens;
 namespace Entidades::Obstaculos
 {
 
-Plataforma::Plataforma(float x, float y, float largura, float altura, float velocidadeY):
-Obstaculo(x, y, largura, altura), velocidadeY(velocidadeY)
+Plataforma::Plataforma(float x, float y, float largura, float altura, float velocidadeY)
+            :Obstaculo(x, y, largura, altura), velocidadeY(velocidadeY)
 {
     if (pFig != nullptr)
         {
