@@ -24,7 +24,7 @@ class Ente
         virtual sf::FloatRect getBounds() const;
     
         virtual void executar() = 0;
-        void desenhar();
+        virtual void desenhar();
         void static setGG(Gerenciadores::Gerenciador_Grafico *pGG);
 
         void setTextura(const std::string& caminho, sf::IntRect recorte = sf::IntRect()); //usa a imagem inteira ou um recorte

@@ -31,7 +31,7 @@ sf::RectangleShape* Ente::getFigura() const
 void Ente::desenhar()
 {
     if (pGG != nullptr)
-        pGG->desenhar(this);
+        pGG->desenhar(*pFig);
 }
 
 void Ente::setGG(Gerenciador_Grafico *pG)

@@ -1,11 +1,12 @@
 #include "stdafx.hpp"
 #include "Jogador.hpp"
 #include "Inimigo.hpp"
-
+#include "Gerenciador_Grafico.hpp"
 namespace Entidades::Personagens 
 {
 
-Jogador::Jogador(float x, float y, int largura, int altura, int num_jog) : Personagem(x, y, largura, altura, 3)//3?
+Jogador::Jogador(float x, float y, int largura, int altura, int num_jog)
+        : Personagem(x, y, largura, altura, MAX_VIDAS), coracao(sf::Vector2f(32, 32)), cX(num_jog == 1 ? 10 : 800 - 10 - 32)
 {
     pontos = 0;
     direcao = 0;    //começa olhando para baixo
@@ -26,6 +27,13 @@ Jogador::Jogador(float x, float y, int largura, int altura, int num_jog) : Perso
         teclaBaixo = sf::Keyboard::S;
         teclaEsquerda = sf::Keyboard::A;
         teclaDireita = sf::Keyboard::D;
+    }
+    
+    if (pGG != nullptr)
+    {
+        sf::Texture* pTex = pGG->carregarTextura("assets/Heart.png");
+        if (pTex != nullptr)
+            coracao.setTexture(pTex);
     }
 }
 
@@ -64,6 +72,21 @@ void Jogador::sofrerAtaque(int dano)
 void Jogador::salvar()
 {
     // Implementar no requisito 10
+}
+
+void Jogador::desenhar()
+{
+    Ente::desenhar();
+
+    if (pGG == nullptr)
+        return;
+
+    int quadro = num_vidas * 4 / MAX_VIDAS;//4 = cheio (vermelho), 0 = vazio (preto)
+
+    coracao.setTextureRect(sf::IntRect(quadro * 16, 0, 16, 16));
+    coracao.setPosition(cX, 10);
+    pGG->desenhar(coracao);
+    
 }
 
 void Jogador::mover()

@@ -25,7 +25,7 @@ class Gerenciador_Grafico
         bool estaAberta() const;
         void processarEventos(); 
         void limpar();
-        void desenhar(Ente* pE);
+        void desenhar(const sf::Drawable& d);
         void mostrar();
         void fechar();
 

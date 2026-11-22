@@ -2,6 +2,7 @@
 #define JOGADOR_HPP
 
 #include "Personagem.hpp"
+#define MAX_VIDAS 4
 
 namespace Entidades::Personagens
 {
@@ -18,6 +19,9 @@ class Jogador : public Personagem
         sf::Keyboard::Key teclaEsquerda;
         sf::Keyboard::Key teclaDireita;
         //jogador 1 usa up, down, left, right e jogador 2 usa w, s, a, d
+
+        sf::RectangleShape coracao;
+        float cX;//canto da tela onde ficam os corações
     
     public:
     
@@ -33,6 +37,7 @@ class Jogador : public Personagem
         void reposicionarJogObst(const sf::FloatRect& rectObstaculo);
         void reposicionarJogInim(const sf::FloatRect& rectInimigo);
 
+        void desenhar();
         void salvar();
         void mover();
         void executar();
