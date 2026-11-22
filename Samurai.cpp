@@ -11,9 +11,9 @@ namespace Entidades::Personagens
 {
 
 Samurai::Samurai(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC)
-        : Inimigo(x, y, 100, 46, 3, 5), pLista(pLista), pGC(pGC), recarga(0)
+        : Inimigo(x, y, 63, 35, 3, 5), pLista(pLista), pGC(pGC), recarga(0)
 {
-    setTextura("assets/SamuraiAzul.png", sf::IntRect(0, 0, 96, 44));//só a primeira pose
+    setTextura("assets/SamuraiAzul.png", sf::IntRect(13, 5, 70, 39));//só a primeira pose
 }
 
 Samurai::~Samurai()

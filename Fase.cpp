@@ -14,31 +14,31 @@ namespace Fases
 static const sf::FloatRect plataformas[MAX_PLATAFORMAS] =
 {
     //linha y=470 (colunas 0, 2, 4)
-    sf::FloatRect( 72, 470, 106, 40),
-    sf::FloatRect(354, 470, 106, 40),
-    sf::FloatRect(636, 470, 106, 40),
+    sf::FloatRect( 60, 470, 116, 46),
+    sf::FloatRect(342, 470, 116, 46),
+    sf::FloatRect(624, 470, 116, 46),
 
     //linha y=410 (colunas 1, 3)
-    sf::FloatRect(210, 410, 106, 40),
-    sf::FloatRect(498, 410, 106, 40),
+    sf::FloatRect(198, 410, 116, 46),
+    sf::FloatRect(486, 410, 116, 46),
 
     //linha y=350 (colunas 0, 2, 4)
-    sf::FloatRect( 72, 350, 106, 40),
-    sf::FloatRect(354, 350, 106, 40),
-    sf::FloatRect(636, 350, 106, 40),
+    sf::FloatRect( 60, 350, 116, 46),
+    sf::FloatRect(342, 350, 116, 46),
+    sf::FloatRect(624, 350, 116, 46),
 
     //linha y=290 (colunas 1, 3)
-    sf::FloatRect(210, 290, 106, 40),
-    sf::FloatRect(498, 290, 106, 40),
+    sf::FloatRect(198, 290, 116, 46),
+    sf::FloatRect(486, 290, 116, 46),
 
     //linha y=230 (colunas 0, 2, 4)
-    sf::FloatRect( 72, 230, 106, 40),
-    sf::FloatRect(354, 230, 106, 40),
-    sf::FloatRect(636, 230, 106, 40),
+    sf::FloatRect( 60, 230, 116, 46),
+    sf::FloatRect(342, 230, 116, 46),
+    sf::FloatRect(624, 230, 116, 46),
 
     //linha y=170 (colunas 1, 3)
-    sf::FloatRect(210, 170, 106, 40),
-    sf::FloatRect(498, 170, 106, 40)
+    sf::FloatRect(198, 170, 116, 46),
+    sf::FloatRect(486, 170, 116, 46)
 };
 
 static const float vagasChao[VAGAS_CHAO] = { 40, 130, 220, 310, 400, 490, 580 };
