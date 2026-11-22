@@ -1,22 +1,22 @@
 #include "stdafx.hpp"
 #include "Inim_DuendeAzul.hpp"
 
-Inim_Medio::Inim_Medio(float x, float y) : Inimigo(x, y, 60, 60, 2, 2)
+Inim_DuendeAzul::Inim_DuendeAzul(float x, float y) : Inimigo(x, y, 60, 60, 2, 2)
 {
     setTextura("assets/TenguAzul.png", sf::IntRect(0, 0, 68, 68));//só a primeira pose
 }
 
-Inim_Medio::~Inim_Medio()
+Inim_DuendeAzul::~Inim_DuendeAzul()
 {
 
 }
 
-void Inim_Medio::danificar(Jogador* pJog)
+void Inim_DuendeAzul::danificar(Jogador* pJog)
 {
 
 }
 
-void Inim_Medio::salvar()
+void Inim_DuendeAzul::salvar()
 {
 
 }

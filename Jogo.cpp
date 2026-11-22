@@ -33,10 +33,10 @@ void Jogo::executar()
             if (pFase == nullptr)//no menu: espera escolher a fase
             {
                 if (menu.getFase() == 1)//fase 1
-                    pFase = new Fase_one(menu.getNumJog());
+                    pFase = new Fase_Rosa(menu.getNumJog());
 
                 if (menu.getFase() == 2)//fase 2
-                    pFase = new Fase_two(menu.getNumJog());
+                    pFase = new Fase_Gelo(menu.getNumJog());
             }
 
             else if (menu.getFase() == 0)//escolheu voltar para o menu

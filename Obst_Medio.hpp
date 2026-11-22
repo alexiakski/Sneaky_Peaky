@@ -1,5 +1,5 @@
-#ifndef OBST_DIFICIL_HPP
-#define OBST_DIFICIL_HPP
+#ifndef OBST_MEDIO_HPP
+#define OBST_MEDIO_HPP
 
 #include "Obstaculo.hpp"
 

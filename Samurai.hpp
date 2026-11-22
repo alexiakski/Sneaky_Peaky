@@ -1,11 +1,11 @@
-#ifndef CHEFAO_HPP
-#define CHEFAO_HPP
+#ifndef SAMURAI_HPP
+#define SAMURAI_HPP
 
 #include "Inimigo.hpp"
 
 class ListaEntidades;
 class Gerenciador_Colisoes;
-class Chefao : public Inimigo
+class Samurai : public Inimigo
 {
     private:
 
@@ -15,8 +15,8 @@ class Chefao : public Inimigo
 
     public:
 
-        Chefao(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC);
-        ~Chefao();
+        Samurai(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC);
+        ~Samurai();
 
         void executar();
         void salvar();

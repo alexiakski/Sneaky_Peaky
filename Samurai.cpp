@@ -4,23 +4,23 @@
 #include "Lista_Entidades.hpp"
 #include "Gerenciador_Colisoes.hpp"
 
-Chefao::Chefao(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC)
+Samurai::Samurai(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC)
         : Inimigo(x, y, 100, 50, 3, 5), pLista(pLista), pGC(pGC), recarga(0)
 {
     setTextura("assets/SamuraiAzul.png", sf::IntRect(0, 0, 96, 48));//só a primeira pose
 }
 
-Chefao::~Chefao()
+Samurai::~Samurai()
 {
 
 }
 
-void Chefao::salvar()
+void Samurai::salvar()
 {
 
 }
 
-void Chefao::danificar (Jogador* pJog)
+void Samurai::danificar (Jogador* pJog)
 {
     if (pJog == nullptr)
         return;
@@ -28,7 +28,7 @@ void Chefao::danificar (Jogador* pJog)
     *pJog -= 2 * nivel_maldade;
 }
 
-void Chefao::executar()
+void Samurai::executar()
 {
     Inimigo::executar();
 

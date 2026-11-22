@@ -7,7 +7,7 @@
 #define NUM_OBST_SEGUROS 5
 #define NUM_OBST_DANOSOS 4
 
-Fase_two::Fase_two(int numJog) : Fase()
+Fase_Gelo::Fase_Gelo(int numJog) : Fase()
 {
     setTextura ("assets/TilesetFloor.png", sf::IntRect(0, 336, 160, 48));//fundo neve
 
@@ -17,12 +17,12 @@ Fase_two::Fase_two(int numJog) : Fase()
     criarInimigos();
 }
 
-Fase_two::~Fase_two()
+Fase_Gelo::~Fase_Gelo()
 {
 
 }
 
-void Fase_two::criarInimigos()
+void Fase_Gelo::criarInimigos()
 {
     //inimigos vão ter opções de posicionamento no mapa
     const sf::Vector2f posFaceis[] =
@@ -42,19 +42,19 @@ void Fase_two::criarInimigos()
     criarInimChefes(posChefes1);//chefão exclusivo da fase 2
 }
 
-void Fase_two::criarInimChefes(const sf::Vector2f posicoes[])
+void Fase_Gelo::criarInimChefes(const sf::Vector2f posicoes[])
 {
-    Chefao* pC = new Chefao(posicoes[0].x, posicoes[0].y, &lista_ents, &GC);//só um chefão por fase
+    Samurai* pC = new Samurai(posicoes[0].x, posicoes[0].y, &lista_ents, &GC);//só um chefão por fase
     lista_ents.incluir(pC);
     GC.incluirInimigo(pC);
 }
 
-void Fase_two::criarObstaculos()
+void Fase_Gelo::criarObstaculos()
 {
     criarObstaculosDificeis();
 }
 
-void Fase_two::criarObstaculosDificeis()
+void Fase_Gelo::criarObstaculosDificeis()
 {
     const sf::Vector2f posicoes[NUM_OBST_DANOSOS] =
     {

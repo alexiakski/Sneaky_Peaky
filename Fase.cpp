@@ -54,7 +54,7 @@ void Fase::criarInimFaceis(const sf::Vector2f posicoes[], int total)
 
     for (int i = 0; i < quantidade; i++)
     {
-        Inim_Facil* pI = new Inim_Facil(posicoes[i].x, posicoes[i].y);
+        Inim_Bambu* pI = new Inim_Bambu(posicoes[i].x, posicoes[i].y);
         lista_ents.incluir(pI);
         GC.incluirInimigo(pI);
     }

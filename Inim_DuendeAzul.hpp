@@ -1,20 +1,19 @@
-#ifndef INIMIGO_MEDIO_HPP
-#define INIMIGO_MEDIO_HPP
+#ifndef INIM_DUENDEAZUL_HPP
+#define INIM_DUENDEAZUL_HPP
 
 #include "Inimigo.hpp"
 
-class Inim_Medio : public Inimigo
+class Inim_DuendeAzul : public Inimigo
 {
     private:
 
         int largura, altura;    
         short int nivel_maldade;
-        //float força;
 
     public:
 
-        Inim_Medio(float x, float y);
-        ~Inim_Medio();
+        Inim_DuendeAzul(float x, float y);
+        ~Inim_DuendeAzul();
 
         void salvar();
         void danificar (Jogador* pJog);

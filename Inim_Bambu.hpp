@@ -1,15 +1,15 @@
-#ifndef INIMIGO_FACIL_HPP
-#define INIMIGO_FACIL_HPP 
+#ifndef INIM_BAMBU_HPP
+#define INIM_BAMBU_HPP 
 
 #include "Inimigo.hpp"
 
-class Inim_Facil : public Inimigo
+class Inim_Bambu : public Inimigo
 {
 
     public:
 
-        Inim_Facil(float x, float y);
-        ~Inim_Facil();
+        Inim_Bambu(float x, float y);
+        ~Inim_Bambu();
 
         void salvar();
         void danificar (Jogador* pJog);

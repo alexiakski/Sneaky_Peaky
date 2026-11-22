@@ -1,14 +1,14 @@
-#ifndef FASE_TWO_HPP
-#define FASE_TWO_HPP
+#ifndef FASE_GELO_HPP
+#define FASE_GELO_HPP
 
 #include "Fase.hpp"
 
-class Fase_two : public Fase
+class Fase_Gelo : public Fase
 {
     public:
 
-        Fase_two(int numJog);
-        ~Fase_two();
+        Fase_Gelo(int numJog);
+        ~Fase_Gelo();
 
     protected:
 
