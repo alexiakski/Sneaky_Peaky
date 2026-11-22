@@ -46,7 +46,7 @@ void Jogador::colidir(Inimigo* pIn)
     {
         *pIn -= 1;
         ++(*this);
-        velocidadeY = -10; 
+        velocidadeY = -6; 
     }
     else
     {

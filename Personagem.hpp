@@ -20,6 +20,8 @@ class Personagem : public Entidade
         int getNumVidas() const;
         void setNumVidas(int num_vidas);
 
+        float getVelocidadeY() const;
+
         void aplicarGravidade();
         void reposicionar(const sf::FloatRect &rect);
 
