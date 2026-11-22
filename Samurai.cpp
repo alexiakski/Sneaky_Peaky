@@ -11,7 +11,7 @@ namespace Entidades::Personagens
 {
 
 Samurai::Samurai(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC)
-        : Inimigo(x, y, 63, 35, 3, 5), pLista(pLista), pGC(pGC), recarga(0)
+        : Inimigo(x, y, 63, 35, 2, 3), pLista(pLista), pGC(pGC), recarga(0)
 {
     setTextura("assets/SamuraiAzul.png", sf::IntRect(13, 5, 70, 39));//só a primeira pose
 }
@@ -28,10 +28,8 @@ void Samurai::salvar()
 
 void Samurai::danificar (Jogador* pJog)
 {
-    if (pJog == nullptr)
-        return;
-
-    *pJog -= 2 * nivel_maldade;
+    if (pJog != nullptr)
+       pJog->sofrerAtaque(nivel_maldade);
 }
 
 void Samurai::executar()

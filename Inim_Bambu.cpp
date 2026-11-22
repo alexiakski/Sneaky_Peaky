@@ -16,7 +16,8 @@ Inim_Bambu::~Inim_Bambu()
 
 void Inim_Bambu::danificar(Jogador* pJog)
 {
-    
+    if (pJog != nullptr)
+        pJog->sofrerAtaque(nivel_maldade);
 }
 
 void Inim_Bambu::salvar()

@@ -4,7 +4,7 @@
 namespace Entidades::Personagens 
 {
 
-Inim_DuendeAzul::Inim_DuendeAzul(float x, float y) : Inimigo(x, y, 47, 29, 2, 2)
+Inim_DuendeAzul::Inim_DuendeAzul(float x, float y) : Inimigo(x, y, 47, 29, 1, 2), contador (0)
 {
     setTextura("assets/TenguAzul.png", sf::IntRect(7, 18, 53, 33));//só a primeira pose
 }
@@ -16,7 +16,8 @@ Inim_DuendeAzul::~Inim_DuendeAzul()
 
 void Inim_DuendeAzul::danificar(Jogador* pJog)
 {
-
+    if (pJog != nullptr)
+        pJog->sofrerAtaque(nivel_maldade);
 }
 
 void Inim_DuendeAzul::salvar()

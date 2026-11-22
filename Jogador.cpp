@@ -55,7 +55,7 @@ void Jogador::colidir(Inimigo* pIn)
 
     if (sobreposicao.width < sobreposicao.height)//encostou pelos lados: leva dano
     {
-        *this -= 1;
+        pIn->danificar(this);//chama o danificar() do inimigo
         reposicionarJogInim(boundsInimigo);
     }
     else if (boundsJogador.top < boundsInimigo.top)//veio de cima: pisou no inimigo
