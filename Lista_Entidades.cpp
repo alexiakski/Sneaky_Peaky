@@ -1,6 +1,11 @@
 #include "Lista_Entidades.hpp"
 #include "stdafx.hpp"
 
+using namespace Entidades;
+
+namespace Listas
+{
+
 ListaEntidades::ListaEntidades() : LEs()
 {
 
@@ -23,7 +28,9 @@ void ListaEntidades::percorrer()
     while (pAux != nullptr)
     {
         Entidade* pE = pAux->getInfo();
-        pE->executar();             //polimorfismo: chama o executar() do Jogador, Inimigo, ...
+
+        if (pE->getAtivo())//verifica se está vivo
+            pE->executar();             //polimorfismo: chama o executar() do Jogador, Inimigo, ...
         pAux = pAux->getProx();
     }
 }
@@ -34,7 +41,8 @@ void ListaEntidades::desenhar()
 
     while (pAux != nullptr)
     {
-        pAux->getInfo()->desenhar();
+        if (pAux->getInfo()->getAtivo())//verifica se está vivo
+            pAux->getInfo()->desenhar();
         pAux = pAux->getProx();
     }
 }
@@ -52,7 +60,9 @@ void ListaEntidades::limpar()
     LEs.limpar();                   //depois apaga os elementos
 }
 
-int ListaEntidades::getTamanho()
+int ListaEntidades::getTamanho() const
 {
     return LEs.getTamanho();
+}
+
 }

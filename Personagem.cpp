@@ -1,7 +1,11 @@
 #include "stdafx.hpp"
 #include "Personagem.hpp"
 
-Personagem::Personagem(float x, float y, int largura, int altura, int num_vidas) : Entidade(x, y, largura, altura), num_vidas(num_vidas), velocidadeY(0), chao(false)
+namespace Entidades::Personagens
+{
+
+Personagem::Personagem(float x, float y, int largura, int altura, int num_vidas)
+            : Entidade(x, y, largura, altura), num_vidas(num_vidas), velocidadeY(0), chao(false), invencivel(0)
 {
 
 }
@@ -11,7 +15,7 @@ Personagem::~Personagem()
 
 }
 
-int Personagem::getNumVidas()
+int Personagem::getNumVidas() const
 {
     return num_vidas;
 }
@@ -19,6 +23,16 @@ int Personagem::getNumVidas()
 void Personagem::setNumVidas(int num_vidas)
 {
     this->num_vidas = num_vidas;
+}
+
+float Personagem::getVelocidadeY() const
+{
+    return velocidadeY;
+}
+
+void Personagem::setVelocidadeY(float velocidadeY)
+{
+    this->velocidadeY = velocidadeY;
 }
 
 void Personagem::salvarDataBuffer()
@@ -51,10 +65,25 @@ void Personagem::reposicionar(const sf::FloatRect& r)
 
 Personagem& Personagem::operator-=(int dano)
 {
-    num_vidas -= dano;
+    if (invencivel <= 0)
+    {
+        num_vidas -= dano;
+        invencivel = 60;
 
-    if (num_vidas < 0)
-        num_vidas = 0;
+        if (num_vidas <= 0)
+        {
+            num_vidas = 0;
+            ativo = false;//morreu
+        }
+    }
 
     return *this;//devolve o próprio objeto
+}
+
+void Personagem::atualizarInvincibilidade()
+{
+    if (invencivel > 0)
+        invencivel--;
+}
+
 }

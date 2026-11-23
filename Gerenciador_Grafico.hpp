@@ -7,6 +7,9 @@
 
 
 class Ente;
+
+namespace Gerenciadores
+{
 class Gerenciador_Grafico
 {
     private:
@@ -19,14 +22,14 @@ class Gerenciador_Grafico
         Gerenciador_Grafico();
         ~Gerenciador_Grafico();
 
-        bool estaAberta();
+        bool estaAberta() const;
         void processarEventos(); 
         void limpar();
-        void desenhar(Ente* pE);
+        void desenhar(const sf::Drawable& d);
         void mostrar();
         void fechar();
 
         sf::Texture* carregarTextura(const std::string& caminho, sf::IntRect area = sf::IntRect());
 };
-
+}
 #endif

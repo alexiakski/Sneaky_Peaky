@@ -2,6 +2,8 @@
 #include "Ente.hpp"
 #include "Gerenciador_Grafico.hpp"
 
+using namespace Gerenciadores;
+
 int Ente::cont = 0;
 Gerenciador_Grafico* Ente::pGG = nullptr;
 
@@ -16,12 +18,12 @@ Ente::~Ente()
     pFig = nullptr;
 }
 
-int Ente::getId()
+int Ente::getId() const
 {
     return id;
 }
 
-sf::RectangleShape* Ente::getFigura()
+sf::RectangleShape* Ente::getFigura() const
 {
     return pFig;
 }
@@ -29,7 +31,7 @@ sf::RectangleShape* Ente::getFigura()
 void Ente::desenhar()
 {
     if (pGG != nullptr)
-        pGG->desenhar(this);
+        pGG->desenhar(*pFig);
 }
 
 void Ente::setGG(Gerenciador_Grafico *pG)

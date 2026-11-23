@@ -6,33 +6,54 @@
 #include "Gerenciador_Colisoes.hpp"
 #include "Jogador.hpp"
 
+#define MIN_INIMIGOS 3
+#define MAX_INIMIGOS 4
+#define MAX_PLATAFORMAS 15
+#define MIN_PLATAFORMAS 8
+#define MIN_OBSTACULOS 3
+#define MAX_OBSTACULOS 5
+#define VAGAS_CHAO 7
+namespace Fases
+{
 class Fase : public Ente
 {
     protected:
         
-        ListaEntidades lista_ents;
-        Gerenciador_Colisoes GC;
-        Jogador *pJog1;
-        Jogador *pJog2;
+        Listas::ListaEntidades lista_ents;
+        Gerenciadores::Gerenciador_Colisoes GC;
+        Entidades::Personagens::Jogador *pJog1;
+        Entidades::Personagens::Jogador *pJog2;
 
     public:
 
         Fase();
         virtual ~Fase();
         virtual void executar();
+        bool getFimDeJogo() const;
+        bool getVitoria() const;
+        int getPontos() const;
 
     protected:
 
-        void criarInimFaceis(const sf::Vector2f posicoes[], int total);
+        void criarInimFaceis();        
         void criarPlataformas();
         void criarJogadores(int numJog);
         void criarCenario();
-        void setFundo (const std::string& caminho, sf::IntRect ladrilho);
         void criarChao(sf::IntRect recorte);
+
+        int sortearQuant(int min, int max) const;
+        void setFundo (const std::string& caminho, sf::IntRect ladrilho);
+
+        bool plataformaOcupada[MAX_PLATAFORMAS];
+        void posicionarEmPlataforma(Entidades::Entidade* pE);
+
+        bool chaoOcupado[VAGAS_CHAO];
+        void posicionarNoChao(Entidades::Entidade* pE);
         
         virtual void criarInimigos() = 0;
         virtual void criarObstaculos() = 0;
 
 };
+}
 
 #endif

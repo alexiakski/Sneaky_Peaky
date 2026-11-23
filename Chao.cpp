@@ -3,6 +3,11 @@
 #include "Personagem.hpp"
 #include "Gerenciador_Grafico.hpp"
 
+using namespace Entidades::Personagens;
+
+namespace Entidades 
+{
+
 Chao::Chao(float x, float y, float largura, float altura, sf::IntRect recorte) : Entidade(x, y, largura, altura)
 {
     sf::Texture* pTex = pGG->carregarTextura("assets/TilesetField.png", recorte);//textura do chão
@@ -33,4 +38,5 @@ void Chao::executar()
 void Chao::salvar()
 {
     //Implementar no requisito 10
+}
 }

@@ -1,26 +1,26 @@
-#ifndef OBST_DIFICIL_HPP
-#define OBST_DIFICIL_HPP
+#ifndef OBST_MEDIO_HPP
+#define OBST_MEDIO_HPP
 
 #include "Obstaculo.hpp"
 
+namespace Entidades::Obstaculos 
+{
 class Obst_Medio : public Obstaculo
 {
     private:
 
-        short int danosidade;
+        float forca;
 
     public:
 
-        Obst_Medio(float x, float y,float largura, float altura, short int danosidade);
+        Obst_Medio(float x, float y,float largura, float altura, float forca);
         ~Obst_Medio();
 
-        short int getDanosidade();
-        void setDanosidade(short int danosidade);
-
-        virtual void executar() = 0;
+        virtual void executar();
         void salvarDataBuffer();
-        virtual void salvar() = 0;
-        void obstaculizar (Jogador *pJ);
+        virtual void salvar();
+        void obstaculizar (Personagens::Jogador *pJ);
 };
+}
 
 #endif

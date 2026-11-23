@@ -1,7 +1,9 @@
 #include "Entidade.hpp"
 
+namespace Entidades 
+{
 Entidade::Entidade(float x, float y, float largura, float altura) :
-Ente(), x(x), y(y), largura(largura),altura(altura)
+Ente(), x(x), y(y), largura(largura),altura(altura), ativo(true)
 {
     if (pFig != nullptr) {
         pFig->setPosition(x, y);
@@ -43,4 +45,24 @@ sf::FloatRect Entidade::getBounds() const
 void Entidade::salvarDataBuffer()
 {
     // implementar no requisito 10 (salvar jogada)  
+}
+
+bool Entidade::getAtivo() const
+{
+    return ativo;
+}
+
+void Entidade::setAtivo(bool ativo)
+{
+    this->ativo = ativo;
+}
+
+void Entidade::setPosicao(float x, float y)
+{
+    this->x = x;
+    this->y = y;
+
+    if (pFig != nullptr)
+        pFig->setPosition(x, y);
+}
 }

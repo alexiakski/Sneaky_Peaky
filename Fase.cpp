@@ -3,12 +3,55 @@
 #include "Gerenciador_Grafico.hpp"
 #include "Inim_Bambu.hpp"
 #include "Chao.hpp"
+#include "Plataforma.hpp"
 
-#define NUM_PLATAFORMAS 3
+using namespace Entidades;
+using namespace Entidades::Personagens;
+using namespace Entidades::Obstaculos;
+
+namespace Fases
+{
+static const sf::FloatRect plataformas[MAX_PLATAFORMAS] =
+{
+    //linha y=470 (colunas 0, 2, 4)
+    sf::FloatRect( 60, 470, 116, 46),
+    sf::FloatRect(342, 470, 116, 46),
+    sf::FloatRect(624, 470, 116, 46),
+
+    //linha y=410 (colunas 1, 3)
+    sf::FloatRect(198, 410, 116, 46),
+    sf::FloatRect(486, 410, 116, 46),
+
+    //linha y=350 (colunas 0, 2, 4)
+    sf::FloatRect( 60, 350, 116, 46),
+    sf::FloatRect(342, 350, 116, 46),
+    sf::FloatRect(624, 350, 116, 46),
+
+    //linha y=290 (colunas 1, 3)
+    sf::FloatRect(198, 290, 116, 46),
+    sf::FloatRect(486, 290, 116, 46),
+
+    //linha y=230 (colunas 0, 2, 4)
+    sf::FloatRect( 60, 230, 116, 46),
+    sf::FloatRect(342, 230, 116, 46),
+    sf::FloatRect(624, 230, 116, 46),
+
+    //linha y=170 (colunas 1, 3)
+    sf::FloatRect(198, 170, 116, 46),
+    sf::FloatRect(486, 170, 116, 46)
+};
+
+static const float vagasChao[VAGAS_CHAO] = { 40, 130, 220, 310, 400, 490, 580 };
 
 Fase::Fase() : Ente(), lista_ents(), GC(), pJog1(nullptr), pJog2(nullptr)
 {
     pFig->setSize(sf::Vector2f(800, 600));//tamanho do fundo = tamanho da janela
+
+    for (int i = 0; i < MAX_PLATAFORMAS; i++)
+        plataformaOcupada[i] = false;
+
+    for (int i = 0; i < VAGAS_CHAO; i++)
+        chaoOcupado[i] = false;
 }
 
 Fase::~Fase()
@@ -44,16 +87,18 @@ void Fase::criarJogadores(int numJog)
 void Fase::criarCenario()
 {
     criarPlataformas();
+    criarInimigos();
     criarObstaculos();//virtual pq chama o da Fase_one ou da Fase_two
 }
 
-void Fase::criarInimFaceis(const sf::Vector2f posicoes[], int total)
+void Fase::criarInimFaceis()
 {
-    int quantidade = 3 + rand() % (total - 3 + 1);
+    int quantidade = sortearQuant(MIN_INIMIGOS, MAX_INIMIGOS);
 
     for (int i = 0; i < quantidade; i++)
     {
-        Inim_Facil* pI = new Inim_Facil(posicoes[i].x, posicoes[i].y);
+        Inim_Bambu* pI = new Inim_Bambu(0,0);
+        posicionarEmPlataforma(pI);
         lista_ents.incluir(pI);
         GC.incluirInimigo(pI);
     }
@@ -61,11 +106,26 @@ void Fase::criarInimFaceis(const sf::Vector2f posicoes[], int total)
 
 void Fase::criarPlataformas()
 {
-    //quando a Plataforma existir (Talita, T3):
-    //Plataforma* pChao = new Plataforma(0, 550, 800, 50);
-    //lista_ents.incluir(pChao);
-    //GC.incluirObstaculo(pChao);
+    int quantidade = sortearQuant(MIN_PLATAFORMAS, MAX_PLATAFORMAS);
+
+    for (int i = 0; i < MAX_PLATAFORMAS; i++)
+    {
+        if (i >= quantidade)
+        {
+            plataformaOcupada[i] = true;//se a plataforma não existe ninguém é posicionado nela
+            continue;
+        }
+
+        Plataforma* pP = new Plataforma(plataformas[i].left, plataformas[i].top, plataformas[i].width, plataformas[i].height);
+        lista_ents.incluir(pP);
+        GC.incluirObstaculo(pP);
+    }
 }
+
+int Fase::sortearQuant(int min, int max) const
+{
+    return min + rand() % (max - min + 1);
+} 
 
 void Fase::setFundo(const std::string& caminho, sf::IntRect ladrilho)
 {
@@ -82,9 +142,84 @@ void Fase::setFundo(const std::string& caminho, sf::IntRect ladrilho)
     pFig->setTextureRect(sf::IntRect(0, 0, 267, 200)); //área maior que a textura = repete
 }
 
+void Fase::posicionarEmPlataforma(Entidade* pE)
+{
+    if (pE == nullptr)
+        return;
+
+    int livres[MAX_PLATAFORMAS];
+    int numLivres = 0;
+
+    for (int i = 0; i < MAX_PLATAFORMAS; i++)//junta os índices das plataformas livres
+        if (!plataformaOcupada[i])
+            livres[numLivres++] = i;
+
+    if (numLivres == 0)//todas vagas ocupadas: vai para o chão
+    {
+        posicionarNoChao(pE);
+        return;
+    }
+
+    int sorteada = livres[rand() % numLivres];
+    plataformaOcupada[sorteada] = true;//um inimigo por plataforma
+
+    const sf::FloatRect& p = plataformas[sorteada];
+    pE->setPosicao(p.left + (p.width - pE->getLargura()) / 2,p.top - pE->getAltura());
+}
+
+void Fase::posicionarNoChao(Entidade* pE)
+{
+    if (pE == nullptr)
+        return;
+
+    int livres[VAGAS_CHAO];
+    int numLivres = 0;
+
+    for (int i = 0; i < VAGAS_CHAO; i++)//junta os índices das vagas livres
+        if (!chaoOcupado[i])
+            livres[numLivres++] = i;
+
+    if (numLivres == 0)//sem vaga: x aleatório (último recurso)
+    {
+        pE->setPosicao(rand() % (int)(600 - pE->getLargura()), 552 - pE->getAltura());
+        return;
+    }
+
+    int sorteada = livres[rand() % numLivres];
+    chaoOcupado[sorteada] = true;
+
+    pE->setPosicao(vagasChao[sorteada], 552 - pE->getAltura());
+}
+
 void Fase::criarChao(sf::IntRect recorte)
 {
     Chao* pChao = new Chao(0, 552, 800, 48, recorte);//faixa de 48px
     lista_ents.incluir(pChao);
     GC.incluirChao(pChao);
+}
+
+bool Fase::getFimDeJogo() const
+{
+    bool vivo1 = (pJog1 != nullptr && pJog1->getAtivo());
+    bool vivo2 = (pJog2 != nullptr && pJog2->getAtivo());
+
+    return !vivo1 && !vivo2;//jogo termina quando todos os jogadores morrem
+}
+
+bool Fase::getVitoria() const
+{
+    return GC.todosInimigosMortos();// fase é vencida quando todos os inimigos são mortos
+}
+
+int Fase::getPontos() const
+{
+    int pontos = 0;
+
+    if(pJog1 != nullptr)
+        pontos += pJog1->getPontos();
+    if(pJog2 != nullptr)
+        pontos += pJog2->getPontos();
+    
+    return pontos;
+}
 }

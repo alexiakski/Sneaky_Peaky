@@ -5,25 +5,25 @@
 #include "Entidade.hpp"
 #include "Ente.hpp"
 
+namespace Listas
+{
 class ListaEntidades
 {
     private:
 
-        //Lista::Elemento *pInicio;
-        //Lista::Elemento *pFim;
-
-        Lista <Entidade> LEs;
+        Lista <Entidades::Entidade> LEs;
 
     public:
 
         ListaEntidades();
         ~ListaEntidades();
 
-        void incluir (Entidade *pEnt);
+        void incluir (Entidades::Entidade *pEnt);
         void limpar();
         void percorrer();
         void desenhar();
-        int getTamanho();
+        int getTamanho() const;
 };
+}
 
 #endif

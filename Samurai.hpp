@@ -1,18 +1,29 @@
-#ifndef CHEFAO_HPP
-#define CHEFAO_HPP
+#ifndef SAMURAI_HPP
+#define SAMURAI_HPP
 
 #include "Inimigo.hpp"
 
-class Chefao : public Inimigo
+namespace Listas { class ListaEntidades; }
+namespace Gerenciadores { class Gerenciador_Colisoes; }
+namespace Entidades::Personagens
 {
+class Samurai : public Inimigo
+{
+    private:
+
+        Listas::ListaEntidades* pLista;
+        Gerenciadores::Gerenciador_Colisoes* pGC;
+        int recarga;
 
     public:
 
-        Chefao(float x, float y);
-        ~Chefao();
+        Samurai(float x, float y, Listas::ListaEntidades* pLista, Gerenciadores::Gerenciador_Colisoes* pGC);
+        ~Samurai();
 
+        void executar();
         void salvar();
         void danificar (Jogador* pJog);
 };
+}
 
 #endif

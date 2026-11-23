@@ -1,24 +1,21 @@
 #include "Projetil.hpp"
 #include "Personagem.hpp"
 
-Projetil::Projetil(float x, float y, float largura, float altura, int dano) :
-Entidade(x, y, largura, altura), ativo(true), dano(dano)
+using namespace Entidades::Personagens;
+
+namespace Entidades 
 {
 
+Projetil::Projetil(float x, float y, float largura, float altura, int dano, float velocidade)
+        :Entidade(x, y, largura, altura), dano(dano), velocidade(velocidade)
+{
+    setTextura ("assets/Shuriken.png");
 }
 Projetil::~Projetil()
 {
 
 }
 
-bool Projetil::getAtivo() const
-{
-    return ativo;
-}
-void Projetil::setAtivo(bool ativo)
-{
-    this->ativo = ativo;
-}
 int Projetil::getDano() const
 {
     return dano;
@@ -42,7 +39,10 @@ void Projetil::mover()
 {
     if(ativo)
     {
-        x += 5;
+        x += velocidade;
+
+        if (x < -largura || x > 800 || y > 600)//saiu da janela
+            ativo = false;
 
         if(pFig != nullptr )
             pFig->setPosition(x, y);
@@ -61,4 +61,5 @@ void Projetil::salvar()
 void Projetil::salvarDataBuffer()
 {
     
+}
 }

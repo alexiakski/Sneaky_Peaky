@@ -4,6 +4,8 @@
 #include "Jogador.hpp"
 #include "Personagem.hpp"
 
+namespace Entidades::Personagens 
+{
 class Inimigo : public Personagem
 {
     protected:
@@ -22,11 +24,12 @@ class Inimigo : public Personagem
         
         void salvarDataBuffer();
         void mover();
-        void executar();
 
+        virtual void executar();
         virtual void danificar (Jogador* pJog) = 0;
         virtual void salvar() = 0;
         
 };
+}
 
 #endif

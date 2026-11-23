@@ -5,6 +5,8 @@
 #include "Entidade.hpp"
 #include "Jogador.hpp"
 
+namespace Entidades::Obstaculos 
+{
 class Obstaculo : public Entidade
 {
     protected:
@@ -20,10 +22,11 @@ class Obstaculo : public Entidade
         void setDanoso(bool danoso);
 
         virtual void executar() = 0;
-
         void salvarDataBuffer();
         virtual void salvar() = 0;
-        virtual void obstaculizar (Jogador *pJ);
+
+        virtual void obstaculizar (Personagens::Jogador *pJ) = 0;
 };
+}
 
 #endif

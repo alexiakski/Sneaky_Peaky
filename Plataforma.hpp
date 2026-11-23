@@ -3,24 +3,27 @@
 
 #include "Obstaculo.hpp"
 
+namespace Entidades::Obstaculos
+{
 class Plataforma : public Obstaculo
 {
     private:
 
-        int largura, altura;    
+        float velocidadeY;
 
     public:
 
-        Plataforma(int x, int y, int largura, int altura);
+        Plataforma(float x, float y, float largura, float altura, float velocidadeY = 0);
         ~Plataforma();
 
-        int getLargura();
-        int getAltura();
+        int getLargura() const;
+        int getAltura() const;
 
-        virtual void executar() = 0;
+        virtual void executar();
         void salvarDataBuffer();
-        virtual void salvar() = 0;
-        void obstaculizar (Jogador *pJ);
+        virtual void salvar();
+        void obstaculizar (Personagens::Jogador *pJ);
 };
+}
 
 #endif

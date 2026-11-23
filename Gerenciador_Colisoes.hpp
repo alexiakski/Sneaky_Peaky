@@ -9,34 +9,39 @@
 #include "Projetil.hpp"
 #include "Chao.hpp"
 
+namespace Gerenciadores
+{
 class Gerenciador_Colisoes
 {
     private:
 
-        vector<Inimigo*> LIs;
-        list <Obstaculo*> LOs;
-        set <Projetil*> LPs;
-        vector <Chao*> LCs;
-        Jogador *pJog1;
-        Jogador *pJog2;
+        vector<Entidades::Personagens::Inimigo*> LIs;
+        list <Entidades::Obstaculos::Obstaculo*> LOs;
+        set <Entidades::Projetil*> LPs;
+        vector <Entidades::Chao*> LCs;
+        Entidades::Personagens::Jogador *pJog1;
+        Entidades::Personagens::Jogador *pJog2;
 
     public:
 
        Gerenciador_Colisoes();
        ~Gerenciador_Colisoes();
        
-       const bool verificarColisao (Ente *pE1, Ente *pE2);
+       bool verificarColisao (Entidades::Entidade *pE1, Entidades::Entidade *pE2);
        void tratarColisoesJogsObstacs ();
        void tratarColisoesJogsInimgs ();
+       void tratarColisoesInimgsObstacs ();
+       bool todosInimigosMortos() const;
        void tratarColisoesJogsProjeteis ();
-       void incluirInimigo (Inimigo *pI);
-       void incluirObstaculo (Obstaculo *pO);
-       void incluirProjetil (Projetil *pP);
-       void incluirJogador (Jogador *pJ);
+       void incluirInimigo (Entidades::Personagens::Inimigo *pI);
+       void incluirObstaculo (Entidades::Obstaculos::Obstaculo *pO);
+       void incluirProjetil (Entidades::Projetil *pP);
+       void incluirJogador (Entidades::Personagens::Jogador *pJ);
        void tratarColisoesChao();
-       void incluirChao (Chao *pC);
+       void incluirChao (Entidades::Chao *pC);
 
        void executar();
 };
+}
 
 #endif

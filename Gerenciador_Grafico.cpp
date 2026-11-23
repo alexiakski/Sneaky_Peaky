@@ -1,6 +1,8 @@
 #include "Gerenciador_Grafico.hpp"
 #include "Ente.hpp"
 
+namespace Gerenciadores 
+{
 Gerenciador_Grafico::Gerenciador_Grafico() : janela(sf::VideoMode(800,600), "Sneaky Peaky")
 {
     janela.setFramerateLimit(60);
@@ -11,7 +13,7 @@ Gerenciador_Grafico::~Gerenciador_Grafico()
 
 }
 
-bool Gerenciador_Grafico::estaAberta()
+bool Gerenciador_Grafico::estaAberta() const
 {
     return janela.isOpen();
 }
@@ -31,10 +33,9 @@ void Gerenciador_Grafico::limpar()
     janela.clear();
 }
 
-void Gerenciador_Grafico::desenhar(Ente* pE)
+void Gerenciador_Grafico::desenhar(const sf::Drawable& d)
 {
-    if (pE != nullptr)
-        janela.draw(*pE->getFigura());
+    janela.draw(d);
 }
 
 void Gerenciador_Grafico::mostrar()
@@ -66,4 +67,5 @@ sf::Texture* Gerenciador_Grafico::carregarTextura(const std::string& caminho, sf
 void Gerenciador_Grafico::fechar()
 {
     janela.close();
+}
 }

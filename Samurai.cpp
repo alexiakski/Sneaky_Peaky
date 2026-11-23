@@ -1,31 +1,53 @@
 #include "stdafx.hpp"
 #include "Samurai.hpp"
+#include "Projetil.hpp"
+#include "Lista_Entidades.hpp"
+#include "Gerenciador_Colisoes.hpp"
 
-Chefao::Chefao(float x, float y) : Inimigo(x, y, 100, 50, 1, 5)
+using namespace Listas;
+using namespace Gerenciadores;
+
+namespace Entidades::Personagens 
 {
-    setTextura("assets/SamuraiAzul.png", sf::IntRect(0, 0, 96, 48));//só a primeira pose
+
+Samurai::Samurai(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC)
+        : Inimigo(x, y, 63, 35, 2, 3), pLista(pLista), pGC(pGC), recarga(0)
+{
+    setTextura("assets/SamuraiAzul.png", sf::IntRect(13, 5, 70, 39));//só a primeira pose
 }
 
-Chefao::~Chefao()
+Samurai::~Samurai()
 {
 
 }
 
-void Chefao::salvar()
+void Samurai::salvar()
 {
 
 }
 
-void Chefao::danificar (Jogador* pJog)
+void Samurai::danificar (Jogador* pJog)
 {
-    if (pJog == nullptr)
-        return;
+    if (pJog != nullptr)
+       pJog->sofrerAtaque(nivel_maldade);
+}
 
-    *pJog -= 2 * nivel_maldade;
+void Samurai::executar()
+{
+    Inimigo::executar();
 
-    /*int dano = 2 * nivel_maldade;
-    int vidasAtuais = pJog->getNumVidas();
-    pJog->setNumVidas(vidasAtuais - dano);*/
-    
-    //pJog->reposicionar(this->getBounds());
+    recarga++;
+    if (recarga >= 300)//a cada 5s
+    {
+        bool ladoD = (x + largura/2 > 400);//se está no lado direito da janela
+
+        float vel = ladoD ? -2.0f : 2.0f; 
+        float xTiro = ladoD ? x - 20 : x + largura;
+        
+        Projetil* pP = new Projetil (xTiro, y +10, 20, 20 ,1, vel);
+        pLista->incluir(pP);
+        pGC->incluirProjetil(pP);
+        recarga = 0;
+    }
+}
 }

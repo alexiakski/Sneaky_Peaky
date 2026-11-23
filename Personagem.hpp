@@ -3,6 +3,8 @@
 
 #include "Entidade.hpp"
 
+namespace Entidades::Personagens
+{
 class Personagem : public Entidade 
 {
     protected:
@@ -10,19 +12,25 @@ class Personagem : public Entidade
         int num_vidas;
         float velocidadeY;
         bool chao;
+        int invencivel;//para não levar danos seguidos
 
     public:
 
         Personagem(float x, float y, int largura, int altura, int num_vidas);
         virtual ~Personagem();
 
-        int getNumVidas();
+        int getNumVidas() const;
         void setNumVidas(int num_vidas);
+
+        float getVelocidadeY() const;
+        void setVelocidadeY(float velocidadeY);
 
         void aplicarGravidade();
         void reposicionar(const sf::FloatRect &rect);
 
         Personagem& operator-=(int dano);//sobrecarga de operadores
+
+        void atualizarInvincibilidade();
 
         virtual void salvarDataBuffer();
 
@@ -30,5 +38,6 @@ class Personagem : public Entidade
         virtual void mover() = 0;
         virtual void executar() = 0;
 };
+}
 
 #endif

@@ -1,6 +1,12 @@
 #include "Gerenciador_Colisoes.hpp"
 #include "Ente.hpp"
 
+using namespace Entidades;
+using namespace Entidades::Personagens;
+using namespace Entidades::Obstaculos;
+
+namespace Gerenciadores
+{
 Gerenciador_Colisoes::Gerenciador_Colisoes() : LIs(), LOs(), LPs(), LCs(), pJog1(nullptr), pJog2(nullptr)
 {
 
@@ -16,9 +22,12 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
     pJog2 = nullptr;
 }
 
-const bool Gerenciador_Colisoes::verificarColisao (Ente *pE1, Ente *pE2)
+bool Gerenciador_Colisoes::verificarColisao (Entidade *pE1, Entidade *pE2)
 {
     if(pE1 == NULL || pE2 == NULL)
+        return false;
+    
+    if(!pE1->getAtivo() || !pE2->getAtivo())//verifica se estão vivos
         return false;
 
     return (pE1->getBounds()).intersects(pE2->getBounds());
@@ -57,6 +66,29 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimgs ()//alterei para incluir Jog
         }
     }
 }
+
+void Gerenciador_Colisoes::tratarColisoesInimgsObstacs ()
+{
+    for (Inimigo *pI : LIs)
+    {
+        if (pI == nullptr) continue;
+
+        for (Obstaculo *pO : LOs)
+        {
+            if (pO != nullptr && verificarColisao(pI, pO))
+                pI->reposicionar(pO->getBounds());
+        }
+    }
+}
+
+bool Gerenciador_Colisoes::todosInimigosMortos() const
+{
+    for (size_t i = 0; i < LIs.size(); i++)
+        if(LIs[i] != nullptr && LIs[i]->getAtivo())//percorre todos os inimigos e verifica se eles estão vivos
+            return false;
+    return true;// se todos estiverem mortos
+}
+
 void Gerenciador_Colisoes::tratarColisoesJogsProjeteis ()//alterei para incluir Jog2
 {
     Jogador* jogs[2] = {pJog1, pJog2};
@@ -141,7 +173,9 @@ void Gerenciador_Colisoes::incluirChao (Chao *pC)
 void Gerenciador_Colisoes::executar()
 {
     tratarColisoesChao();
+    tratarColisoesInimgsObstacs();
     tratarColisoesJogsObstacs();
     tratarColisoesJogsInimgs();
     tratarColisoesJogsProjeteis();
 }   
+}

@@ -3,8 +3,9 @@
 
 #include "Entidade.hpp"
 
-class Personagem;
-
+namespace Entidades
+{
+    namespace Personagens {class Personagem;}
 class Chao : public Entidade
 {
     public:
@@ -12,10 +13,11 @@ class Chao : public Entidade
         Chao(float x, float y, float largura, float altura, sf::IntRect recorte);
         ~Chao();
 
-        void sustentar(Personagem* pP);
+        void sustentar(Personagens::Personagem* pP);
 
         void executar();
         void salvar();
 };
+}
 
 #endif

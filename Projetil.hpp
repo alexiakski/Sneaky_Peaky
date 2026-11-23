@@ -3,20 +3,19 @@
 
 #include "Entidade.hpp"
 
+namespace Entidades 
+{
 class Projetil : public Entidade
 {
     protected:
 
-        bool ativo;
         int dano;
+        float velocidade;
 
     public:
 
-        Projetil(float x, float y, float largura, float altura, int dano);
+        Projetil(float x, float y, float largura, float altura, int dano, float velocidade);
         virtual ~Projetil();
-
-        bool getAtivo() const;
-        void setAtivo(bool ativo);  
 
         int getDano() const;
 
@@ -27,5 +26,6 @@ class Projetil : public Entidade
         void salvar();
         void salvarDataBuffer();
 };
+}
 
 #endif

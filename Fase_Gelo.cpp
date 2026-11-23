@@ -1,61 +1,66 @@
 #include "stdafx.hpp"
 #include "Fase_Gelo.hpp"
 #include "Samurai.hpp"
+#include "Obst_Dificil.hpp"
+#include "Plataforma.hpp"
 
-#define NUM_OBST_SEGUROS 5
-#define NUM_OBST_DANOSOS 4
-
-Fase_two::Fase_two(int numJog) : Fase()
+using namespace Entidades::Personagens;
+using namespace Entidades::Obstaculos;
+namespace Fases 
+{
+Fase_Gelo::Fase_Gelo(int numJog) : Fase()
 {
     setTextura ("assets/TilesetFloor.png", sf::IntRect(0, 336, 160, 48));//fundo neve
 
     criarJogadores(numJog);
     criarChao(sf::IntRect(16, 192, 16, 48));//chão neve
     criarCenario();
-    criarInimigos();
 }
 
-Fase_two::~Fase_two()
+Fase_Gelo::~Fase_Gelo()
 {
 
 }
 
-void Fase_two::criarInimigos()
+void Fase_Gelo::criarInimigos()
+{    
+    criarInimFaceis();//comum às duas fases (implementado na Fase)
+    criarInimChefes();//chefão exclusivo da fase 2
+}
+
+void Fase_Gelo::criarInimChefes()
 {
-    //inimigos vão ter opções de posicionamento no mapa
-    const sf::Vector2f posFaceis[] =
+    int quantidade = sortearQuant(MIN_INIMIGOS, MAX_INIMIGOS);
+
+    for (int i = 0; i < quantidade; i++)
     {
-        sf::Vector2f(200, 515),
-        sf::Vector2f(330, 515),
-        sf::Vector2f(460, 515),
-        sf::Vector2f(590, 515)
-    };
-
-    const sf::Vector2f posChefes1[] =
-    {
-        sf::Vector2f(20, 520)
-    };
-    
-    criarInimFaceis(posFaceis, sizeof(posFaceis) / sizeof(posFaceis[0]));//comum às duas fases (implementado na Fase)
-    criarInimChefes(posChefes1);//chefão exclusivo da fase 2
+        Samurai* pC = new Samurai(0, 0, &lista_ents, &GC);
+        posicionarEmPlataforma(pC);
+        lista_ents.incluir(pC);
+        GC.incluirInimigo(pC);
+    }
 }
 
-void Fase_two::criarInimChefes(const sf::Vector2f posicoes[])
-{
-    Chefao* pC = new Chefao(posicoes[0].x, posicoes[0].y);//só um chefão por fase
-    lista_ents.incluir(pC);
-    GC.incluirInimigo(pC);
-}
-
-void Fase_two::criarObstaculos()
+void Fase_Gelo::criarObstaculos()
 {
     criarObstaculosDificeis();
 }
 
-void Fase_two::criarObstaculosDificeis()
+void Fase_Gelo::criarObstaculosDificeis()
 {
-    for (int i = 0; i < NUM_OBST_DANOSOS; i++)
+    int quantidade = sortearQuant(MIN_OBSTACULOS, MAX_OBSTACULOS);
+    
+    for (int i = 0; i < quantidade; i++)
     {
-        //Obst_Danoso* pO = new Obst_Danoso(...);  lista_ents.incluir(pO);  GC.incluirObstaculo(pO);
+        Obst_Dificil* pO = new Obst_Dificil(0, 0, 30, 30, 1);
+
+        if (i % 2 == 0)
+            posicionarEmPlataforma(pO);
+        else
+            posicionarNoChao(pO);
+
+        lista_ents.incluir(pO);
+        GC.incluirObstaculo(pO);
     }
+}
 }

@@ -4,6 +4,8 @@
 #include "Fase_Rosa.hpp"
 #include "Fase_Gelo.hpp"
 
+using namespace Fases;
+
 Jogo::Jogo() : GG(), menu(), pFase(nullptr)
 {
     Ente::setGG(&GG);//entes são conectados com gerenciador
@@ -33,10 +35,10 @@ void Jogo::executar()
             if (pFase == nullptr)//no menu: espera escolher a fase
             {
                 if (menu.getFase() == 1)//fase 1
-                    pFase = new Fase_one(menu.getNumJog());
+                    pFase = new Fase_Rosa(menu.getNumJog());
 
                 if (menu.getFase() == 2)//fase 2
-                    pFase = new Fase_two(menu.getNumJog());
+                    pFase = new Fase_Gelo(menu.getNumJog());
             }
 
             else if (menu.getFase() == 0)//escolheu voltar para o menu
@@ -47,7 +49,16 @@ void Jogo::executar()
         }
 
         else
+        {
             pFase->executar();
+
+            if (pFase->getFimDeJogo() || pFase->getVitoria())
+            {
+                menu.fimDeJogo(pFase->getPontos(), pFase->getVitoria());
+                delete pFase;
+                pFase = nullptr;
+            }
+        }
         
         GG.mostrar();
     }
