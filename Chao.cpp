@@ -37,6 +37,7 @@ void Chao::executar()
 
 void Chao::salvar()
 {
-    //Implementar no requisito 10
+    salvarDataBuffer();
+    ofstream("save/chao.txt", ios::app) << buffer.str() << '\n';
 }
 }

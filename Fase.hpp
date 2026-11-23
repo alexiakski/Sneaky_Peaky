@@ -32,6 +32,7 @@ class Fase : public Ente
         bool getFimDeJogo() const;
         bool getVitoria() const;
         int getPontos() const;
+        void salvar();
 
     protected:
 

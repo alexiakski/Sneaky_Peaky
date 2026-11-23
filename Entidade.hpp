@@ -14,7 +14,9 @@ class Entidade : public Ente
         float largura, altura;
         float gravidade = 0.5f;
         bool ativo;//se está vivo
-        //ostream buffer; salvamento-requisito 10
+        ostringstream buffer;
+
+        void salvarDataBuffer();
 
     public:
     
@@ -25,7 +27,6 @@ class Entidade : public Ente
         float getY() const;
         float getLargura() const;
         float getAltura() const;
-        //ostream getBuffer();
         sf::FloatRect getBounds() const override;
 
         bool getAtivo() const;
@@ -35,7 +36,6 @@ class Entidade : public Ente
 
         virtual void executar() = 0;
 
-        void salvarDataBuffer();
         virtual void salvar() = 0;
 };
 }

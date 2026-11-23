@@ -26,7 +26,10 @@ void Jogo::executar()
         GG.limpar();
 
         if (pFase != nullptr && sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))//ESC pausa
+        {
             menu.pausar();
+            pFase->salvar();
+        }
             
         if (pFase == nullptr || menu.getPausado())// no menu ou na pausa
         {

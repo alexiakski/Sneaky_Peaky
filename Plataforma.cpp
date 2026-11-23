@@ -32,13 +32,12 @@ void Plataforma::executar()
 {
 
 }
-void Plataforma::salvarDataBuffer()
-{
 
-}
 void Plataforma::salvar()
 {
-
+    salvarDataBuffer();
+    buffer << velocidadeY;
+    ofstream("save/plataforma.txt", ios::app) << buffer.str() << '\n';
 }
 
 void Plataforma::obstaculizar (Jogador *pJ)

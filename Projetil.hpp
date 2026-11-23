@@ -24,7 +24,6 @@ class Projetil : public Entidade
 
         void executar();
         void salvar();
-        void salvarDataBuffer();
 };
 }
 

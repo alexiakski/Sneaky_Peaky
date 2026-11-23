@@ -17,7 +17,6 @@ class Obst_Medio : public Obstaculo
         ~Obst_Medio();
 
         virtual void executar();
-        void salvarDataBuffer();
         virtual void salvar();
         void obstaculizar (Personagens::Jogador *pJ);
 };

@@ -26,6 +26,8 @@ void Obstaculo::setDanoso(bool danoso)
 
 void Obstaculo::salvarDataBuffer()
 {
+    Entidade::salvarDataBuffer();
+    buffer << danoso << ' ';
 
 }
 

@@ -22,13 +22,12 @@ void Obst_Medio::executar()
     if (pFig != nullptr)
         pFig->setPosition(x, y);
 }
-void Obst_Medio::salvarDataBuffer()
-{
 
-}
 void Obst_Medio::salvar()
 {
-
+    salvarDataBuffer();
+    buffer << forca;
+    ofstream("save/obst_medio.txt", ios::app) << buffer.str() << '\n';
 }
 void Obst_Medio::obstaculizar (Jogador *pJ)
 {

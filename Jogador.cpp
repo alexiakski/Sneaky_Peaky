@@ -79,7 +79,9 @@ void Jogador::sofrerAtaque(int dano)
 
 void Jogador::salvar()
 {
-    // Implementar no requisito 10
+    salvarDataBuffer();
+    buffer << (teclaCima == sf::Keyboard::Up ? 1 : 2) << ' ' << pontos;//jogador 1 ou 2
+    ofstream("save/jogador.txt", ios::app) << buffer.str() << '\n';
 }
 
 void Jogador::desenhar()

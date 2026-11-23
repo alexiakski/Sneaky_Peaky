@@ -22,7 +22,9 @@ void Inim_DuendeAzul::danificar(Jogador* pJog)
 
 void Inim_DuendeAzul::salvar()
 {
-
+    salvarDataBuffer();
+    buffer << contador;
+    ofstream("save/inim_duendeazul.txt", ios::app) << buffer.str() << '\n';
 }
 
 void Inim_DuendeAzul::executar()

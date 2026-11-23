@@ -44,7 +44,8 @@ sf::FloatRect Entidade::getBounds() const
 
 void Entidade::salvarDataBuffer()
 {
-    // implementar no requisito 10 (salvar jogada)  
+    buffer.str("");
+    buffer << x << ' ' << y << ' ' << ativo << ' ';
 }
 
 bool Entidade::getAtivo() const

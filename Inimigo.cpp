@@ -34,7 +34,8 @@ void Inimigo::colidir (Jogador *pJog)
 
 void Inimigo::salvarDataBuffer()
 {
-    //Implementar no requisito 10 #tomaraquedetempo
+    Personagem::salvarDataBuffer();
+    buffer << nivel_maldade << ' ';
 }
 
 void Inimigo::mover()

@@ -222,4 +222,16 @@ int Fase::getPontos() const
     
     return pontos;
 }
+
+void Fase::salvar()
+{
+    const string arquivos[] = {"jogador", "inim_bambu", "inim_duendeazul", "samurai", "projetil",
+                               "plataforma", "obst_medio", "obst_dificil", "chao"};
+
+    for (const string& a : arquivos)
+        ofstream("save/" + a + ".txt");//abre sem ios::app: apaga o salvamento anterior
+
+    lista_ents.salvar();
+}
+
 }

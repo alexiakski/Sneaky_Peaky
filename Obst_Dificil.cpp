@@ -37,11 +37,13 @@ void Obst_Dificil::executar()
 }
 void Obst_Dificil::salvarDataBuffer()
 {
-
+    Obstaculo::salvarDataBuffer();
+    buffer << danosidade << ' ';
 }
 void Obst_Dificil::salvar()
 {
-
+    salvarDataBuffer();
+    ofstream("save/obst_dificil.txt", ios::app) << buffer.str() << '\n';
 }
 void Obst_Dificil::obstaculizar (Jogador *pJ)
 {

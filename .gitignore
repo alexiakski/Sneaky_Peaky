@@ -432,4 +432,4 @@ jogo
 main
 
 ranking.txt
-save/
+save/*.txt
