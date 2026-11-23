@@ -62,7 +62,8 @@ void Jogador::colidir(Inimigo* pIn)
     else if (boundsJogador.top < boundsInimigo.top)//veio de cima: pisou no inimigo
     {
         *pIn -= 1;
-        ++(*this);
+        if (!pIn->getAtivo())
+                *this += pIn->getNivelMaldade() * 10;
         velocidadeY = -6;
     }
     else//veio de baixo: bate a cabeça e cai, sem dano
@@ -167,15 +168,22 @@ void Jogador::executar()
     mover();
 }
 
-Jogador& Jogador::operator++()
+/*Jogador& Jogador::operator++()
 {
     pontos++;
+    return *this;
+}*/
+
+Jogador& Jogador::operator+=(int pontos)
+{
+    this->pontos += pontos;
     return *this;
 }
 
 int Jogador::getPontos() const
 {
-    return pontos;
+    int total = pontos - (MAX_VIDAS - num_vidas);//1 ponto a menos por vida perdida
+    return total > 0 ? total : 0;//não fica negativo
 }
 
 void Jogador::reposicionarJogObst(const sf::FloatRect& rectObstaculo)

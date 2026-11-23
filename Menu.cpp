@@ -2,14 +2,22 @@
 #include "Menu.hpp"
 #include "Gerenciador_Grafico.hpp"
 
-Menu::Menu() : Ente (), tela(0), numJog(1), numFase(0), pontos(0), faseVencida(0), teclaPressionada(false)//1 jogador como padrão
+Menu::Menu() : Ente (), tela(0), numJog(1), numFase(0), pontos(0), faseVencida(0), telaFinal(0), teclaPressionada(false), nome("")//1 jogador como padrão
 {
-    
+    ifstream arq("ranking.txt");
+    string nome;
+    int pts;
+
+    while (arq >> nome >> pts)
+        ranking.insert({pts, nome});
+
 }
 
 Menu::~Menu()
 {
-
+    ofstream arq("ranking.txt");
+    for (auto& r : ranking)
+        arq << r.second << ' ' << r.first << '\n';
 }
 
 int Menu::getFase() const
@@ -64,10 +72,14 @@ void Menu::executar()
         escrever("4-VOLTAR", 400);
         break;
     case 3:
+    {
         escrever("RANKING", 140);
-        escrever("EM BREVE", 280);//leitura do arquivo
+        int i = 0;
+        for (auto it = ranking.begin(); it != ranking.end() && i < 5; it++, i++)
+            escrever(to_string(i + 1) + "-" + it->second + " " + to_string(it->first), 200 + i * 36);
         escrever("4-VOLTAR", 400);
         break;
+    }
     case 4:
         escrever("PAUSADO", 140);
         escrever("1-CONTINUAR", 220);
@@ -86,6 +98,11 @@ void Menu::executar()
             escrever("1-PROXIMA FASE", 300);
         escrever("4-VOLTAR PARA O MENU", 340);
         break;
+    case 7:
+    escrever("SEU NOME:", 140);
+    escrever(nome + "_", 220);
+    escrever("ENTER-CONFIRMAR", 400);
+    break;
 
     default:
         break;
@@ -94,6 +111,25 @@ void Menu::executar()
 
 void Menu::escolher()
 {
+    if (tela == 7)//digitando o nome
+    {
+        int k = sf::Keyboard::A;
+        while (k <= sf::Keyboard::Z && !sf::Keyboard::isKeyPressed((sf::Keyboard::Key)k))
+            k++;//para na letra apertada (ou passa do Z se nenhuma)
+        bool enter = sf::Keyboard::isKeyPressed(sf::Keyboard::Enter);
+
+        if (!teclaPressionada && enter && !nome.empty())
+        {
+            ranking.insert({pontos, nome});
+            tela = telaFinal;
+        }
+        else if (!teclaPressionada && k <= sf::Keyboard::Z && nome.size() < 8)
+            nome += 'A' + k;
+
+        teclaPressionada = (k <= sf::Keyboard::Z || enter);//uma letra por aperto
+        return;
+    }
+
     int tecla = 0;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
@@ -171,10 +207,11 @@ void Menu::fimDeJogo(int pontos, bool venceu)
     if (venceu)
     {
         faseVencida = numFase;
-        tela = 6;
+        telaFinal = 6;
     }
     else
-        tela = 5;
-        
+        telaFinal = 5;
+
+    tela = 7;
     numFase = 0;
 }

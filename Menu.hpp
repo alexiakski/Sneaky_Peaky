@@ -6,8 +6,11 @@ class Menu : public Ente
 {
     private:
 
-        int tela, numJog, numFase, pontos, faseVencida;
+        int tela, numJog, numFase, pontos, faseVencida, telaFinal;
         bool teclaPressionada;
+        string nome;
+
+        multimap<int, string, greater<int>> ranking;
 
     public:
 
