@@ -103,6 +103,12 @@ void Jogador::mover()
 {
     float velocidade = 2;
     bool andando = false;
+
+    if (lento > 0)//ar rarefeito
+    {
+        velocidade = 1;
+        lento--;
+    }
     
     //verifica o movimento do jogador
     if (sf::Keyboard::isKeyPressed(teclaCima) && chao)// não pula se já estiver no ar
@@ -262,6 +268,11 @@ void Jogador::reposicionarJogInim(const sf::FloatRect& rectInimigo)
 void Jogador::setEmpurraoX(float empurraoX)
 {
     this->empurraoX = empurraoX;
+}
+
+void Jogador::setLento(int lento)
+{
+    this->lento = lento;
 }
 
 }

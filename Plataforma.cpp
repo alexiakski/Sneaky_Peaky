@@ -30,7 +30,8 @@ int Plataforma::getAltura() const
 
 void Plataforma::executar()
 {
-
+    if (pFig != nullptr)
+        pFig->setPosition(x, y);
 }
 
 void Plataforma::salvar()
@@ -50,5 +51,8 @@ void Plataforma::obstaculizar (Jogador *pJ)
          pJ->getY() + pJ->getAltura() >= y - 5 && pJ->getY() + pJ->getAltura() <= y + 12 )
 
         pJ->reposicionar(this->getBounds());
+
+        if (y <= 170)//linha mais alta: ar rarefeito
+            pJ->setLento(30);//30 frames
 }
 }

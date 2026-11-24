@@ -14,6 +14,7 @@ class Jogador : public Personagem
         int pontos;
         int direcao, quadro, contador;//para animação
         float empurraoX;
+        int lento;
 
         sf::Keyboard::Key teclaCima;
         sf::Keyboard::Key teclaBaixo;
@@ -38,7 +39,9 @@ class Jogador : public Personagem
         
         void reposicionarJogObst(const sf::FloatRect& rectObstaculo);
         void reposicionarJogInim(const sf::FloatRect& rectInimigo);
+        
         void setEmpurraoX(float empurraoX);
+        void setLento(int lento);
 
         void desenhar();
         void salvar();
