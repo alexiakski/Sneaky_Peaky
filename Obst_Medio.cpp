@@ -8,8 +8,10 @@ Obst_Medio::Obst_Medio(float x, float y, float largura, float altura, float forc
             :Obstaculo(x, y, largura, altura), forca(forca)
 {
     if (pFig != nullptr)
-            pFig->setPosition(x, y);
-        
+    { 
+        pFig->setPosition(x, y);
+        setTextura("assets/TilesetNature.png", sf::IntRect(48, 256, 16, 16));
+    }        
 }
 
 Obst_Medio::~Obst_Medio()

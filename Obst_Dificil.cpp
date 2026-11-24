@@ -10,7 +10,7 @@ Obst_Dificil::Obst_Dificil(float x, float y, float largura, float altura, short 
     if (pFig != nullptr)
         {
             pFig->setPosition(x, y);
-            //setTextura("assets/TilesetNature.png", sf::IntRect(0, 0, 96, 48));//qual recorte?
+            setTextura("assets/TilesetNature.png", sf::IntRect(64, 144, 16, 16));
         }
 }
 
