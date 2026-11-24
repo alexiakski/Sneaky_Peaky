@@ -9,7 +9,7 @@ class Fase_Gelo : public Fase
 {
     public:
 
-        Fase_Gelo(int numJog);
+        Fase_Gelo(int numJog, bool recuperar = false);
         ~Fase_Gelo();
 
     protected:

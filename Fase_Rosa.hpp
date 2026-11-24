@@ -9,7 +9,7 @@ class Fase_Rosa : public Fase
 {   
     public:
 
-        Fase_Rosa(int numJog);
+        Fase_Rosa(int numJog, bool recuperar = false);
         ~Fase_Rosa();
 
     protected:

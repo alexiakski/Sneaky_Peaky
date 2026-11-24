@@ -69,6 +69,7 @@ void Menu::executar()
         escrever("FASES", 140);
         escrever("1-FASE 1", 220);
         escrever("2-FASE 2", 280);
+        escrever("3-CARREGAR JOGO", 340);
         escrever("4-VOLTAR", 400);
         break;
     case 3:
@@ -182,7 +183,7 @@ void Menu::escolher()
         tela = 0;
     }
 
-    else if (tela == 2 && tecla <= 2)
+    else if (tela == 2 && tecla <= 3)
         numFase = tecla;//o Jogo cria a fase quando getFase() != 0
 }
 

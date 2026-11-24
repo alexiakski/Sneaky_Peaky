@@ -8,13 +8,20 @@ using namespace Entidades::Personagens;
 using namespace Entidades::Obstaculos;
 namespace Fases 
 {
-Fase_Gelo::Fase_Gelo(int numJog) : Fase()
+Fase_Gelo::Fase_Gelo(int numJog, bool recuperar) : Fase()
 {
     setTextura ("assets/TilesetFloor.png", sf::IntRect(0, 336, 160, 48));//fundo neve
 
-    criarJogadores(numJog);
     criarChao(sf::IntRect(16, 192, 16, 48));//chão neve
-    criarCenario();
+
+    if (recuperar)
+        Fase::recuperar();
+    
+    else
+    {
+        criarJogadores(numJog);
+        criarCenario();
+    }
 }
 
 Fase_Gelo::~Fase_Gelo()

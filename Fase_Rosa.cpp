@@ -8,13 +8,20 @@ using namespace Entidades::Personagens;
 using namespace Entidades::Obstaculos;
 namespace Fases 
 {
-Fase_Rosa::Fase_Rosa(int numJog) : Fase()
+Fase_Rosa::Fase_Rosa(int numJog, bool recuperar) : Fase()
 {
     setTextura ("assets/TilesetFloor.png", sf::IntRect(176, 0, 160, 64));
 
-    criarJogadores(numJog);
     criarChao(sf::IntRect(16, 144, 16, 48));//chão rosa
-    criarCenario();
+
+    if (recuperar)
+        Fase::recuperar();
+    
+    else
+    {
+        criarJogadores(numJog);
+        criarCenario();
+    }
 }
 
 Fase_Rosa::~Fase_Rosa()

@@ -50,6 +50,8 @@ class Fase : public Ente
 
         bool chaoOcupado[VAGAS_CHAO];
         void posicionarNoChao(Entidades::Entidade* pE);
+
+        void recuperar();
         
         virtual void criarInimigos() = 0;
         virtual void criarObstaculos() = 0;
