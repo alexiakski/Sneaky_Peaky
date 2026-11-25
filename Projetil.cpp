@@ -56,10 +56,12 @@ void Projetil::executar()
 }
 void Projetil::salvar()
 {
+    if (!ativo)
+        return;
 
+    salvarDataBuffer();
+    buffer << dano << ' ' << velocidade;
+    ofstream("save/projetil.txt", ios::app) << buffer.str() << '\n';
 }
-void Projetil::salvarDataBuffer()
-{
-    
-}
+
 }

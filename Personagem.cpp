@@ -37,7 +37,8 @@ void Personagem::setVelocidadeY(float velocidadeY)
 
 void Personagem::salvarDataBuffer()
 {
-    //Implentar no requisito 10
+    Entidade::salvarDataBuffer();
+    buffer << num_vidas << ' ' << velocidadeY << ' ' << invencivel << ' ';
 }
 
 void Personagem::aplicarGravidade()

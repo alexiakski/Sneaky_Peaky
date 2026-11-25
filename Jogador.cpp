@@ -62,7 +62,8 @@ void Jogador::colidir(Inimigo* pIn)
     else if (boundsJogador.top < boundsInimigo.top)//veio de cima: pisou no inimigo
     {
         *pIn -= 1;
-        ++(*this);
+        if (!pIn->getAtivo())
+                *this += pIn->getNivelMaldade() * 10;
         velocidadeY = -6;
     }
     else//veio de baixo: bate a cabeça e cai, sem dano
@@ -78,7 +79,9 @@ void Jogador::sofrerAtaque(int dano)
 
 void Jogador::salvar()
 {
-    // Implementar no requisito 10
+    salvarDataBuffer();
+    buffer << (teclaCima == sf::Keyboard::Up ? 1 : 2) << ' ' << pontos;//jogador 1 ou 2
+    ofstream("save/jogador.txt", ios::app) << buffer.str() << '\n';
 }
 
 void Jogador::desenhar()
@@ -100,6 +103,12 @@ void Jogador::mover()
 {
     float velocidade = 2;
     bool andando = false;
+
+    if (lento > 0)//ar rarefeito
+    {
+        velocidade = 1;
+        lento--;
+    }
     
     //verifica o movimento do jogador
     if (sf::Keyboard::isKeyPressed(teclaCima) && chao)// não pula se já estiver no ar
@@ -130,7 +139,7 @@ void Jogador::mover()
         andando = true;
     }
 
-    x += empurraoX;//obstaculo medio
+    x += empurraoX;//obst_slime
     empurraoX *= 0.9f;
 
     if (x < 0)//chão
@@ -167,15 +176,22 @@ void Jogador::executar()
     mover();
 }
 
-Jogador& Jogador::operator++()
+/*Jogador& Jogador::operator++()
 {
     pontos++;
+    return *this;
+}*/
+
+Jogador& Jogador::operator+=(int pontos)
+{
+    this->pontos += pontos;
     return *this;
 }
 
 int Jogador::getPontos() const
 {
-    return pontos;
+    int total = pontos - (MAX_VIDAS - num_vidas);//1 ponto a menos por vida perdida
+    return total > 0 ? total : 0;//não fica negativo
 }
 
 void Jogador::reposicionarJogObst(const sf::FloatRect& rectObstaculo)
@@ -252,6 +268,11 @@ void Jogador::reposicionarJogInim(const sf::FloatRect& rectInimigo)
 void Jogador::setEmpurraoX(float empurraoX)
 {
     this->empurraoX = empurraoX;
+}
+
+void Jogador::setLento(int lento)
+{
+    this->lento = lento;
 }
 
 }

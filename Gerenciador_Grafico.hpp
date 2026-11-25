@@ -3,8 +3,6 @@
 
 #include "stdafx.hpp"
 #include <SFML/Graphics.hpp>
-#include <map>//para guardar as imagens - só precisa carregar uma vez
-
 
 class Ente;
 
@@ -15,7 +13,7 @@ class Gerenciador_Grafico
     private:
 
         sf::RenderWindow janela;
-        std::map<std::string, sf::Texture> texturas;
+        std::map<std::string, sf::Texture> texturas;//para guardar as imagens - só precisa carregar uma vez
 
     public:
 

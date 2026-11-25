@@ -9,7 +9,7 @@ class Fase_Gelo : public Fase
 {
     public:
 
-        Fase_Gelo(int numJog);
+        Fase_Gelo(int numJog, bool recuperar = false);
         ~Fase_Gelo();
 
     protected:
@@ -19,7 +19,7 @@ class Fase_Gelo : public Fase
         void criarInimChefes();
 
         void criarObstaculos();
-        void criarObstaculosDificeis();
+        void criarObstEspinhos();
 
 };
 }

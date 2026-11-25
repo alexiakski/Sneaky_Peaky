@@ -430,3 +430,6 @@ FodyWeavers.xsd
 # Executáveis
 jogo
 main
+
+ranking.txt
+save/*.txt

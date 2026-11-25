@@ -23,7 +23,9 @@ Samurai::~Samurai()
 
 void Samurai::salvar()
 {
-
+    salvarDataBuffer();
+    buffer << recarga;
+    ofstream("save/samurai.txt", ios::app) << buffer.str() << '\n';
 }
 
 void Samurai::danificar (Jogador* pJog)

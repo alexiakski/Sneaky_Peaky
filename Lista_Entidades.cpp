@@ -65,4 +65,15 @@ int ListaEntidades::getTamanho() const
     return LEs.getTamanho();
 }
 
+void ListaEntidades::salvar()
+{
+    Lista<Entidade>::Elemento* pAux = LEs.getPrimeiro();
+
+    while (pAux != nullptr)
+    {
+        pAux->getInfo()->salvar();//polimorfismo: cada classe grava no seu arquivo
+        pAux = pAux->getProx();
+    }
+}
+
 }

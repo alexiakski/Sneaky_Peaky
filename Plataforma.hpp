@@ -20,7 +20,6 @@ class Plataforma : public Obstaculo
         int getAltura() const;
 
         virtual void executar();
-        void salvarDataBuffer();
         virtual void salvar();
         void obstaculizar (Personagens::Jogador *pJ);
 };

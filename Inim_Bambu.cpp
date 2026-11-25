@@ -22,7 +22,9 @@ void Inim_Bambu::danificar(Jogador* pJog)
 
 void Inim_Bambu::salvar()
 {
-    //Implementar no requisito 10 #tomaraquedetempo
+    salvarDataBuffer();
+    buffer << contador << ' ' << direcao;
+    ofstream("save/inim_bambu.txt", ios::app) << buffer.str() << '\n';
 }
 
 void Inim_Bambu::executar()

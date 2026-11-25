@@ -4,6 +4,11 @@
 #include "Inim_Bambu.hpp"
 #include "Chao.hpp"
 #include "Plataforma.hpp"
+#include "Inim_DuendeAzul.hpp"
+#include "Samurai.hpp"
+#include "Obst_Slime.hpp"
+#include "Obst_Espinhos.hpp"
+#include "Projetil.hpp"
 
 using namespace Entidades;
 using namespace Entidades::Personagens;
@@ -222,4 +227,103 @@ int Fase::getPontos() const
     
     return pontos;
 }
+
+void Fase::salvar()
+{
+    const string arquivos[] = {"jogador", "inim_bambu", "inim_duendeazul", "samurai", "projetil",
+                               "plataforma", "obst_slime", "obst_espinhos", "chao"};
+
+    for (const string& a : arquivos)
+        ofstream("save/" + a + ".txt");//abre sem ios::app: apaga o salvamento anterior
+
+    lista_ents.salvar();
+}
+
+void Fase::recuperar()
+{
+    float x, y, velY, valor;
+    bool ativo, danoso;
+    int vidas, invenc, nivel, num, pts;
+    string linha;
+
+    //jogadores: cria 1 ou 2 como no jogo normal e depois aplica o estado salvo
+    vector<string> linhas;
+    ifstream arqJ("save/jogador.txt");
+    while (getline(arqJ, linha))
+        linhas.push_back(linha);
+
+    criarJogadores(linhas.size());
+
+    for (const string& l : linhas)
+    {
+        istringstream in(l);
+        in >> x >> y >> ativo >> vidas >> velY >> invenc >> num >> pts;
+
+        Jogador* pJ = (num == 1) ? pJog1 : pJog2;
+        pJ->setPosicao(x, y);
+        pJ->setAtivo(ativo);
+        pJ->setNumVidas(vidas);
+        pJ->setVelocidadeY(velY);
+        *pJ += pts;
+    }
+
+    //inimigos: os três arquivos começam com os mesmos 7 campos
+    const string inimigos[] = {"inim_bambu", "inim_duendeazul", "samurai"};
+
+    for (int t = 0; t < 3; t++)
+    {
+        ifstream arq("save/" + inimigos[t] + ".txt");
+
+        while (arq >> x >> y >> ativo >> vidas >> velY >> invenc >> nivel)
+        {
+            getline(arq, linha);//resto da linha (contador, direcao, recarga): recomeçam do zero
+
+            Inimigo* pI;
+            if (t == 0)
+                pI = new Inim_Bambu(x, y);
+            else if (t == 1)
+                pI = new Inim_DuendeAzul(x, y);
+            else
+                pI = new Samurai(x, y, &lista_ents, &GC);
+
+            pI->setAtivo(ativo);
+            pI->setNumVidas(vidas);
+            pI->setVelocidadeY(velY);
+            lista_ents.incluir(pI);
+            GC.incluirInimigo(pI);
+        }
+    }
+
+    //obstáculos: x y ativo danoso + o atributo próprio de cada um
+    const string obstaculos[] = {"plataforma", "obst_slime", "obst_espinhos"};
+
+    for (int t = 0; t < 3; t++)
+    {
+        ifstream arq("save/" + obstaculos[t] + ".txt");
+
+        while (arq >> x >> y >> ativo >> danoso >> valor)
+        {
+            Obstaculo* pO;
+            if (t == 0)
+                pO = new Plataforma(x, y, 116, 46, valor);//valor = velocidadeY
+            else if (t == 1)
+                pO = new Obst_Slime(x, y, 30, 30, valor);//valor = forca
+            else
+                pO = new Obst_Espinhos(x, y, 30, 30, valor);//valor = danosidade
+
+            lista_ents.incluir(pO);
+            GC.incluirObstaculo(pO);
+        }
+    }
+
+    //projéteis: x y ativo dano velocidade
+    ifstream arqP("save/projetil.txt");
+    while (arqP >> x >> y >> ativo >> num >> valor)
+    {
+        Projetil* pP = new Projetil(x, y, 20, 20, num, valor);//num = dano, valor = velocidade
+        lista_ents.incluir(pP);
+        GC.incluirProjetil(pP);
+    }
+}
+
 }

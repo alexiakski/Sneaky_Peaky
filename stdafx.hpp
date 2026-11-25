@@ -7,4 +7,6 @@
 #include <cstdlib>
 #include <list>
 #include <set>
+#include <map>
+#include <sstream>
 using namespace std;
