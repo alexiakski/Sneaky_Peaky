@@ -1,11 +1,11 @@
-#ifndef OBST_DIFICIL_HPP
-#define OBST_DIFICIL_HPP
+#ifndef OBST_ESPINHOS_HPP
+#define OBST_ESPINHOS_HPP
 
 #include "Obstaculo.hpp"
 
 namespace Entidades::Obstaculos 
 {
-class Obst_Dificil : public Obstaculo
+class Obst_Espinhos : public Obstaculo
 {
     private:
       
@@ -13,8 +13,8 @@ class Obst_Dificil : public Obstaculo
 
     public:
 
-        Obst_Dificil(float x, float y, float largura, float altura, short int danosidade);
-        ~Obst_Dificil();
+        Obst_Espinhos(float x, float y, float largura, float altura, short int danosidade);
+        ~Obst_Espinhos();
 
         short int getDanosidade() const;
         void setDanosidade(short int danosidade);

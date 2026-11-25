@@ -1,7 +1,7 @@
 #include "stdafx.hpp"
 #include "Fase_Gelo.hpp"
 #include "Samurai.hpp"
-#include "Obst_Dificil.hpp"
+#include "Obst_Espinhos.hpp"
 #include "Plataforma.hpp"
 
 using namespace Entidades::Personagens;
@@ -50,16 +50,16 @@ void Fase_Gelo::criarInimChefes()
 
 void Fase_Gelo::criarObstaculos()
 {
-    criarObstaculosDificeis();
+    criarObstEspinhos();
 }
 
-void Fase_Gelo::criarObstaculosDificeis()
+void Fase_Gelo::criarObstEspinhos()
 {
     int quantidade = sortearQuant(MIN_OBSTACULOS, MAX_OBSTACULOS);
     
     for (int i = 0; i < quantidade; i++)
     {
-        Obst_Dificil* pO = new Obst_Dificil(0, 0, 30, 30, 1);
+        Obst_Espinhos* pO = new Obst_Espinhos(0, 0, 30, 30, 1);
 
         if (i % 2 == 0)
             posicionarEmPlataforma(pO);

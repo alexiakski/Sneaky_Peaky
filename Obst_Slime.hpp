@@ -1,11 +1,11 @@
-#ifndef OBST_MEDIO_HPP
-#define OBST_MEDIO_HPP
+#ifndef OBST_SLIME_HPP
+#define OBST_SLIME_HPP
 
 #include "Obstaculo.hpp"
 
 namespace Entidades::Obstaculos 
 {
-class Obst_Medio : public Obstaculo
+class Obst_Slime : public Obstaculo
 {
     private:
 
@@ -13,8 +13,8 @@ class Obst_Medio : public Obstaculo
 
     public:
 
-        Obst_Medio(float x, float y,float largura, float altura, float forca);
-        ~Obst_Medio();
+        Obst_Slime(float x, float y,float largura, float altura, float forca);
+        ~Obst_Slime();
 
         virtual void executar();
         virtual void salvar();

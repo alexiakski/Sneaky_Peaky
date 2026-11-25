@@ -1,10 +1,10 @@
-#include "Obst_Dificil.hpp"
+#include "Obst_Espinhos.hpp"
 
 using namespace Entidades::Personagens;
 
 namespace Entidades::Obstaculos 
 {
-Obst_Dificil::Obst_Dificil(float x, float y, float largura, float altura, short int danosidade)
+Obst_Espinhos::Obst_Espinhos(float x, float y, float largura, float altura, short int danosidade)
             :Obstaculo(x, y, largura, altura), danosidade(danosidade)
 {
     if (pFig != nullptr)
@@ -14,38 +14,38 @@ Obst_Dificil::Obst_Dificil(float x, float y, float largura, float altura, short 
         }
 }
 
-Obst_Dificil::~Obst_Dificil()
+Obst_Espinhos::~Obst_Espinhos()
 {
 
 }
 
-short int Obst_Dificil::getDanosidade() const
+short int Obst_Espinhos::getDanosidade() const
 {
     return danosidade;
 }
-void Obst_Dificil::setDanosidade(short int danosidade)
+void Obst_Espinhos::setDanosidade(short int danosidade)
 {
     this->danosidade = danosidade;
 }
 
-void Obst_Dificil::executar() 
+void Obst_Espinhos::executar() 
 {
     if (pFig != nullptr)
     {
         pFig->setPosition(x, y);
     }
 }
-void Obst_Dificil::salvarDataBuffer()
+void Obst_Espinhos::salvarDataBuffer()
 {
     Obstaculo::salvarDataBuffer();
     buffer << danosidade << ' ';
 }
-void Obst_Dificil::salvar()
+void Obst_Espinhos::salvar()
 {
     salvarDataBuffer();
-    ofstream("save/obst_dificil.txt", ios::app) << buffer.str() << '\n';
+    ofstream("save/obst_espinhos.txt", ios::app) << buffer.str() << '\n';
 }
-void Obst_Dificil::obstaculizar (Jogador *pJ)
+void Obst_Espinhos::obstaculizar (Jogador *pJ)
 {
     if (pJ == nullptr) 
         return;

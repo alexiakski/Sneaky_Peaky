@@ -19,7 +19,7 @@ class Fase_Gelo : public Fase
         void criarInimChefes();
 
         void criarObstaculos();
-        void criarObstaculosDificeis();
+        void criarObstEspinhos();
 
 };
 }

@@ -6,8 +6,8 @@
 #include "Plataforma.hpp"
 #include "Inim_DuendeAzul.hpp"
 #include "Samurai.hpp"
-#include "Obst_Medio.hpp"
-#include "Obst_Dificil.hpp"
+#include "Obst_Slime.hpp"
+#include "Obst_Espinhos.hpp"
 #include "Projetil.hpp"
 
 using namespace Entidades;
@@ -231,7 +231,7 @@ int Fase::getPontos() const
 void Fase::salvar()
 {
     const string arquivos[] = {"jogador", "inim_bambu", "inim_duendeazul", "samurai", "projetil",
-                               "plataforma", "obst_medio", "obst_dificil", "chao"};
+                               "plataforma", "obst_slime", "obst_espinhos", "chao"};
 
     for (const string& a : arquivos)
         ofstream("save/" + a + ".txt");//abre sem ios::app: apaga o salvamento anterior
@@ -295,7 +295,7 @@ void Fase::recuperar()
     }
 
     //obstáculos: x y ativo danoso + o atributo próprio de cada um
-    const string obstaculos[] = {"plataforma", "obst_medio", "obst_dificil"};
+    const string obstaculos[] = {"plataforma", "obst_slime", "obst_espinhos"};
 
     for (int t = 0; t < 3; t++)
     {
@@ -307,9 +307,9 @@ void Fase::recuperar()
             if (t == 0)
                 pO = new Plataforma(x, y, 116, 46, valor);//valor = velocidadeY
             else if (t == 1)
-                pO = new Obst_Medio(x, y, 30, 30, valor);//valor = forca
+                pO = new Obst_Slime(x, y, 30, 30, valor);//valor = forca
             else
-                pO = new Obst_Dificil(x, y, 30, 30, valor);//valor = danosidade
+                pO = new Obst_Espinhos(x, y, 30, 30, valor);//valor = danosidade
 
             lista_ents.incluir(pO);
             GC.incluirObstaculo(pO);

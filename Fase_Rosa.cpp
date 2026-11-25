@@ -1,7 +1,7 @@
 #include "stdafx.hpp"
 #include "Fase_Rosa.hpp"
 #include "Inim_DuendeAzul.hpp"
-#include "Obst_Medio.hpp"
+#include "Obst_Slime.hpp"
 #include "Plataforma.hpp"
 
 using namespace Entidades::Personagens;
@@ -49,16 +49,16 @@ void Fase_Rosa::criarInimMedios()
 
 void Fase_Rosa::criarObstaculos()
 {
-    criarObstaculosMedios();
+    criarObstSlimes();
 }
 
-void Fase_Rosa::criarObstaculosMedios()
+void Fase_Rosa::criarObstSlimes()
 {
     int quantidade = sortearQuant(MIN_OBSTACULOS, MAX_OBSTACULOS);
     
     for (int i = 0; i < quantidade; i++)
     {
-        Obst_Medio* pO = new Obst_Medio(0, 0, 30, 30, 9);
+        Obst_Slime* pO = new Obst_Slime(0, 0, 30, 30, 9);
 
         if (i % 2 == 0)//alterna
             posicionarEmPlataforma(pO);

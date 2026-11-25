@@ -46,13 +46,13 @@ void Plataforma::obstaculizar (Jogador *pJ)
     if (pJ == nullptr)
         return;
 
-   if ( pJ->getVelocidadeY() > 0 &&//só segura quem está caindo (atravessa na subida)
+    if ( pJ->getVelocidadeY() > 0 &&//só segura quem está caindo (atravessa na subida)
          pJ->getX() + pJ->getLargura() >= x && pJ->getX() <= x + largura &&
          pJ->getY() + pJ->getAltura() >= y - 5 && pJ->getY() + pJ->getAltura() <= y + 12 )
 
         pJ->reposicionar(this->getBounds());
 
-        if (y <= 170)//linha mais alta: ar rarefeito
-            pJ->setLento(30);//30 frames
+    if (y <= 170)//linha mais alta: ar rarefeito
+        pJ->setLento(30);//30 frames
 }
 }

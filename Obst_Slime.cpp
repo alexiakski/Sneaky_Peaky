@@ -1,10 +1,10 @@
-#include "Obst_Medio.hpp"
+#include "Obst_Slime.hpp"
 
 using namespace Entidades::Personagens;
 namespace Entidades::Obstaculos 
 {
 
-Obst_Medio::Obst_Medio(float x, float y, float largura, float altura, float forca)
+Obst_Slime::Obst_Slime(float x, float y, float largura, float altura, float forca)
             :Obstaculo(x, y, largura, altura), forca(forca)
 {
     if (pFig != nullptr)
@@ -14,24 +14,24 @@ Obst_Medio::Obst_Medio(float x, float y, float largura, float altura, float forc
     }        
 }
 
-Obst_Medio::~Obst_Medio()
+Obst_Slime::~Obst_Slime()
 {
 
 }
 
-void Obst_Medio::executar() 
+void Obst_Slime::executar() 
 {
     if (pFig != nullptr)
         pFig->setPosition(x, y);
 }
 
-void Obst_Medio::salvar()
+void Obst_Slime::salvar()
 {
     salvarDataBuffer();
     buffer << forca;
-    ofstream("save/obst_medio.txt", ios::app) << buffer.str() << '\n';
+    ofstream("save/obst_slime.txt", ios::app) << buffer.str() << '\n';
 }
-void Obst_Medio::obstaculizar (Jogador *pJ)
+void Obst_Slime::obstaculizar (Jogador *pJ)
 {
     /*if (pJ == nullptr)
         return;

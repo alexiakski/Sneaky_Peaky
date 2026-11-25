@@ -139,7 +139,7 @@ void Jogador::mover()
         andando = true;
     }
 
-    x += empurraoX;//obstaculo medio
+    x += empurraoX;//obst_slime
     empurraoX *= 0.9f;
 
     if (x < 0)//chão

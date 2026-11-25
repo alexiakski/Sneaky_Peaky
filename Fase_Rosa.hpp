@@ -19,7 +19,7 @@ class Fase_Rosa : public Fase
         void criarInimMedios();
 
         void criarObstaculos();
-        void criarObstaculosMedios();
+        void criarObstSlimes();
 };
 }
 
