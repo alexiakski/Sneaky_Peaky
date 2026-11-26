@@ -289,6 +289,7 @@ void Fase::recuperar()
             pI->setAtivo(ativo);
             pI->setNumVidas(vidas);
             pI->setVelocidadeY(velY);
+            pI->setNivelMaldade(nivel);
             lista_ents.incluir(pI);
             GC.incluirInimigo(pI);
         }

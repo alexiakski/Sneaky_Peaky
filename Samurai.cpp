@@ -11,7 +11,7 @@ namespace Entidades::Personagens
 {
 
 Samurai::Samurai(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes* pGC)
-        : Inimigo(x, y, 63, 35, 2, 3, 0.3f), pLista(pLista), pGC(pGC), recarga(0)
+        : Inimigo(x, y, 63, 35, 2, 3, 0.3f), pLista(pLista), pGC(pGC), recarga(0), honra(1+rand()%3)
 {
     setTextura("assets/SamuraiAzul.png", sf::IntRect(13, 5, 70, 39));//só a primeira pose
 }
@@ -24,7 +24,7 @@ Samurai::~Samurai()
 void Samurai::salvar()
 {
     salvarDataBuffer();
-    buffer << recarga;
+    buffer << recarga << ' ' << honra;
     ofstream("save/samurai.txt", ios::app) << buffer.str() << '\n';
 }
 
@@ -39,7 +39,7 @@ void Samurai::executar()
     Inimigo::executar();
 
     recarga++;
-    if (recarga >= 300)//a cada 5s
+    if (recarga >= 360 - honra *60)
     {
         bool ladoD = (x + largura/2 > 400);//se está no lado direito da janela
 
