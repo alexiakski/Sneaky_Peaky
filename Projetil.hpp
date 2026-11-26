@@ -3,6 +3,7 @@
 
 #include "Entidade.hpp"
 
+namespace Entidades::Personagens {class Samurai;}
 namespace Entidades 
 {
 class Projetil : public Entidade
@@ -11,11 +12,14 @@ class Projetil : public Entidade
 
         int dano;
         float velocidade;
+        Personagens::Samurai* pAtirador;
 
     public:
 
-        Projetil(float x, float y, float largura, float altura, int dano, float velocidade);
+        Projetil(float x, float y, float largura, float altura, int dano, float velocidade, Personagens::Samurai* pAtirador);
         virtual ~Projetil();
+
+        Personagens::Samurai* getAtirador() const;
 
         int getDano() const;
 

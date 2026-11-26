@@ -24,7 +24,7 @@ Samurai::~Samurai()
 void Samurai::salvar()
 {
     salvarDataBuffer();
-    buffer << recarga << ' ' << honra;
+    buffer << recarga << ' ' << honra << ' ' << id;
     ofstream("save/samurai.txt", ios::app) << buffer.str() << '\n';
 }
 
@@ -46,7 +46,7 @@ void Samurai::executar()
         float vel = ladoD ? -2.0f : 2.0f; 
         float xTiro = ladoD ? x - 20 : x + largura;
         
-        Projetil* pP = new Projetil (xTiro, y +10, 20, 20 ,1, vel);
+        Projetil* pP = new Projetil (xTiro, y +10, 20, 20 ,1, vel, this);
         pLista->incluir(pP);
         pGC->incluirProjetil(pP);
         recarga = 0;

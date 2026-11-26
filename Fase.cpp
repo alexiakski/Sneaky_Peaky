@@ -245,6 +245,7 @@ void Fase::recuperar()
     bool ativo, danoso;
     int vidas, invenc, nivel, num, pts;
     string linha;
+    map<int, Samurai*> samurais;
 
     //jogadores: cria 1 ou 2 como no jogo normal e depois aplica o estado salvo
     vector<string> linhas;
@@ -284,7 +285,15 @@ void Fase::recuperar()
             else if (t == 1)
                 pI = new Inim_DuendeAzul(x, y);
             else
-                pI = new Samurai(x, y, &lista_ents, &GC);
+            {
+                Samurai* pS = new Samurai(x, y, &lista_ents, &GC);
+
+                int passos, direcao, recarga, honra, idSalvo;
+                istringstream(linha) >> passos >> direcao >> recarga >> honra >> idSalvo;
+                samurais[idSalvo] = pS;
+
+                pI = pS;
+            }
 
             pI->setAtivo(ativo);
             pI->setNumVidas(vidas);
@@ -318,10 +327,12 @@ void Fase::recuperar()
     }
 
     //projéteis: x y ativo dano velocidade
+    int idAtirador;
     ifstream arqP("save/projetil.txt");
-    while (arqP >> x >> y >> ativo >> num >> valor)
+    while (arqP >> x >> y >> ativo >> num >> valor >> idAtirador)
     {
-        Projetil* pP = new Projetil(x, y, 20, 20, num, valor);//num = dano, valor = velocidade
+        Samurai* pAtirador = samurais.count(idAtirador) ? samurais[idAtirador] : nullptr;
+        Projetil* pP = new Projetil(x, y, 20, 20, num, valor, pAtirador);//num = dano, valor = velocidade
         lista_ents.incluir(pP);
         GC.incluirProjetil(pP);
     }

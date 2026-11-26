@@ -1,19 +1,26 @@
 #include "Projetil.hpp"
 #include "Personagem.hpp"
+#include "Samurai.hpp"
 
 using namespace Entidades::Personagens;
 
 namespace Entidades 
 {
 
-Projetil::Projetil(float x, float y, float largura, float altura, int dano, float velocidade)
-        :Entidade(x, y, largura, altura), dano(dano), velocidade(velocidade)
+Projetil::Projetil(float x, float y, float largura, float altura, int dano, float velocidade, Samurai* pAtirador)
+        :Entidade(x, y, largura, altura), dano(dano), velocidade(velocidade), pAtirador(pAtirador)
 {
     setTextura ("assets/Shuriken.png");
 }
+
 Projetil::~Projetil()
 {
+    pAtirador = nullptr;
+}
 
+Samurai* Projetil::getAtirador() const
+{
+    return pAtirador;
 }
 
 int Projetil::getDano() const
@@ -35,6 +42,7 @@ void Projetil::colidir(Entidade *pEnt)
         ativo = false;
     }
 }
+
 void Projetil::mover()
 {
     if(ativo)
@@ -54,13 +62,14 @@ void Projetil::executar()
     if(ativo)
         mover();
 }
+
 void Projetil::salvar()
 {
     if (!ativo)
         return;
 
     salvarDataBuffer();
-    buffer << dano << ' ' << velocidade;
+    buffer << dano << ' ' << velocidade << ' ' << (pAtirador != nullptr ? pAtirador->getId() : -1);
     ofstream("save/projetil.txt", ios::app) << buffer.str() << '\n';
 }
 
