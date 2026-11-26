@@ -4,7 +4,7 @@
 namespace Entidades::Personagens 
 {
 
-Inim_DuendeAzul::Inim_DuendeAzul(float x, float y) : Inimigo(x, y, 47, 29, 1, 2), contador (0)
+Inim_DuendeAzul::Inim_DuendeAzul(float x, float y) : Inimigo(x, y, 47, 29, 1, 2, 0.7f), contador (0)
 {
     setTextura("assets/TenguAzul.png", sf::IntRect(7, 18, 53, 33));//só a primeira pose
 }

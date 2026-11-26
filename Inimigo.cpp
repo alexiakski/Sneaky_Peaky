@@ -4,8 +4,9 @@
 namespace Entidades::Personagens 
 {
 
-Inimigo::Inimigo(float x, float y, int largura, int altura, int num_vidas, int nivel_maldade) 
-        : Personagem(x, y, largura, altura, num_vidas), nivel_maldade(nivel_maldade)
+Inimigo::Inimigo(float x, float y, int largura, int altura, int num_vidas, int nivel_maldade, float velocidadeX) 
+        : Personagem(x, y, largura, altura, num_vidas),
+        nivel_maldade(nivel_maldade), velocidadeX(velocidadeX), passos ((116 - largura) / velocidadeX / 2), direcao(1)
 {
 
 }
@@ -35,11 +36,20 @@ void Inimigo::colidir (Jogador *pJog)
 void Inimigo::salvarDataBuffer()
 {
     Personagem::salvarDataBuffer();
-    buffer << nivel_maldade << ' ';
+    buffer << nivel_maldade << ' '<< passos << ' ' << direcao << ' ';
 }
 
 void Inimigo::mover()
 {
+    x += velocidadeX * direcao;
+    passos++;
+
+    if (passos >= (116 - largura)/velocidadeX)
+    {
+        direcao = -direcao;
+        passos = 0;
+    }
+
     aplicarGravidade();
 
     if (pFig != nullptr)  
@@ -51,4 +61,5 @@ void Inimigo::executar()
     atualizarInvincibilidade();
     mover();
 }
+
 }

@@ -33,7 +33,6 @@ class Jogador : public Personagem
         void colidir (Inimigo *pIn);
         void sofrerAtaque(int dano);
         
-        //Jogador& operator++();
         Jogador& operator+=(int pontos);
         int getPontos() const;
         

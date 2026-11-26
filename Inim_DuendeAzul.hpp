@@ -9,7 +9,8 @@ class Inim_DuendeAzul : public Inimigo
 {
     private:
 
-        int contador;    
+        int contador;
+        int forcaAsas;
 
     public:
 

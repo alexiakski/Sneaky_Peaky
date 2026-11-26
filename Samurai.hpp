@@ -14,6 +14,7 @@ class Samurai : public Inimigo
         Listas::ListaEntidades* pLista;
         Gerenciadores::Gerenciador_Colisoes* pGC;
         int recarga;
+        int honra;
 
     public:
 

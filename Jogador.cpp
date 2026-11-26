@@ -172,15 +172,9 @@ void Jogador::mover()
 
 void Jogador::executar()
 {
-   atualizarInvincibilidade();
+    atualizarInvincibilidade();
     mover();
 }
-
-/*Jogador& Jogador::operator++()
-{
-    pontos++;
-    return *this;
-}*/
 
 Jogador& Jogador::operator+=(int pontos)
 {
