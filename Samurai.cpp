@@ -18,7 +18,8 @@ Samurai::Samurai(float x, float y, ListaEntidades* pLista, Gerenciador_Colisoes*
 
 Samurai::~Samurai()
 {
-
+    pLista = nullptr;
+    pGC = nullptr;
 }
 
 void Samurai::salvar()

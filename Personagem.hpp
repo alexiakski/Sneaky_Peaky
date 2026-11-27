@@ -32,7 +32,7 @@ class Personagem : public Entidade
 
         void atualizarInvincibilidade();
 
-        virtual void salvarDataBuffer();
+        void salvarDataBuffer();
 
         virtual void salvar() = 0;
         virtual void mover() = 0;

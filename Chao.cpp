@@ -37,7 +37,6 @@ void Chao::executar()
 
 void Chao::salvar()
 {
-    salvarDataBuffer();
-    ofstream("save/chao.txt", ios::app) << buffer.str() << '\n';
+    
 }
 }

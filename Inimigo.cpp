@@ -20,17 +20,25 @@ int Inimigo::getNivelMaldade() const
 {
     return nivel_maldade;
 }
+
 void Inimigo::setNivelMaldade(int nivel_maldade)
 {
     this->nivel_maldade = nivel_maldade;
 }
 
+void Inimigo::setPatrulha(int passos, int direcao)
+{
+    this->passos = passos;
+    this->direcao = direcao;
+}
+
 void Inimigo::colidir (Jogador *pJog)
 {
     if(pJog != nullptr)
+    {
         danificar(pJog);
-
-    pJog->reposicionarJogInim(this->getBounds());
+        pJog->reposicionarJogInim(this->getBounds());
+    }
 }
 
 void Inimigo::salvarDataBuffer()

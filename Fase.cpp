@@ -231,7 +231,7 @@ int Fase::getPontos() const
 void Fase::salvar()
 {
     const string arquivos[] = {"jogador", "inim_bambu", "inim_duendeazul", "samurai", "projetil",
-                               "plataforma", "obst_slime", "obst_espinhos", "chao"};
+                               "plataforma", "obst_slime", "obst_espinhos"};
 
     for (const string& a : arquivos)
         ofstream("save/" + a + ".txt");//abre sem ios::app: apaga o salvamento anterior
@@ -275,9 +275,11 @@ void Fase::recuperar()
     {
         ifstream arq("save/" + inimigos[t] + ".txt");
 
-        while (arq >> x >> y >> ativo >> vidas >> velY >> invenc >> nivel)
+        int passos, direcao;
+
+        while (arq >> x >> y >> ativo >> vidas >> velY >> invenc >> nivel >> passos >> direcao)
         {
-            getline(arq, linha);//resto da linha (contador, direcao, recarga): recomeçam do zero
+            getline(arq, linha);
 
             Inimigo* pI;
             if (t == 0)
@@ -288,8 +290,8 @@ void Fase::recuperar()
             {
                 Samurai* pS = new Samurai(x, y, &lista_ents, &GC);
 
-                int passos, direcao, recarga, honra, idSalvo;
-                istringstream(linha) >> passos >> direcao >> recarga >> honra >> idSalvo;
+                int recarga, honra, idSalvo;
+                istringstream(linha) >> recarga >> honra >> idSalvo;
                 samurais[idSalvo] = pS;
 
                 pI = pS;
@@ -299,6 +301,7 @@ void Fase::recuperar()
             pI->setNumVidas(vidas);
             pI->setVelocidadeY(velY);
             pI->setNivelMaldade(nivel);
+            pI->setPatrulha(passos, direcao);
             lista_ents.incluir(pI);
             GC.incluirInimigo(pI);
         }

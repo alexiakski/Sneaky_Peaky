@@ -22,6 +22,8 @@ class Inimigo : public Personagem
         int getNivelMaldade() const;
         void setNivelMaldade(int nivel_maldade);
 
+        void setPatrulha(int passos, int direcao);
+
         void colidir (Jogador *pJog);
         
         void salvarDataBuffer();

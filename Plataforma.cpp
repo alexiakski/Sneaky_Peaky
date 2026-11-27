@@ -19,15 +19,6 @@ Plataforma::~Plataforma()
 
 }
 
-int Plataforma::getLargura() const
-{
-    return largura;
-}
-int Plataforma::getAltura() const
-{
-    return altura;
-}
-
 void Plataforma::executar()
 {
     if (pFig != nullptr)

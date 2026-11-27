@@ -16,9 +16,6 @@ class Plataforma : public Obstaculo
         Plataforma(float x, float y, float largura, float altura, float velocidadeY = 0);
         ~Plataforma();
 
-        int getLargura() const;
-        int getAltura() const;
-
         virtual void executar();
         virtual void salvar();
         void obstaculizar (Personagens::Jogador *pJ);

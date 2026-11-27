@@ -6,13 +6,10 @@ namespace Entidades::Personagens
 {
 
 Jogador::Jogador(float x, float y, int largura, int altura, int num_jog)
-        : Personagem(x, y, largura, altura, MAX_VIDAS), coracao(sf::Vector2f(32, 32)), cX(num_jog == 1 ? 10 : 800 - 10 - 32)
+        :Personagem(x, y, largura, altura, MAX_VIDAS), 
+        pontos(0), direcao(0), quadro(0), contador(0), empurraoX(0), lento(0), 
+        coracao(sf::Vector2f(32, 32)), cX(num_jog == 1 ? 10 : 800 - 10 - 32)
 {
-    pontos = 0;
-    direcao = 0;
-    quadro = 0;
-    contador = 0;
-    empurraoX = 0;
 
     if (num_jog == 1)
     {

@@ -122,10 +122,6 @@ void Gerenciador_Colisoes::tratarColisoesChao()
         {
             if (pI != nullptr && verificarColisao(pI, pC))
                 pC->sustentar(pI);
-                
-            if (pJog2 != nullptr && verificarColisao(pJog2, pC))
-            pC->sustentar(pJog2);
-
         }
     }
 }

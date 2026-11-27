@@ -204,6 +204,7 @@ void Menu::escrever(const string texto, float y)
 void Menu::fimDeJogo(int pontos, bool venceu)
 {
     this->pontos = pontos;
+    nome = "";
 
     if (venceu)
     {
