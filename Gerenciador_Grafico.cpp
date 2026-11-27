@@ -58,9 +58,8 @@ sf::Texture* Gerenciador_Grafico::carregarTextura(const std::string& caminho, sf
 
     if (!tex.loadFromFile(caminho, area))//se não achar
     {
-        std::cout << "Erro ao carregar " << caminho << std::endl;
         texturas.erase(chave);    // remove a entrada vazia
-        return nullptr;
+        throw std::runtime_error("Erro ao carregar " + caminho);
     }
     return &tex;
 }

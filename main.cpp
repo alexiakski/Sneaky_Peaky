@@ -5,8 +5,16 @@
 
 int main()
 {
-    Jogo jogo;
-    jogo.executar();
+    try
+    {
+        Jogo jogo;
+        jogo.executar();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+        return 1;
+    }
 
     return 0;
 }
